@@ -44,6 +44,9 @@ namespace UfcStatsAPI.Services
 				// Splitting single table html to lines
 				string[] lines = rankingTables[i].OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
+				SemaphoreSlim semaphore = new SemaphoreSlim(16);
+				List<Task> tasks = new List<Task>();
+
 				for (int j = 0; j < lines.Length; j++)
 				{
 					// Searching for flagicon - it is a unique word which is a part of pattern that easily helps finding desired links to fighters wikipedia pages
@@ -53,21 +56,26 @@ namespace UfcStatsAPI.Services
 						var figtherWikipediaLink = Regex.Match(lines[j + 2], @"/wiki/[^""]+");
 						if (figtherWikipediaLink.Success)
 						{
-							// Searching for sherdog link on fighters wikipedia page
-							string? fighterSherdogLink = await ScrapSingleSherdogLink(figtherWikipediaLink.ToString());
+							await semaphore.WaitAsync();
+							tasks.Add(Task.Run(async () => {
+								// Searching for sherdog link on fighters wikipedia page
+								string? fighterSherdogLink = await ScrapSingleSherdogLink(figtherWikipediaLink.ToString());
 
-							// If sherdog link was found the fighter is added (otherwise he is ignored)
-							if (fighterSherdogLink != null)
-							{
-								if (fighterSherdogLink.Contains("&#39;"))
+								// If sherdog link was found the fighter is added (otherwise he is ignored)
+								if (fighterSherdogLink != null)
 								{
-									fighterSherdogLink = fighterSherdogLink.Replace("&#39;", "");
+									if (fighterSherdogLink.Contains("&#39;"))
+									{
+										fighterSherdogLink = fighterSherdogLink.Replace("&#39;", "");
+									}
+									sherdogLinks.Add(fighterSherdogLink.ToString());
 								}
-								sherdogLinks.Add(fighterSherdogLink.ToString());
-							}
+							}));
 						}
 					}
 				}
+
+				await Task.WhenAll(tasks);
 				// Add key (weightclass name) and value (list of sherdog links) to dictionary
 				weightClasses.Add(weightClassNames[i], sherdogLinks);
 			}
@@ -127,7 +135,7 @@ namespace UfcStatsAPI.Services
 			// Age, Height
 			var bio = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='bio-holder']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
-			for (int i = 0; i < bio.Length; i++)
+			/*for (int i = 0; i < bio.Length; i++)
 			{
 				if (bio[i].Contains("AGE"))
 				{
@@ -139,12 +147,12 @@ namespace UfcStatsAPI.Services
 					// BAD
 					fighter.Add("Height", Convert.ToInt32(bio[i + 4].Substring(2, 3)));
 				}
-			}
+			}*/
 
 			// Name + Surname, Nickname, Country
 			var fighterTitle = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='fighter-title']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
-			for (int i = 0; i < fighterTitle.Length; i++)
+			/*for (int i = 0; i < fighterTitle.Length; i++)
 			{
 				if (fighterTitle[i].Contains("fn"))
 				{
@@ -158,7 +166,7 @@ namespace UfcStatsAPI.Services
 				{
 					// Country
 				}
-			}
+			}*/
 
 			// Wins, WinsKo, WinsSub, WinsDec, WinsOthers, Losses, LossesKo, LossesSub, LossesDec, LossesOthers, NoContest
 			var record = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='winsloses-holder']");
@@ -180,19 +188,34 @@ namespace UfcStatsAPI.Services
 			foreach (var weightClass in sherdogLinksDictionary)
 			{
 				List<Dictionary<string, object>> weightClassDictionary = new List<Dictionary<string, object>>();
+
+				int maxDegreeOfParallelism = weightClass.Value.Count;
+				SemaphoreSlim semaphore = new SemaphoreSlim(maxDegreeOfParallelism);
+				List<Task> tasks = new List<Task>();
+
 				foreach (var fighter in weightClass.Value)
 				{
-					try
+					await semaphore.WaitAsync();
+					tasks.Add(Task.Run(async () =>
 					{
-						var fighterDictionary = await ScrapSherdogStats(fighter);
-						weightClassDictionary.Add(fighterDictionary);
-					}
-					catch (Exception ex)
-					{
-						Console.WriteLine(fighter);
-					}
+						try
+						{
+							var fighterDictionary = await ScrapSherdogStats(fighter);
+							weightClassDictionary.Add(fighterDictionary);
+						}
+						catch (Exception ex)
+						{
+							Console.WriteLine(fighter);
+						}
+						finally
+						{
+							semaphore.Release();
+						}
+
+					}));
 				}
 
+				await Task.WhenAll(tasks);
 				json.Add(weightClass.Key, weightClassDictionary);
 			}
 
