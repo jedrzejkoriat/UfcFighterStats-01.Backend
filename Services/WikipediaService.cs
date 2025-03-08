@@ -59,6 +59,10 @@ namespace UfcStatsAPI.Services
 							// If sherdog link was found the fighter is added (otherwise he is ignored)
 							if (fighterSherdogLink != null)
 							{
+								if (fighterSherdogLink.Contains("&#39;"))
+								{
+									fighterSherdogLink = fighterSherdogLink.Replace("&#39;", "");
+								}
 								sherdogLinks.Add(fighterSherdogLink.ToString());
 							}
 						}
@@ -110,7 +114,7 @@ namespace UfcStatsAPI.Services
 			return null;
 		}
 
-		private async static Task ScrapSherdogStats(string url)
+		private async static Task<Dictionary<string, object>> ScrapSherdogStats(string url)
 		{
 			// Downloading fighter sherdog page content
 			var response = await httpClient.GetStringAsync("https://www.sherdog.com/fighter/" + url);
@@ -118,17 +122,81 @@ namespace UfcStatsAPI.Services
 			var htmlDoc = new HtmlDocument();
 			htmlDoc.LoadHtml(response);
 
-			// Birthdate, age, height, weight, association, class
-			var bio = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='bio-holder']");
+			Dictionary<string, object> fighter = new Dictionary<string, object>();
 
-			// Country, flag.png
-			var nationality = htmlDoc.DocumentNode.SelectSingleNode("//div[@classes='fighter-nationality']");
+			// Age, Height
+			var bio = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='bio-holder']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
-			// Wins, win ko/tko, win submissions, win decisions, win others, losses, losses ko/tko, losses submissions, losses decisions, losses others, No contest
+			for (int i = 0; i < bio.Length; i++)
+			{
+				if (bio[i].Contains("AGE"))
+				{
+					// BAD
+					fighter.Add("Age", Convert.ToInt32(bio[i + 2].Substring(3, 2)));
+				}
+				if (bio[i].Contains("HEIGHT"))
+				{
+					// BAD
+					fighter.Add("Height", Convert.ToInt32(bio[i + 4].Substring(2, 3)));
+				}
+			}
+
+			// Name + Surname, Nickname, Country
+			var fighterTitle = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='fighter-title']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
+
+			for (int i = 0; i < fighterTitle.Length; i++)
+			{
+				if (fighterTitle[i].Contains("fn"))
+				{
+					// Name
+				}
+				if (fighterTitle[i].Contains("nickname"))
+				{
+					// Nickname
+				}
+				if (fighterTitle[i].Contains("fighter-nationality"))
+				{
+					// Country
+				}
+			}
+
+			// Wins, WinsKo, WinsSub, WinsDec, WinsOthers, Losses, LossesKo, LossesSub, LossesDec, LossesOthers, NoContest
 			var record = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='winsloses-holder']");
 
-			// Fights table: result, opponent, event, date, method, round, time
-			var fightHistory = htmlDoc.DocumentNode.SelectSingleNode("//div[@classes='module fight_history']");
+			var wins = record.SelectSingleNode("//div[@class='wins']");
+			var loses = record.SelectSingleNode("//div[@class='loses']");
+
+
+
+			// Fights: Result, Opponent, Event, Date, Method, Round, Time
+			var fightHistory = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='module fight_history']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
+
+			return fighter;
+		}
+
+		private async static Task<Dictionary<string, List<Dictionary<string, object>>>> CreateJson(Dictionary<string, List<string>> sherdogLinksDictionary)
+		{
+			Dictionary<string, List<Dictionary<string, object>>> json = new Dictionary<string, List<Dictionary<string, object>>>();
+			foreach (var weightClass in sherdogLinksDictionary)
+			{
+				List<Dictionary<string, object>> weightClassDictionary = new List<Dictionary<string, object>>();
+				foreach (var fighter in weightClass.Value)
+				{
+					try
+					{
+						var fighterDictionary = await ScrapSherdogStats(fighter);
+						weightClassDictionary.Add(fighterDictionary);
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine(fighter);
+					}
+				}
+
+				json.Add(weightClass.Key, weightClassDictionary);
+			}
+
+			return json;
 		}
 	}
 }
