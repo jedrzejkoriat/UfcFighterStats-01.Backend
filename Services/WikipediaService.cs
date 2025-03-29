@@ -288,19 +288,19 @@ namespace UfcStatsAPI.Services
 					dictionary.Add("opponent", Regex.Match(fightHistoryHtml[i + 2], @">([^<]+)<").ToString().Trim('<').Substring(1));
 
 					// Event Name
-					dictionary.Add("eventName", Regex.Match(fightHistoryHtml[i + 3], " > ([^<]+)<").ToString().Trim('<').Substring(1));
+					dictionary.Add("eventName", Regex.Match(fightHistoryHtml[i + 3], ">([^<]+)<").ToString().Trim('<').Substring(1));
 
 					// Date
 					dictionary.Add("date", Regex.Match(fightHistoryHtml[i + 3], @"[A-Za-z]{3} / \d{2} / \d{4}").ToString());
 
 					// Method
-					dictionary.Add("method", Regex.Match(fightHistoryHtml[i + 4], "b >([^<]+)<").ToString().Trim('<').Substring(2));
+					dictionary.Add("method", Regex.Match(fightHistoryHtml[i + 4], "b>([^<]+)<").ToString().Trim('<').Substring(2));
 
 					// Round of stoppage
-					dictionary.Add("round", Regex.Match(fightHistoryHtml[i + 6], @" > (\w+)<").ToString().Trim('<').Substring(1));
+					dictionary.Add("round", Regex.Match(fightHistoryHtml[i + 6], @">(\w+)<").ToString().Trim('<').Substring(1));
 
 					// Time of stoppage
-					dictionary.Add("time", Regex.Match(fightHistoryHtml[i + 7], " > ([^<]+)<").ToString().Trim('<').Substring(1));
+					dictionary.Add("time", Regex.Match(fightHistoryHtml[i + 7], ">([^<]+)<").ToString().Trim('<').Substring(1));
 
 
 					fightHistory.Add(dictionary);
@@ -328,28 +328,64 @@ namespace UfcStatsAPI.Services
 				// Limit the tasks to weightClass.Count (around 15-16 fighters)
 				int maxDegreeOfParallelism = weightClass.Value.Count;
 
-				SemaphoreSlim semaphore = new SemaphoreSlim(maxDegreeOfParallelism);
+				SemaphoreSlim semaphore = new SemaphoreSlim(1);
 				List<Task> tasks = new List<Task>();
 
+				int id = 0;
 				// Looping through each fighter in weightClass list
 				foreach (var fighter in weightClass.Value)
 				{
+					id++;
 					// Add task
 					await semaphore.WaitAsync();
 					tasks.Add(Task.Run(async () =>
 					{
 						try
 						{
+							List<string> bad = new List<string>
+						{
+							"Tagir-Ulanbekov-149259",
+							"Aiemann-Zahabi-121009",
+							"Alex-Perez-12443",
+							"Beneil-Dariush-56583",
+							"Bogdan-Guskov-229253",
+							"Diego-Lopes-112531",
+							"Islam-Makhachev-76836",
+							"Jack-Della-Maddalena-208155",
+							"Jan-Błachowicz-25821",
+							"Johnny-Walker-170203",
+							"Josh-Emmett-85885",
+							"Kai-Asakura-226035",
+							"Magomed-Ankalaev-170785",
+							"Mario-Bautista-128107",
+							"Michael-Morales-268041",
+							"Mick-Parkin-224411",
+							"Movsar-Evloev-183539",
+							"Rob-Font-76100",
+							"Roman-Kopylov-232601",
+							"Sean-Brady-126971",
+							"Sergei-Pavlovich-184051",
+							"Shamil-Gaziev-313721",
+							"Tatsuro-Taira-293975",
+							"Tim-Elliott-49213",
+							"Tom-Aspinall-65231",
+							"Umar-Nurmagomedov-240893"
+						};
+
+							if (bad.Contains(fighter))
+							{
+
+							}
 							// Scrap fighter from sherdog
 							var fighterDictionary = await ScrapSherdogStats(fighter);
 
 							// Add fighter to weightclass
+							fighterDictionary.Add("id", id);
 							weightClassDictionary.Add(fighterDictionary);
 						}
 						catch (Exception ex)
 						{
 							Console.WriteLine(fighter);
-							throw ex;
 						}
 						finally
 						{
