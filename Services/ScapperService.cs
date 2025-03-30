@@ -12,7 +12,6 @@ namespace UfcStatsAPI.Services
 	 Known issues:
 
 	-Fighters without wikipedia page excluded (~3) (probably won't fix)
-	-Fighters not grouped in ranking order (flagicon +2/3 lines above is ranking - add to dictionary)
 	-Scrap top 3 youtube links (maybe some youtube API)
 
 
@@ -30,6 +29,7 @@ namespace UfcStatsAPI.Services
 			return JsonConvert.SerializeObject(scrappedFighterStats, Newtonsoft.Json.Formatting.Indented);
 		}
 
+		// Scrapping weightclass ranking tables from UFC_rankings wikipedia page
 		// Scrapping weightclass ranking tables from UFC_rankings wikipedia page
 		private async static Task<List<HtmlNode>> ScrapUfcRankings()
 		{
@@ -52,15 +52,15 @@ namespace UfcStatsAPI.Services
 		}
 
 		// Scrapping sherdog link for each ranked fighter - returns a dictionary of weightclass as key and ranked fighter sherdog links as value
-		private async static Task<Dictionary<string, List<string>>> ScrapSherdogLinks(List<HtmlNode> rankingTables)
+		private async static Task<Dictionary<string, Dictionary<string, string>>> ScrapSherdogLinks(List<HtmlNode> rankingTables)
 		{
 			// All UFC man weightclasses
 			List<string> weightClassNames = ["Heavyweight", "Light Heavyweight", "Middleweight", "Welterweight", "Lightweight", "Featherweight", "Bantamweight", "Flyweight"];
-			Dictionary<string, List<string>> weightClasses = new Dictionary<string, List<string>>();
+			Dictionary<string, Dictionary<string, string>> weightClasses = new Dictionary<string, Dictionary<string, string>>();
 
 			for (int i = 0; i < rankingTables.Count; i++)
 			{
-				List<string> sherdogLinks = new List<string>();
+				Dictionary<string, string> sherdogLinks = new Dictionary<string, string>();
 
 				// Splitting single table html to lines
 				string[] lines = rankingTables[i].OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
@@ -74,36 +74,37 @@ namespace UfcStatsAPI.Services
 					// Searching for flagicon - it is a unique word which is a part of pattern that easily helps finding desired links to fighters wikipedia pages
 					if (lines[j].Contains("flagicon"))
 					{
-						// Searching for ranking two lines above the flagicon keyword or three lines above if the fighter is champion/interim champion
-						var numberRanking = Regex.Match(lines[j - 2], @"<th>(\d+) </th>");
-						var interimChampionRanking = Regex.Match(lines[j - 3], @">IC<");
-						var championRanking = Regex.Match(lines[j - 3], @">C<");
-
-						string ranking = "";
-
-						// Checking for success
-						if (numberRanking.Success) ranking = numberRanking.ToString().Substring(4, 2);
-						else if (interimChampionRanking.Success) ranking = "1";
-						else if (championRanking.Success) ranking = "2";
-
 						// Searching the link two lines below the flagicon keyword
 						var figtherWikipediaLink = Regex.Match(lines[j + 2], @"/wiki/[^""]+");
 						if (figtherWikipediaLink.Success)
 						{
+							// Searching for ranking two lines above the flagicon keyword or three lines above if the fighter is champion/interim champion
+							var numberRanking = Regex.Match(lines[j - 2], @"<th>(\d+)");
+							var interimChampionRanking = Regex.Match(lines[j - 2], @">IC<");
+							var championRanking = Regex.Match(lines[j - 2], @">C<");
+
+							string ranking = "";
+
+							// Checking for success
+							if (numberRanking.Success) ranking = numberRanking.ToString().Substring(4, numberRanking.ToString().Length - 4);
+							else if (interimChampionRanking.Success) ranking = "1";
+							else if (championRanking.Success) ranking = "0";
+
 							await semaphore.WaitAsync();
 							tasks.Add(Task.Run(async () =>
 							{
+
 								// Searching for sherdog link on fighters wikipedia page
 								string? fighterSherdogLink = await ScrapSingleSherdogLink(figtherWikipediaLink.ToString());
 
 								// If sherdog link was found the fighter is added (otherwise he is ignored)
 								if (fighterSherdogLink != null)
 								{
-									if (fighterSherdogLink.Contains(" &#39;"))
+									if (fighterSherdogLink.Contains("&#39;"))
 									{
 										fighterSherdogLink = fighterSherdogLink.Replace("&#39;", "");
 									}
-									sherdogLinks.Add(fighterSherdogLink.ToString());
+									sherdogLinks.Add(ranking, fighterSherdogLink.ToString());
 								}
 							}));
 						}
@@ -158,7 +159,7 @@ namespace UfcStatsAPI.Services
 			return null;
 		}
 
-		private async static Task<Dictionary<string, object>> ScrapSherdogStats(string url, int id)
+		private async static Task<Dictionary<string, object>> ScrapSherdogStats(string url, string id)
 		{
 			// Downloading fighter sherdog page content
 			var response = await httpClient.GetStringAsync("https://www.sherdog.com/fighter/" + url);
@@ -168,7 +169,7 @@ namespace UfcStatsAPI.Services
 
 			Dictionary<string, object> fighter = new Dictionary<string, object>();
 
-			fighter.Add("id", id);
+			fighter.Add("Ranking", id);
 
 			// Age, Height
 			var bioHtml = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='bio-holder']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
@@ -359,7 +360,7 @@ namespace UfcStatsAPI.Services
 		}
 
 		// Create a json structure (see template.json)
-		private async static Task<Dictionary<string, List<Dictionary<string, object>>>> ConstructJson(Dictionary<string, List<string>> sherdogLinksDictionary)
+		private async static Task<Dictionary<string, List<Dictionary<string, object>>>> ConstructJson(Dictionary<string, Dictionary<string, string>> sherdogLinksDictionary)
 		{
 			// Initialize dictionary representing the json
 			Dictionary<string, List<Dictionary<string, object>>> json = new Dictionary<string, List<Dictionary<string, object>>>();
@@ -388,14 +389,14 @@ namespace UfcStatsAPI.Services
 						{
 							int localId = id++;
 							// Scrap fighter from sherdog
-							var fighterDictionary = await ScrapSherdogStats(fighter, localId);
+							var fighterDictionary = await ScrapSherdogStats(fighter.Value, fighter.Key);
 
 							// Add fighter to weightclass
 							weightClassDictionary.Add(fighterDictionary);
 						}
 						catch (Exception ex)
 						{
-							Console.WriteLine(fighter);
+							Console.WriteLine(fighter.Value);
 						}
 						finally
 						{
