@@ -173,7 +173,14 @@ namespace UfcStatsAPI.Services
 				if (fighterTitleHtml[i].Contains("nickname"))
 				{
 					// Nickname
-					string nickname = Regex.Match(fighterTitleHtml[i], @"<em>(.*?)<").ToString().TrimEnd('<').Substring(4);
+					Match match = Regex.Match(fighterTitleHtml[i], @"<em>(.*?)<");
+					string nickname = "";
+
+					if (match.Success)
+					{
+						nickname = match.ToString().TrimEnd('<').Substring(4);
+					}
+
 					fighter.Add("Nickname", nickname);
 				}
 			}
@@ -328,7 +335,7 @@ namespace UfcStatsAPI.Services
 				// Limit the tasks to weightClass.Count (around 15-16 fighters)
 				int maxDegreeOfParallelism = weightClass.Value.Count;
 
-				SemaphoreSlim semaphore = new SemaphoreSlim(1);
+				SemaphoreSlim semaphore = new SemaphoreSlim(maxDegreeOfParallelism);
 				List<Task> tasks = new List<Task>();
 
 				int id = 0;
@@ -342,40 +349,6 @@ namespace UfcStatsAPI.Services
 					{
 						try
 						{
-							List<string> bad = new List<string>
-						{
-							"Tagir-Ulanbekov-149259",
-							"Aiemann-Zahabi-121009",
-							"Alex-Perez-12443",
-							"Beneil-Dariush-56583",
-							"Bogdan-Guskov-229253",
-							"Diego-Lopes-112531",
-							"Islam-Makhachev-76836",
-							"Jack-Della-Maddalena-208155",
-							"Jan-Błachowicz-25821",
-							"Johnny-Walker-170203",
-							"Josh-Emmett-85885",
-							"Kai-Asakura-226035",
-							"Magomed-Ankalaev-170785",
-							"Mario-Bautista-128107",
-							"Michael-Morales-268041",
-							"Mick-Parkin-224411",
-							"Movsar-Evloev-183539",
-							"Rob-Font-76100",
-							"Roman-Kopylov-232601",
-							"Sean-Brady-126971",
-							"Sergei-Pavlovich-184051",
-							"Shamil-Gaziev-313721",
-							"Tatsuro-Taira-293975",
-							"Tim-Elliott-49213",
-							"Tom-Aspinall-65231",
-							"Umar-Nurmagomedov-240893"
-						};
-
-							if (bad.Contains(fighter))
-							{
-
-							}
 							// Scrap fighter from sherdog
 							var fighterDictionary = await ScrapSherdogStats(fighter);
 
