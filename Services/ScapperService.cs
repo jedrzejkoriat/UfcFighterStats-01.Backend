@@ -2,12 +2,33 @@
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Xml;
+using UfcStatsAPI.Contracts;
+using Newtonsoft.Json;
+using System.Globalization;
 
 namespace UfcStatsAPI.Services
 {
-	public class WikipediaService
+	/* 
+	 Known issues:
+
+	-Fighters without wikipedia page excluded (~3) (probably won't fix)
+	-Fighters not grouped in ranking order (flagicon +2/3 lines above is ranking - add to dictionary)
+	-Scrap top 3 youtube links (maybe some youtube API)
+
+
+	 */
+	public class ScrapperService : IScrapperService
 	{
 		private static readonly HttpClient httpClient = new HttpClient();
+
+		public async Task<string> GetRankedFightersJsonAsync()
+		{
+			var rankingTables = await ScrapUfcRankings();
+			var sherdogLinksDictionary = await ScrapSherdogLinks(rankingTables);
+			var scrappedFighterStats = await ConstructJson(sherdogLinksDictionary);
+
+			return JsonConvert.SerializeObject(scrappedFighterStats, Newtonsoft.Json.Formatting.Indented);
+		}
 
 		// Scrapping weightclass ranking tables from UFC_rankings wikipedia page
 		private async static Task<List<HtmlNode>> ScrapUfcRankings()
@@ -53,6 +74,18 @@ namespace UfcStatsAPI.Services
 					// Searching for flagicon - it is a unique word which is a part of pattern that easily helps finding desired links to fighters wikipedia pages
 					if (lines[j].Contains("flagicon"))
 					{
+						// Searching for ranking two lines above the flagicon keyword or three lines above if the fighter is champion/interim champion
+						var numberRanking = Regex.Match(lines[j - 2], @"<th>(\d+) </th>");
+						var interimChampionRanking = Regex.Match(lines[j - 3], @">IC<");
+						var championRanking = Regex.Match(lines[j - 3], @">C<");
+
+						string ranking = "";
+
+						// Checking for success
+						if (numberRanking.Success) ranking = numberRanking.ToString().Substring(4, 2);
+						else if (interimChampionRanking.Success) ranking = "1";
+						else if (championRanking.Success) ranking = "2";
+
 						// Searching the link two lines below the flagicon keyword
 						var figtherWikipediaLink = Regex.Match(lines[j + 2], @"/wiki/[^""]+");
 						if (figtherWikipediaLink.Success)
@@ -66,7 +99,7 @@ namespace UfcStatsAPI.Services
 								// If sherdog link was found the fighter is added (otherwise he is ignored)
 								if (fighterSherdogLink != null)
 								{
-									if (fighterSherdogLink.Contains("&#39;"))
+									if (fighterSherdogLink.Contains(" &#39;"))
 									{
 										fighterSherdogLink = fighterSherdogLink.Replace("&#39;", "");
 									}
@@ -74,6 +107,7 @@ namespace UfcStatsAPI.Services
 								}
 							}));
 						}
+						// Iplement scrapping from google
 					}
 				}
 
@@ -124,7 +158,7 @@ namespace UfcStatsAPI.Services
 			return null;
 		}
 
-		private async static Task<Dictionary<string, object>> ScrapSherdogStats(string url)
+		private async static Task<Dictionary<string, object>> ScrapSherdogStats(string url, int id)
 		{
 			// Downloading fighter sherdog page content
 			var response = await httpClient.GetStringAsync("https://www.sherdog.com/fighter/" + url);
@@ -133,6 +167,8 @@ namespace UfcStatsAPI.Services
 			htmlDoc.LoadHtml(response);
 
 			Dictionary<string, object> fighter = new Dictionary<string, object>();
+
+			fighter.Add("id", id);
 
 			// Age, Height
 			var bioHtml = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='bio-holder']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
@@ -298,7 +334,9 @@ namespace UfcStatsAPI.Services
 					dictionary.Add("eventName", Regex.Match(fightHistoryHtml[i + 3], ">([^<]+)<").ToString().Trim('<').Substring(1));
 
 					// Date
-					dictionary.Add("date", Regex.Match(fightHistoryHtml[i + 3], @"[A-Za-z]{3} / \d{2} / \d{4}").ToString());
+					string scrappedDate = Regex.Match(fightHistoryHtml[i + 3], @"[A-Za-z]{3} / \d{2} / \d{4}").ToString();
+					DateTime date = DateTime.ParseExact(scrappedDate, "MMM / dd / yyyy", CultureInfo.InvariantCulture);
+					dictionary.Add("date", date.ToString("dd-MM-yyyy"));
 
 					// Method
 					dictionary.Add("method", Regex.Match(fightHistoryHtml[i + 4], "b>([^<]+)<").ToString().Trim('<').Substring(2));
@@ -321,7 +359,7 @@ namespace UfcStatsAPI.Services
 		}
 
 		// Create a json structure (see template.json)
-		private async static Task<Dictionary<string, List<Dictionary<string, object>>>> CreateJson(Dictionary<string, List<string>> sherdogLinksDictionary)
+		private async static Task<Dictionary<string, List<Dictionary<string, object>>>> ConstructJson(Dictionary<string, List<string>> sherdogLinksDictionary)
 		{
 			// Initialize dictionary representing the json
 			Dictionary<string, List<Dictionary<string, object>>> json = new Dictionary<string, List<Dictionary<string, object>>>();
@@ -342,18 +380,17 @@ namespace UfcStatsAPI.Services
 				// Looping through each fighter in weightClass list
 				foreach (var fighter in weightClass.Value)
 				{
-					id++;
 					// Add task
 					await semaphore.WaitAsync();
 					tasks.Add(Task.Run(async () =>
 					{
 						try
 						{
+							int localId = id++;
 							// Scrap fighter from sherdog
-							var fighterDictionary = await ScrapSherdogStats(fighter);
+							var fighterDictionary = await ScrapSherdogStats(fighter, localId);
 
 							// Add fighter to weightclass
-							fighterDictionary.Add("id", id);
 							weightClassDictionary.Add(fighterDictionary);
 						}
 						catch (Exception ex)
