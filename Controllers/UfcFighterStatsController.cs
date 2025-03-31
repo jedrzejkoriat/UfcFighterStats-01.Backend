@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UfcStatsAPI.Contracts;
-using System.Text.Json;
-using System;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace UfcStatsAPI.Controllers
 {
@@ -20,8 +20,9 @@ namespace UfcStatsAPI.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetRaknedFightersStats()
 		{
-			var stats = await scrapperService.GetRankedFightersJsonAsync();
-			return Ok(stats);
+			string filePath = Path.Combine(Directory.GetCurrentDirectory(), "ufcfighterdata.json");
+			string json = await System.IO.File.ReadAllTextAsync(filePath);
+			return Ok(json);
 		}
 	}
 }
