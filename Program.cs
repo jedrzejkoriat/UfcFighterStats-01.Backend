@@ -3,12 +3,18 @@ using UfcStatsAPI.Services;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
+using UfcStatsAPI.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonContext.Default);
+});
 
 builder.Services.AddQuartz(q =>
 {
