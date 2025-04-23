@@ -30,7 +30,7 @@ builder.Services.AddQuartz(q =>
 	q.AddTrigger(opts => opts
 	.ForJob(jobKey)
 	.WithIdentity("TriggerAfterRankingUpdate")
-	.WithCronSchedule("0 59 23 ? * MON *"));
+	.WithCronSchedule("0 59 23 ? * WED *"));
 });
 
 builder.Logging.ClearProviders();

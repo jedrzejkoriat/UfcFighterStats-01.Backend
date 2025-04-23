@@ -17,19 +17,12 @@ namespace UfcStatsAPI.Controllers
 			this.scrapperService = scrapperService;
 		}
 
-		[HttpGet("GetRankedFighters")]
+		[HttpGet]
         public async Task<IActionResult> GetRaknedFightersStats()
 		{
 			string filePath = Path.Combine(Directory.GetCurrentDirectory(), "ufcfighterdata.json");
 			string json = await System.IO.File.ReadAllTextAsync(filePath);
 			return Ok(json);
 		}
-
-		[HttpGet]
-		public async Task<IActionResult> GetRankedFightersNow()
-		{
-            string json = await scrapperService.GetRankedFightersJsonAsync();
-			return Ok(json);
-        }
 	}
 }
