@@ -3,12 +3,12 @@ using System.Text.Json.Serialization;
 
 namespace UfcStatsAPI.Model
 {
-    public class Weightclass
+    public class WeightClassModel
     {
         [JsonPropertyName("weightClass")]
         public string? Name { get; set; }
 
         [JsonPropertyName("fighters")]
-        public List<Fighter> Fighters { get; set; }= new List<Fighter>();
+        public List<FighterModel> Fighters { get; set; }= new List<FighterModel>();
     }
 }

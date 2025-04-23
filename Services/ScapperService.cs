@@ -5,33 +5,36 @@ using System.Xml;
 using UfcStatsAPI.Contracts;
 using Newtonsoft.Json;
 using System.Globalization;
+using UfcStatsAPI.Model;
+using System.Runtime.CompilerServices;
 
 namespace UfcStatsAPI.Services
 {
 	/* 
-	 Known issues:
-
-	-Fighters without wikipedia page excluded (~3) (probably won't fix)
 	-Scrap top 3 youtube links (maybe some youtube API)
-
-
 	 */
 	public class ScrapperService : IScrapperService
-	{
+    {
 		private static readonly HttpClient httpClient = new HttpClient();
+        private readonly ILogger<ScrapperService> logger;
+
+        public ScrapperService(ILogger<ScrapperService> logger)
+		{
+            this.logger = logger;
+        }
+
 
 		public async Task<string> GetRankedFightersJsonAsync()
 		{
-			var rankingTables = await ScrapUfcRankings();
-			var sherdogLinksDictionary = await ScrapSherdogLinks(rankingTables);
-			var scrappedFighterStats = await ConstructJson(sherdogLinksDictionary);
+			var rankingTables = await ScrapUfcRankingTables();
+			var sherdogLinksWeightClassModels = await ScrapSherdogLinksAndRankings(rankingTables);
+			var scrappedFighterData = await ScrapFightersData(sherdogLinksWeightClassModels);
 
-			return JsonConvert.SerializeObject(scrappedFighterStats, Newtonsoft.Json.Formatting.Indented);
+			return JsonConvert.SerializeObject(scrappedFighterData, Newtonsoft.Json.Formatting.Indented);
 		}
 
 		// Scrapping weightclass ranking tables from UFC_rankings wikipedia page
-		// Scrapping weightclass ranking tables from UFC_rankings wikipedia page
-		private async static Task<List<HtmlNode>> ScrapUfcRankings()
+		private async Task<List<HtmlNode>> ScrapUfcRankingTables()
 		{
 			// Downloading wikipedia/UFC_rankings content
 			var response = await httpClient.GetStringAsync("https://en.wikipedia.org/wiki/UFC_rankings");
@@ -52,18 +55,19 @@ namespace UfcStatsAPI.Services
 		}
 
 		// Scrapping sherdog link for each ranked fighter - returns a dictionary of weightclass as key and ranked fighter sherdog links as value
-		private async static Task<Dictionary<string, Dictionary<string, string>>> ScrapSherdogLinks(List<HtmlNode> rankingTables)
+		private async Task<List<SherdogLinksWeightClassModel>> ScrapSherdogLinksAndRankings(List<HtmlNode> rankingTables)
 		{
 			// All UFC man weightclasses
 			List<string> weightClassNames = ["Heavyweight", "Light Heavyweight", "Middleweight", "Welterweight", "Lightweight", "Featherweight", "Bantamweight", "Flyweight"];
-			Dictionary<string, Dictionary<string, string>> weightClasses = new Dictionary<string, Dictionary<string, string>>();
 
-			for (int i = 0; i < rankingTables.Count; i++)
+			List<SherdogLinksWeightClassModel> sherdogLinksWeightClasses = new List<SherdogLinksWeightClassModel>();
+
+            for (int i = 0; i < rankingTables.Count; i++)
 			{
-				Dictionary<string, string> sherdogLinks = new Dictionary<string, string>();
+				List<SherdogLinksFighterModel> sherdogLinks = new List<SherdogLinksFighterModel>();
 
-				// Splitting single table html to lines
-				string[] lines = rankingTables[i].OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
+                // Splitting single table html to lines
+                string[] lines = rankingTables[i].OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
 				// List of tasks - max 16 fighters at one time
 				SemaphoreSlim semaphore = new SemaphoreSlim(16);
@@ -103,9 +107,10 @@ namespace UfcStatsAPI.Services
 									if (fighterSherdogLink.Contains("&#39;"))
 									{
 										fighterSherdogLink = fighterSherdogLink.Replace("&#39;", "");
-									}
-									sherdogLinks.Add(ranking, fighterSherdogLink.ToString());
-								}
+                                    }
+                                    this.logger.LogInformation($"{ranking}. {fighterSherdogLink}");
+									sherdogLinks.Add(new SherdogLinksFighterModel { Ranking = ranking, SherdogLink = fighterSherdogLink.ToString() });
+                        }
 							}));
 						}
 						// Iplement scrapping from google
@@ -114,9 +119,10 @@ namespace UfcStatsAPI.Services
 
 				await Task.WhenAll(tasks);
 				// Add key (weightclass name) and value (list of sherdog links) to dictionary
-				weightClasses.Add(weightClassNames[i], sherdogLinks);
+				sherdogLinksWeightClasses.Add(new SherdogLinksWeightClassModel { Name = weightClassNames[i], Fighters = sherdogLinks });
+                this.logger.LogInformation("================================================================");
 			}
-			return weightClasses;
+			return sherdogLinksWeightClasses;
 		}
 
 		private async static Task<string?> ScrapSingleSherdogLink(string url)
@@ -159,7 +165,7 @@ namespace UfcStatsAPI.Services
 			return null;
 		}
 
-		private async static Task<Dictionary<string, object>> ScrapSherdogStats(string url, string id)
+		private async static Task<FighterModel> ScrapSherdogStats(string url, string ranking)
 		{
 			// Downloading fighter sherdog page content
 			var response = await httpClient.GetStringAsync("https://www.sherdog.com/fighter/" + url);
@@ -167,12 +173,12 @@ namespace UfcStatsAPI.Services
 			var htmlDoc = new HtmlDocument();
 			htmlDoc.LoadHtml(response);
 
-			Dictionary<string, object> fighter = new Dictionary<string, object>();
+			FighterModel fighter = new FighterModel();
 
-			fighter.Add("Ranking", id);
+			fighter.Ranking = Convert.ToInt32(ranking);
 
-			// Age, Height
-			var bioHtml = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='bio-holder']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
+            // Age, Height
+            var bioHtml = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='bio-holder']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
 			for (int i = 0; i < bioHtml.Length; i++)
 			{
@@ -180,13 +186,13 @@ namespace UfcStatsAPI.Services
 				{
 					// Age
 					int age = Convert.ToInt32(Regex.Match(bioHtml[i + 1], @"<td><b>(\d+)").ToString().Substring(7));
-					fighter.Add("Age", age);
+					fighter.Age = age;
 				}
 				if (bioHtml[i].Contains("HEIGHT"))
 				{
 					// Height
 					int height = Convert.ToInt32(Regex.Match(bioHtml[i], @"(\d+\.\d+)\s*cm").ToString().Substring(0, 3));
-					fighter.Add("Height", height);
+					fighter.Height = height;
 				}
 			}
 
@@ -199,14 +205,14 @@ namespace UfcStatsAPI.Services
 				{
 					// Country
 					string country = Regex.Match(fighterTitleHtml[i + 2], @">(.*?)<").ToString().TrimEnd('<').Substring(1);
-					fighter.Add("Country", country);
+					fighter.Country = country;
 				}
 				if (fighterTitleHtml[i].Contains("fn"))
 				{
 					// Name and Surname
 					string name = Regex.Match(fighterTitleHtml[i], @"fn(.*?)<").ToString().TrimEnd('<').Substring(4);
-					fighter.Add("Name", name);
-				}
+					fighter.Name = name;
+                }
 				if (fighterTitleHtml[i].Contains("nickname"))
 				{
 					// Nickname
@@ -218,8 +224,8 @@ namespace UfcStatsAPI.Services
 						nickname = match.ToString().TrimEnd('<').Substring(4);
 					}
 
-					fighter.Add("Nickname", nickname);
-				}
+					fighter.Nickname = nickname;
+                }
 			}
 
 			// Wins, WinsKo, WinsSub, WinsDec, WinsOthers
@@ -236,25 +242,25 @@ namespace UfcStatsAPI.Services
 				{
 					// Wins
 					int wins = Convert.ToInt32(Regex.Match(winsHtml[i + 1], @">(\d+)<").ToString().Trim('<').Substring(1));
-					fighter.Add("Wins", wins);
-				}
+					fighter.Wins = wins;
+                }
 				if (winsHtml[i].Contains("em> TKO"))
 				{
 					// Wins by KO/TKO
-					int winKo = Convert.ToInt32(Regex.Match(winsHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
-					fighter.Add("WinKO", winKo);
-				}
+					int winsKo = Convert.ToInt32(Regex.Match(winsHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
+					fighter.WinsKo = winsKo;
+                }
 				if (winsHtml[i].Contains(">SUBMISSIONS"))
 				{
 					// Wins by Submission
 					int winSub = Convert.ToInt32(Regex.Match(winsHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
-					fighter.Add("WinSUB", winSub);
-				}
+					fighter.WinsSub = winSub;
+                }
 				if (winsHtml[i].Contains(">DECISIONS"))
 				{
 					// Wins by Decision
 					int winDec = Convert.ToInt32(Regex.Match(winsHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
-					fighter.Add("WinDEC", winDec);
+					fighter.WinsDec = winDec;
 				}
 				if (winsHtml[i].Contains(">OTHERS"))
 				{
@@ -264,13 +270,13 @@ namespace UfcStatsAPI.Services
 			}
 
 			// Add fields that sometimes are not present as zeros
-			fighter.Add("WinOTH", winOthers);
+			fighter.WinsOth = winOthers;
 
-			// Losses, LossesKo, LossesSub, LossesDec, LossesOthers, NoContest
-			var lossesHtml = recordHtml.SelectSingleNode("//div[@class='loses']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
+            // Losses, LossesKo, LossesSub, LossesDec, LossesOthers, NoContest
+            var lossesHtml = recordHtml.SelectSingleNode("//div[@class='loses']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
 			// Initialize fields that sometimes are not present
-			int loseOthers = 0;
+			int lossesOthers = 0;
 			int noContest = 0;
 
 			for (int i = 0; i < lossesHtml.Count(); i++)
@@ -279,30 +285,30 @@ namespace UfcStatsAPI.Services
 				{
 					// Loses
 					int losses = Convert.ToInt32(Regex.Match(lossesHtml[i + 1], @">(\d+)<").ToString().Trim('<').Substring(1));
-					fighter.Add("Losses", losses);
+					fighter.Losses = losses;
 				}
 				if (lossesHtml[i].Contains("em> TKO"))
 				{
 					// Lose by KO/TKO
-					int winKo = Convert.ToInt32(Regex.Match(lossesHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
-					fighter.Add("LoseKO", winKo);
+					int lossesKo = Convert.ToInt32(Regex.Match(lossesHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
+					fighter.LossesKo = lossesKo;
 				}
 				if (lossesHtml[i].Contains(">SUBMISSIONS"))
 				{
 					// Lose by Submission
-					int loseSub = Convert.ToInt32(Regex.Match(lossesHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
-					fighter.Add("LoseSUB", loseSub);
-				}
+					int lossesSub = Convert.ToInt32(Regex.Match(lossesHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
+					fighter.LossesSub = lossesSub;
+                }
 				if (lossesHtml[i].Contains(">DECISIONS"))
 				{
 					// Lose by Decision
-					int loseDec = Convert.ToInt32(Regex.Match(lossesHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
-					fighter.Add("LoseDEC", loseDec);
-				}
+					int lossesDec = Convert.ToInt32(Regex.Match(lossesHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
+					fighter.LossesDec = lossesDec;
+                }
 				if (lossesHtml[i].Contains(">OTHERS"))
 				{
 					// Other loses
-					loseOthers = Convert.ToInt32(Regex.Match(lossesHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
+					lossesOthers = Convert.ToInt32(Regex.Match(lossesHtml[i + 2], @">(\d+)<").ToString().Trim('<').Substring(1));
 				}
 				if (lossesHtml[i].Contains("winloses nc"))
 				{
@@ -312,74 +318,68 @@ namespace UfcStatsAPI.Services
 			}
 
 			// Add fields that sometimes are not present as zeros
-			fighter.Add("LoseOTH", loseOthers);
-			fighter.Add("NoContest", noContest);
+			fighter.LossesOth = lossesOthers;
+            fighter.NoContest = noContest;
 
-			// Fights: Result, Opponent, Event, Date, Method, Round, Time
-			var fightHistoryHtml = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='module fight_history']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
+            // Fights: Result, Opponent, Event, Date, Method, Round, Time
+            var fightHistoryHtml = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='module fight_history']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
-			List<Dictionary<string, string>> fightHistory = new List<Dictionary<string, string>>();
 			for (int i = 12; i < fightHistoryHtml.Count(); i++)
 			{
 				if (fightHistoryHtml[i].Contains("<tr>"))
 				{
-					Dictionary<string, string> dictionary = new Dictionary<string, string>();
-
-					// Fight result
-					dictionary.Add("result", Regex.Match(fightHistoryHtml[i + 1], @">(\w+)<").ToString().Trim('<').Substring(1));
+					FightModel fight = new FightModel();
+                    // Fight result
+                    fight.Result = Regex.Match(fightHistoryHtml[i + 1], @">(\w+)<").ToString().Trim('<').Substring(1);
 
 					// Opponent
-					dictionary.Add("opponent", Regex.Match(fightHistoryHtml[i + 2], @">([^<]+)<").ToString().Trim('<').Substring(1));
+					fight.Opponent = Regex.Match(fightHistoryHtml[i + 2], @">([^<]+)<").ToString().Trim('<').Substring(1);
 
 					// Event Name
-					dictionary.Add("eventName", Regex.Match(fightHistoryHtml[i + 3], ">([^<]+)<").ToString().Trim('<').Substring(1));
+					fight.EventName = Regex.Match(fightHistoryHtml[i + 3], ">([^<]+)<").ToString().Trim('<').Substring(1);
 
 					// Date
 					string scrappedDate = Regex.Match(fightHistoryHtml[i + 3], @"[A-Za-z]{3} / \d{2} / \d{4}").ToString();
 					DateTime date = DateTime.ParseExact(scrappedDate, "MMM / dd / yyyy", CultureInfo.InvariantCulture);
-					dictionary.Add("date", date.ToString("dd-MM-yyyy"));
+					fight.Date = date.ToString("dd-MM-yyyy");
 
 					// Method
-					dictionary.Add("method", Regex.Match(fightHistoryHtml[i + 4], "b>([^<]+)<").ToString().Trim('<').Substring(2));
+					fight.Method = Regex.Match(fightHistoryHtml[i + 4], "b>([^<]+)<").ToString().Trim('<').Substring(2);
 
 					// Round of stoppage
-					dictionary.Add("round", Regex.Match(fightHistoryHtml[i + 6], @">(\w+)<").ToString().Trim('<').Substring(1));
+					fight.Round = Convert.ToInt32(Regex.Match(fightHistoryHtml[i + 6], @">(\w+)<").ToString().Trim('<').Substring(1));
 
 					// Time of stoppage
-					dictionary.Add("time", Regex.Match(fightHistoryHtml[i + 7], ">([^<]+)<").ToString().Trim('<').Substring(1));
+					fight.Time = Regex.Match(fightHistoryHtml[i + 7], ">([^<]+)<").ToString().Trim('<').Substring(1);
 
-
-					fightHistory.Add(dictionary);
-					i += 8;
+					fighter.FightHistory.Add(fight);
+                    i += 8;
 				}
 			}
-
-			fighter.Add("fightHistory", fightHistory);
 
 			return fighter;
 		}
 
 		// Create a json structure (see template.json)
-		private async static Task<Dictionary<string, List<Dictionary<string, object>>>> ConstructJson(Dictionary<string, Dictionary<string, string>> sherdogLinksDictionary)
+		private async static Task<List<WeightClassModel>> ScrapFightersData(List<SherdogLinksWeightClassModel> sherdogLinksDictionary)
 		{
-			// Initialize dictionary representing the json
-			Dictionary<string, List<Dictionary<string, object>>> json = new Dictionary<string, List<Dictionary<string, object>>>();
+			List<WeightClassModel> json = new List<WeightClassModel>();
 
-			// Looping through weightclasses
-			foreach (var weightClass in sherdogLinksDictionary)
+            // Looping through weightclasses
+            foreach (var weightClass in sherdogLinksDictionary)
 			{
 				// Initialize weightclass fighters dictionary
-				List<Dictionary<string, object>> weightClassDictionary = new List<Dictionary<string, object>>();
+				WeightClassModel weightClassEntity = new WeightClassModel { Name = weightClass.Name };
 
 				// Limit the tasks to weightClass.Count (around 15-16 fighters)
-				int maxDegreeOfParallelism = weightClass.Value.Count;
+				int maxDegreeOfParallelism = weightClass.Fighters.Count;
 
 				SemaphoreSlim semaphore = new SemaphoreSlim(maxDegreeOfParallelism);
 				List<Task> tasks = new List<Task>();
 
 				int id = 0;
 				// Looping through each fighter in weightClass list
-				foreach (var fighter in weightClass.Value)
+				foreach (var fighter in weightClass.Fighters)
 				{
 					// Add task
 					await semaphore.WaitAsync();
@@ -389,14 +389,14 @@ namespace UfcStatsAPI.Services
 						{
 							int localId = id++;
 							// Scrap fighter from sherdog
-							var fighterDictionary = await ScrapSherdogStats(fighter.Value, fighter.Key);
+							var fighterEntity = await ScrapSherdogStats(fighter.SherdogLink, fighter.Ranking);
 
 							// Add fighter to weightclass
-							weightClassDictionary.Add(fighterDictionary);
-						}
+							weightClassEntity.Fighters.Add(fighterEntity);
+                        }
 						catch (Exception ex)
 						{
-							Console.WriteLine(fighter.Value);
+							Console.WriteLine(fighter.SherdogLink);
 						}
 						finally
 						{
@@ -410,8 +410,8 @@ namespace UfcStatsAPI.Services
 				await Task.WhenAll(tasks);
 
 				// Add weightClass name as key and 
-				json.Add(weightClass.Key, weightClassDictionary);
-			}
+				json.Add(weightClassEntity);
+            }
 
 			return json;
 		}

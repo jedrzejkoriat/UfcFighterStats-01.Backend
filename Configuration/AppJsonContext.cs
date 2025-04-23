@@ -6,12 +6,12 @@ namespace UfcStatsAPI.Configuration
 
     [JsonSourceGenerationOptions(WriteIndented = true)]
 
-    [JsonSerializable(typeof(Fight))]
-    [JsonSerializable(typeof(List<Fight>))]
-    [JsonSerializable(typeof(Fighter))]
-    [JsonSerializable(typeof(List<Fighter>))]
-    [JsonSerializable(typeof(Weightclass))]
-    [JsonSerializable(typeof(List<Weightclass>))]
+    [JsonSerializable(typeof(FightModel))]
+    [JsonSerializable(typeof(List<FightModel>))]
+    [JsonSerializable(typeof(FighterModel))]
+    [JsonSerializable(typeof(List<FighterModel>))]
+    [JsonSerializable(typeof(WeightClassModel))]
+    [JsonSerializable(typeof(List<WeightClassModel>))]
     public partial class AppJsonContext : JsonSerializerContext
     {
     }

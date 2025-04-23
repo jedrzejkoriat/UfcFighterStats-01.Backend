@@ -2,7 +2,7 @@
 
 namespace UfcStatsAPI.Model
 {
-    public class Fight
+    public class FightModel
     {
         [JsonPropertyName("result")]
         public string? Result { get; set; }

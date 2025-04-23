@@ -33,6 +33,9 @@ builder.Services.AddQuartz(q =>
 	.WithCronSchedule("0 59 23 ? * MON *"));
 });
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
 builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
 builder.Services.AddScoped<MyJobService>();

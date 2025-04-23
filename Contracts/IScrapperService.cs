@@ -1,4 +1,6 @@
-﻿namespace UfcStatsAPI.Contracts
+﻿using UfcStatsAPI.Model;
+
+namespace UfcStatsAPI.Contracts
 {
 	public interface IScrapperService
 	{
