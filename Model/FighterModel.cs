@@ -57,5 +57,8 @@ namespace UfcStatsAPI.Model
 
         [JsonPropertyName("fightHistory")]
         public List<FightModel> FightHistory { get; set; } = new List<FightModel>();
+
+        [JsonPropertyName("youtubeVideos")]
+        public List<string> YoutubeVideos { get; set; } = new List<string>();
     }
 }

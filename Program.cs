@@ -22,10 +22,11 @@ builder.Services.AddQuartz(q =>
 
 	q.AddJob<MyJobService>(options => options.WithIdentity(jobKey));
 
-	q.AddTrigger(opts => opts
-	.ForJob(jobKey)
-	.WithIdentity("TriggerAfterRankingUpdate")
-	.WithCronSchedule("0 59 23 ? * WED *"));
+    q.AddTrigger(opts => opts
+    .ForJob(jobKey)
+    .WithIdentity("TriggerAfterRankingUpdate")
+    .WithCronSchedule("0 55 23 ? * WED *", x => x
+        .InTimeZone(TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time"))));
 });
 
 builder.Logging.ClearProviders();
@@ -33,9 +34,11 @@ builder.Logging.AddConsole();
 
 builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
+string youtubeApiKey = builder.Configuration["YoutubeApi"];
+
 builder.Services.AddScoped<MyJobService>();
 builder.Services.AddScoped<IScrapperService, ScrapperService>();
-builder.Services.AddScoped<IYoutubeService, YoutubeService>();
+builder.Services.AddScoped<IYoutubeService, YoutubeService>(provider => new YoutubeService(youtubeApiKey));
 
 var app = builder.Build();
 

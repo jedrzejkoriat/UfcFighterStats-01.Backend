@@ -25,7 +25,6 @@ namespace UfcStatsAPI.Services
             this.youtubeService = youtubeService;
         }
 
-
 		public async Task<string> GetRankedFightersJsonAsync()
 		{
 			var rankingTables = await ScrapUfcRankingTables();
@@ -227,7 +226,7 @@ namespace UfcStatsAPI.Services
             return json;
         }
 
-        private async static Task<FighterModel> ScrapSherdogStats(string url, string ranking)
+        private async Task<FighterModel> ScrapSherdogStats(string url, string ranking)
 		{
 			// Downloading fighter sherdog page content
 			var response = await httpClient.GetStringAsync("https://www.sherdog.com/fighter/" + url);
@@ -418,6 +417,8 @@ namespace UfcStatsAPI.Services
                     i += 8;
 				}
 			}
+
+			fighter.YoutubeVideos = await this.youtubeService.GetFighterYoutubeVideos(fighter.Name);
 
 			return fighter;
 		}
