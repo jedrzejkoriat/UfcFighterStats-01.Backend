@@ -22,11 +22,6 @@ builder.Services.AddQuartz(q =>
 
 	q.AddJob<MyJobService>(options => options.WithIdentity(jobKey));
 
-	q.AddTrigger(options => options
-	.ForJob(jobKey)
-	.WithIdentity("TriggerAfterUFCEvent")
-	.WithCronSchedule("0 0 7 ? * SUN *"));
-
 	q.AddTrigger(opts => opts
 	.ForJob(jobKey)
 	.WithIdentity("TriggerAfterRankingUpdate")
@@ -40,6 +35,7 @@ builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
 builder.Services.AddScoped<MyJobService>();
 builder.Services.AddScoped<IScrapperService, ScrapperService>();
+builder.Services.AddScoped<IYoutubeService, YoutubeService>();
 
 var app = builder.Build();
 

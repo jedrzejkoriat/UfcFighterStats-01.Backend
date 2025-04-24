@@ -17,10 +17,12 @@ namespace UfcStatsAPI.Services
     {
 		private static readonly HttpClient httpClient = new HttpClient();
         private readonly ILogger<ScrapperService> logger;
+        private readonly IYoutubeService youtubeService;
 
-        public ScrapperService(ILogger<ScrapperService> logger)
+        public ScrapperService(ILogger<ScrapperService> logger, IYoutubeService youtubeService)
 		{
             this.logger = logger;
+            this.youtubeService = youtubeService;
         }
 
 
@@ -163,9 +165,69 @@ namespace UfcStatsAPI.Services
 				return modifiedName + '-' + fighterId;
 			}
 			return null;
-		}
+        }
 
-		private async static Task<FighterModel> ScrapSherdogStats(string url, string ranking)
+        // Create a json structure (see template.json)
+        private async Task<List<WeightClassModel>> ScrapFightersData(List<SherdogLinksWeightClassModel> sherdogLinksDictionary)
+        {
+            List<WeightClassModel> json = new List<WeightClassModel>();
+
+            // Looping through weightclasses
+			for (int i = 0; i < sherdogLinksDictionary.Count; i++)
+            {
+				if (i == 4)
+				{
+					await Task.Delay(600000);
+				}
+                // Initialize weightclass fighters dictionary
+                WeightClassModel weightClassEntity = new WeightClassModel { Name = sherdogLinksDictionary[i].Name };
+
+                // Limit the tasks to weightClass.Count (around 15-16 fighters)
+                int maxDegreeOfParallelism = sherdogLinksDictionary[i].Fighters.Count;
+
+                SemaphoreSlim semaphore = new SemaphoreSlim(maxDegreeOfParallelism);
+                List<Task> tasks = new List<Task>();
+
+                int id = 0;
+                // Looping through each fighter in weightClass list
+                foreach (var fighter in sherdogLinksDictionary[i].Fighters)
+                {
+                    // Add task
+                    await semaphore.WaitAsync();
+                    tasks.Add(Task.Run(async () =>
+                    {
+                        try
+                        {
+                            int localId = id++;
+                            // Scrap fighter from sherdog
+                            var fighterEntity = await ScrapSherdogStats(fighter.SherdogLink, fighter.Ranking);
+
+                            // Add fighter to weightclass
+                            weightClassEntity.Fighters.Add(fighterEntity);
+                        }
+                        catch (Exception ex)
+                        {
+							this.logger.LogError("Error scrapping fighter data: " + fighter.SherdogLink);
+                        }
+                        finally
+                        {
+                            // Release task
+                            semaphore.Release();
+                        }
+                    }));
+                }
+
+                // Stop until all tasks are done
+                await Task.WhenAll(tasks);
+
+                // Add weightClass name as key and 
+                json.Add(weightClassEntity);
+            }
+
+            return json;
+        }
+
+        private async static Task<FighterModel> ScrapSherdogStats(string url, string ranking)
 		{
 			// Downloading fighter sherdog page content
 			var response = await httpClient.GetStringAsync("https://www.sherdog.com/fighter/" + url);
@@ -358,62 +420,6 @@ namespace UfcStatsAPI.Services
 			}
 
 			return fighter;
-		}
-
-		// Create a json structure (see template.json)
-		private async static Task<List<WeightClassModel>> ScrapFightersData(List<SherdogLinksWeightClassModel> sherdogLinksDictionary)
-		{
-			List<WeightClassModel> json = new List<WeightClassModel>();
-
-            // Looping through weightclasses
-            foreach (var weightClass in sherdogLinksDictionary)
-			{
-				// Initialize weightclass fighters dictionary
-				WeightClassModel weightClassEntity = new WeightClassModel { Name = weightClass.Name };
-
-				// Limit the tasks to weightClass.Count (around 15-16 fighters)
-				int maxDegreeOfParallelism = weightClass.Fighters.Count;
-
-				SemaphoreSlim semaphore = new SemaphoreSlim(maxDegreeOfParallelism);
-				List<Task> tasks = new List<Task>();
-
-				int id = 0;
-				// Looping through each fighter in weightClass list
-				foreach (var fighter in weightClass.Fighters)
-				{
-					// Add task
-					await semaphore.WaitAsync();
-					tasks.Add(Task.Run(async () =>
-					{
-						try
-						{
-							int localId = id++;
-							// Scrap fighter from sherdog
-							var fighterEntity = await ScrapSherdogStats(fighter.SherdogLink, fighter.Ranking);
-
-							// Add fighter to weightclass
-							weightClassEntity.Fighters.Add(fighterEntity);
-                        }
-						catch (Exception ex)
-						{
-							Console.WriteLine(fighter.SherdogLink);
-						}
-						finally
-						{
-							// Release task
-							semaphore.Release();
-						}
-					}));
-				}
-
-				// Stop until all tasks are done
-				await Task.WhenAll(tasks);
-
-				// Add weightClass name as key and 
-				json.Add(weightClassEntity);
-            }
-
-			return json;
 		}
 	}
 }
