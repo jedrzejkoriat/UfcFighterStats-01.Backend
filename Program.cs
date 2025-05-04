@@ -4,6 +4,7 @@ using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
 using UfcStatsAPI.Configuration;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,7 @@ builder.Services.AddQuartz(q =>
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
+builder.Logging.AddFile("Logs/app-{Date}.log");
 
 builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
@@ -39,6 +41,8 @@ string youtubeApiKey = builder.Configuration["YoutubeApi"];
 builder.Services.AddScoped<MyJobService>();
 builder.Services.AddScoped<IScrapperService, ScrapperService>();
 builder.Services.AddScoped<IYoutubeService, YoutubeService>(provider => new YoutubeService(youtubeApiKey));
+
+builder.Services.AddHttpClient<IScrapperService, ScrapperService>();
 
 var app = builder.Build();
 

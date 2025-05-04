@@ -14,7 +14,7 @@ namespace UfcStatsAPI.Services
 
 		public async Task Execute(IJobExecutionContext context)
 		{
-			string json = await scrapperService.GetRankedFightersJsonAsync();
+			string json = await scrapperService.GetFightersStatisticsAsync();
 			string filePath = "ufcfighterdata.json";
 
 			File.WriteAllText(filePath, json);
