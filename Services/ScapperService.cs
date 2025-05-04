@@ -26,38 +26,13 @@ namespace UfcStatsAPI.Services
 
         public async Task<string> GetFightersStatisticsAsync()
         {
-            var wikipediaRankingTables = await GetWeightClassTablesFromWikipediaAsync();
-            var scrapedFighterData = await ScrapData(wikipediaRankingTables);
-
-            return JsonConvert.SerializeObject(scrapedFighterData, Newtonsoft.Json.Formatting.Indented);
-        }
-        
-        // Getting weight class tables from Wikipedia (from male Heavyweight to male Flyweight)
-        private async Task<List<HtmlNode>> GetWeightClassTablesFromWikipediaAsync()
-        {
-            // Downloading content of the Wikipedia UFC_Rankings page
-            var response = await httpClient.GetStringAsync("https://en.wikipedia.org/wiki/UFC_rankings");
-
-            var htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(response);
-
-            // Select all tables from the page
-            var tables = htmlDoc.DocumentNode.SelectNodes("//table");
-
-            var weightClassRankings = new List<HtmlNode>();
-
-            // Target tables are located on indexes 3-10 (male Heavyweight to male Flyweight)
-            for (int i = 3; i < 11; i++)
-            {
-                weightClassRankings.Add(tables[i]);
-            }
-
-            return weightClassRankings;
+            return JsonConvert.SerializeObject(await ScrapDataAsync(), Newtonsoft.Json.Formatting.Indented);
         }
 
         // Scrapping sherdog link for each ranked fighter - returns a dictionary of weightclass as key and ranked fighter sherdog links as value
-        private async Task<List<WeightClassModel>> ScrapData(List<HtmlNode> wikipediaWeightClassTables)
+        private async Task<List<WeightClassModel>> ScrapDataAsync()
         {
+            List<HtmlNode> wikipediaWeightClassTables = await GetWeightClassTablesFromWikipediaAsync();
             // All UFC weightclasses
             List<string> weightClassNames = ["Heavyweight", "Light Heavyweight", "Middleweight", "Welterweight", "Lightweight", "Featherweight", "Bantamweight", "Flyweight"];
             
@@ -145,16 +120,43 @@ namespace UfcStatsAPI.Services
                                 }
                             }));
                         }
+                        else
+                        {
+                            this.logger.LogWarning("Fighter link does not exsist: " + tableSplitToLines[j + 2]);
+                        }
                     }
                 }
 
                 await Task.WhenAll(tasks);
 
-                weightClassModel.Fighters = weightClassModel.Fighters.OrderByDescending(f => f.Ranking).ToList();
+                weightClassModel.Fighters = weightClassModel.Fighters.OrderBy(f => f.Ranking).ToList();
 
                 weightClassModels.Add(weightClassModel);
             }
             return weightClassModels;
+        }
+
+        // Getting weight class tables from Wikipedia (from male Heavyweight to male Flyweight)
+        private async Task<List<HtmlNode>> GetWeightClassTablesFromWikipediaAsync()
+        {
+            // Downloading content of the Wikipedia UFC_Rankings page
+            var response = await httpClient.GetStringAsync("https://en.wikipedia.org/wiki/UFC_rankings");
+
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(response);
+
+            // Select all tables from the page
+            var tables = htmlDoc.DocumentNode.SelectNodes("//table");
+
+            var weightClassRankings = new List<HtmlNode>();
+
+            // Target tables are located on indexes 3-10 (male Heavyweight to male Flyweight)
+            for (int i = 3; i < 11; i++)
+            {
+                weightClassRankings.Add(tables[i]);
+            }
+
+            return weightClassRankings;
         }
 
         private async Task<string?> ScrapSherdogLinkFromWikipediaAsync(string url)
