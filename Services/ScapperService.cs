@@ -9,23 +9,21 @@ using UfcStatsAPI.Model;
 namespace UfcStatsAPI.Services
 {
     /* 
-	    - [WAITING FOR REPONSE FROM YOUTOUBE API]
-        - Split scrapping on two parts(?)
-        - Save data to seperate files for each weightclass(?)
         - Scrap sherdog links from google search for fighters without wikipedia link
-        
 	 */
     public class ScrapperService : IScrapperService
     {
         private readonly HttpClient httpClient;
         private readonly ILogger<ScrapperService> logger;
         private readonly IYoutubeService youtubeService;
+        private readonly IGoogleService googleService;
 
-        public ScrapperService(HttpClient httpClient, ILogger<ScrapperService> logger, IYoutubeService youtubeService)
+        public ScrapperService(HttpClient httpClient, ILogger<ScrapperService> logger, IYoutubeService youtubeService, IGoogleService googleService)
         {
             this.httpClient = httpClient;
             this.logger = logger;
             this.youtubeService = youtubeService;
+            this.googleService = googleService;
         }
 
         public async Task<string> GetFightersStatisticsAsync()
@@ -39,7 +37,7 @@ namespace UfcStatsAPI.Services
             List<HtmlNode> wikipediaWeightClassTables = await GetWeightClassTablesFromWikipediaAsync();
             // All UFC weightclasses
             List<string> weightClassNames = ["Heavyweight", "Light Heavyweight", "Middleweight", "Welterweight", "Lightweight", "Featherweight", "Bantamweight", "Flyweight"];
-            
+
             // Lists of fighters for each weightclass
             List<WeightClassModel> weightClassModels = new List<WeightClassModel>();
 
@@ -62,76 +60,78 @@ namespace UfcStatsAPI.Services
                     // Searching for flagicon - it is a unique word which is a part of pattern that easily helps finding links to fighters wikipedia pages
                     if (tableSplitToLines[j].Contains("flagicon"))
                     {
-                        // Searching the link two lines below the flagicon keyword
-                        var figtherWikipediaLink = Regex.Match(tableSplitToLines[j + 2], @"/wiki/[^""]+");
-                        if (figtherWikipediaLink.Success)
+                        var wikipediaLink = Regex.Match(tableSplitToLines[j + 2], @"/wiki/[^""]+");
+                        string ranking = GetRanking(tableSplitToLines[j - 2]);
+                        string? sherdogLink = null;
+                        try
                         {
-                            // Searching for ranking two lines above the flagicon keyword or three lines above if the fighter is champion/interim champion
-                            var numberRanking = Regex.Match(tableSplitToLines[j - 2], @"<th>(\d+)");
-                            var interimChampionRanking = Regex.Match(tableSplitToLines[j - 2], @">IC<");
-                            var championRanking = Regex.Match(tableSplitToLines[j - 2], @">C<");
+                            // Searching the link two lines below the flagicon keyword
 
-                            string ranking = "";
-
-                            // Checking for ranking success
-                            if (numberRanking.Success) ranking = numberRanking.ToString().Substring(4, numberRanking.ToString().Length - 4);
-                            else if (interimChampionRanking.Success) ranking = "1";
-                            else if (championRanking.Success) ranking = "0";
-
-                            await semaphore.WaitAsync();
-
-                            tasks.Add(Task.Run(async () =>
+                            if (wikipediaLink.Success)
                             {
+                                // Searching for sherdog link on fighters wikipedia page
                                 try
                                 {
-                                    // Searching for sherdog link on fighters wikipedia page
-                                    string? sherdogLink = "";
-                                    try
-                                    {
-                                        sherdogLink = await ScrapSherdogLinkFromWikipediaAsync(figtherWikipediaLink.ToString());
-                                        this.logger.LogInformation($"Sherdog link scrapped: {ranking}.{sherdogLink}");
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        this.logger.LogError("Error scrapping sherdog link: " + figtherWikipediaLink.ToString());
-                                    }
-
-                                    // If sherdog link was found the fighter is added (otherwise he is ignored)
-                                    if (sherdogLink != null)
-                                    {
-                                        if (sherdogLink.Contains("&#39;"))
-                                        {
-                                            sherdogLink = sherdogLink.Replace("&#39;", "");
-                                        }
-
-                                        try
-                                        {
-                                            bool firstHalf = true;
-                                            // Scrap fighter from sherdog
-                                            if (i >= 4)
-                                            {
-                                                firstHalf = false;
-                                            }
-                                            var fighterModel = await ScrapStatsFromSherdogAsync(sherdogLink, ranking, firstHalf);
-                                            this.logger.LogInformation($"Fighter scrapped: [{weightClassModel.Name.ToUpper()}] - {fighterModel.Ranking}.{fighterModel.Name} '{fighterModel.Nickname}'");
-                                            // Add fighter to weightclass
-                                            weightClassModel.Fighters.Add(fighterModel);
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            this.logger.LogError("Error scrapping fighter data: " + sherdogLink);
-                                        }
-                                    }
+                                    sherdogLink = await ScrapSherdogLinkFromWikipediaAsync(wikipediaLink.ToString());
+                                    this.logger.LogInformation($"Sherdog link scrapped: {ranking}.{sherdogLink}");
                                 }
-                                finally
+                                catch (Exception ex)
                                 {
-                                    semaphore.Release();
+                                    this.logger.LogError("Error scrapping sherdog link from wikipedia: " + wikipediaLink.ToString());
                                 }
-                            }));
+                            }
+                            else
+                            {
+                                // Google sherdog link logic
+                                try
+                                {
+                                    string fighterName = Regex.Match(tableSplitToLines[j + 2], @"<td>(.*)").Groups[1].Value;
+                                    sherdogLink = await googleService.GetSherdogLinkAsync(fighterName);
+                                    this.logger.LogInformation($"Sherdog link scrapped: {ranking}.{sherdogLink}");
+                                }
+                                catch (Exception ex)
+                                {
+                                    this.logger.LogError("Error scrapping sherdog link from google: " + wikipediaLink.ToString());
+                                }
+                            }
+
+                            // If sherdog link was found the fighter is added (otherwise he is ignored)
+                            if (!string.IsNullOrEmpty(sherdogLink))
+                            {
+                                if (sherdogLink.Contains("&#39;"))
+                                {
+                                    sherdogLink = sherdogLink.Replace("&#39;", "");
+                                }
+
+                                try
+                                {
+                                    bool firstHalf = true;
+                                    if (i >= 4) firstHalf = false;
+
+
+                                    await semaphore.WaitAsync();
+                                    tasks.Add(Task.Run(async () =>
+                                    {
+                                        // Scrap fighter from sherdog
+                                        var fighterModel = await ScrapStatsFromSherdogAsync(sherdogLink, ranking, firstHalf);
+                                        this.logger.LogInformation($"Fighter scrapped: [{weightClassModel.Name.ToUpper()}] - {fighterModel.Ranking}.{fighterModel.Name} '{fighterModel.Nickname}'");
+                                        // Add fighter to weightclass
+                                        weightClassModel.Fighters.Add(fighterModel);
+                                    }));
+                                }
+                                catch (Exception ex)
+                                {
+                                    this.logger.LogError("Error scrapping fighter data: " + sherdogLink);
+                                }
+                            }
+                            else
+                            {
+                                this.logger.LogWarning("Fighter sherdog link was not found: " + tableSplitToLines[j + 2]);
+                            }
                         }
-                        else
+                        finally
                         {
-                            this.logger.LogWarning("Fighter link does not exsist: " + tableSplitToLines[j + 2]);
+                            semaphore.Release();
                         }
                     }
                 }
@@ -143,6 +143,20 @@ namespace UfcStatsAPI.Services
                 weightClassModels.Add(weightClassModel);
             }
             return weightClassModels;
+        }
+
+        private string GetRanking(string line)
+        {
+            // Searching for ranking two lines above the flagicon keyword or three lines above if the fighter is champion/interim champion
+            var numberRanking = Regex.Match(line, @"<th>(\d+)");
+            var interimChampionRanking = Regex.Match(line, @">IC<");
+            var championRanking = Regex.Match(line, @">C<");
+
+            // Checking for ranking success
+            if (numberRanking.Success) return numberRanking.ToString().Substring(4, numberRanking.ToString().Length - 4);
+            else if (interimChampionRanking.Success) return "1";
+            else if (championRanking.Success) return "0";
+            else throw new Exception("Ranking not found");
         }
 
         // Getting weight class tables from Wikipedia (from male Heavyweight to male Flyweight)

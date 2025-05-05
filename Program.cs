@@ -17,6 +17,8 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonContext.Default);
 });
 
+builder.Services.AddHttpClient();
+
 builder.Services.AddQuartz(q =>
 {
 	var jobKey = new JobKey("UpdateStats");
@@ -26,8 +28,7 @@ builder.Services.AddQuartz(q =>
     q.AddTrigger(opts => opts
     .ForJob(jobKey)
     .WithIdentity("TriggerAfterRankingUpdate")
-    .WithCronSchedule("0 55 23 ? * WED *", x => x
-        .InTimeZone(TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time"))));
+    .WithCronSchedule("0 59 23 ? * WED *"));
 });
 
 builder.Logging.ClearProviders();
@@ -38,6 +39,7 @@ builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 builder.Services.AddScoped<MyJobService>();
 builder.Services.AddScoped<IScrapperService, ScrapperService>();
 builder.Services.AddScoped<IYoutubeService, YoutubeService>();
+builder.Services.AddScoped<IGoogleService, GoogleService>();
 
 builder.Services.AddHttpClient<IScrapperService, ScrapperService>();
 
