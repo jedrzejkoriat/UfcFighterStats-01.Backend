@@ -69,30 +69,18 @@ namespace UfcStatsAPI.Services
 
                             if (wikipediaLink.Success)
                             {
-                                // Searching for sherdog link on fighters wikipedia page
                                 try
                                 {
-                                    sherdogLink = await ScrapSherdogLinkFromWikipediaAsync(wikipediaLink.ToString());
-                                    this.logger.LogInformation($"Sherdog link scrapped: {ranking}.{sherdogLink}");
+                                    sherdogLink = await GetSherdogLinkFromWikipediaAsync(wikipediaLink.ToString());
                                 }
-                                catch (Exception ex)
+                                catch
                                 {
-                                    this.logger.LogError("Error scrapping sherdog link from wikipedia: " + wikipediaLink.ToString());
+                                    sherdogLink = await GetSherdogLinkFromGoogleAsync(tableSplitToLines[j + 2]);
                                 }
                             }
                             else
                             {
-                                // Google sherdog link logic
-                                try
-                                {
-                                    string fighterName = Regex.Match(tableSplitToLines[j + 2], @"<td>(.*)").Groups[1].Value;
-                                    sherdogLink = await googleService.GetSherdogLinkAsync(fighterName);
-                                    this.logger.LogInformation($"Sherdog link scrapped: {ranking}.{sherdogLink}");
-                                }
-                                catch (Exception ex)
-                                {
-                                    this.logger.LogError("Error scrapping sherdog link from google: " + wikipediaLink.ToString());
-                                }
+                                sherdogLink = await GetSherdogLinkFromGoogleAsync(tableSplitToLines[j + 2]);
                             }
 
                             // If sherdog link was found the fighter is added (otherwise he is ignored)
@@ -107,7 +95,6 @@ namespace UfcStatsAPI.Services
                                 {
                                     bool firstHalf = true;
                                     if (i >= 4) firstHalf = false;
-
 
                                     await semaphore.WaitAsync();
                                     tasks.Add(Task.Run(async () =>
@@ -139,10 +126,42 @@ namespace UfcStatsAPI.Services
                 await Task.WhenAll(tasks);
 
                 weightClassModel.Fighters = weightClassModel.Fighters.OrderBy(f => f.Ranking).ToList();
-
                 weightClassModels.Add(weightClassModel);
             }
             return weightClassModels;
+        }
+
+        private async Task<string> GetSherdogLinkFromWikipediaAsync(string wikipediaLink)
+        {
+            // Searching for sherdog link on fighters wikipedia page
+            try
+            {
+                string sherdogLink = await ScrapSherdogLinkFromWikipediaAsync(wikipediaLink);
+                this.logger.LogInformation($"Sherdog link scrapped: {sherdogLink}");
+                return sherdogLink;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError("Error scrapping sherdog link from wikipedia: " + wikipediaLink);
+                return "";
+            }
+        }
+
+        private async Task<string> GetSherdogLinkFromGoogleAsync(string line)
+        {
+            // Google sherdog link logic
+            try
+            {
+                string fighterName = Regex.Match(line, @"<td>(.*)").Groups[1].Value;
+                string sherdogLink = await googleService.GetSherdogLinkAsync(fighterName);
+                this.logger.LogInformation($"Sherdog link scrapped: {sherdogLink}");
+                return sherdogLink;
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError("Error scrapping sherdog link from google");
+                return "";
+            }
         }
 
         private string GetRanking(string line)
