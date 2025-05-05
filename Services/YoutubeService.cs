@@ -31,6 +31,7 @@ namespace UfcStatsAPI.Services
             var searchListRequest = youtubeService.Search.List("snippet");
             searchListRequest.Q = $"{fullName} full fight";
             searchListRequest.MaxResults = 50;
+            searchListRequest.RegionCode = "PL";
 
             var searchListResponse = await searchListRequest.ExecuteAsync();
 
