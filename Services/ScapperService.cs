@@ -8,9 +8,6 @@ using UfcStatsAPI.Model;
 
 namespace UfcStatsAPI.Services
 {
-    /* 
-        - Scrap sherdog links from google search for fighters without wikipedia link
-	 */
     public class ScrapperService : IScrapperService
     {
         private readonly HttpClient httpClient;
@@ -26,19 +23,23 @@ namespace UfcStatsAPI.Services
             this.googleService = googleService;
         }
 
-        public async Task<string> GetFightersStatisticsAsync()
+        public async Task<string> GetRankedFightersStatisticsAsync()
         {
             return JsonConvert.SerializeObject(await ScrapDataAsync(), Newtonsoft.Json.Formatting.Indented);
         }
 
-        // Scrapping sherdog link for each ranked fighter - returns a dictionary of weightclass as key and ranked fighter sherdog links as value
+        /// <summary>
+        /// Scrapes statistics, basic information, and fight history for all ranked fighters from Wikipedia and Sherdog.
+        /// Retrieves YouTube video links for each fighter using the YouTube API.
+        /// Uses the Google API to get Sherdog links for fighters not found on Wikipedia.
+        /// </summary>
+        /// <returns>A list of WeightClassModel objects, each containing a list of Fighters and their data.</returns>
         private async Task<List<WeightClassModel>> ScrapDataAsync()
         {
+            // Downloading tables from UFC_Rankings wikipedia page
             List<HtmlNode> wikipediaWeightClassTables = await GetWeightClassTablesFromWikipediaAsync();
-            // All UFC weightclasses
-            List<string> weightClassNames = ["Heavyweight", "Light Heavyweight", "Middleweight", "Welterweight", "Lightweight", "Featherweight", "Bantamweight", "Flyweight"];
 
-            // Lists of fighters for each weightclass
+            List<string> weightClassNames = ["Heavyweight", "Light Heavyweight", "Middleweight", "Welterweight", "Lightweight", "Featherweight", "Bantamweight", "Flyweight"];
             List<WeightClassModel> weightClassModels = new List<WeightClassModel>();
 
             // Looping through ranking tables (weightclasses)
@@ -47,7 +48,7 @@ namespace UfcStatsAPI.Services
                 // Creating new weightClassModel with assigned weightclass name
                 WeightClassModel weightClassModel = new WeightClassModel { Name = weightClassNames[i] };
 
-                // Splitting html table to lines
+                // Splitting html table to lines for easier looping
                 string[] tableSplitToLines = wikipediaWeightClassTables[i].OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
                 // List of tasks - max 16 fighters at once
@@ -60,50 +61,42 @@ namespace UfcStatsAPI.Services
                     // Searching for flagicon - it is a unique word which is a part of pattern that easily helps finding links to fighters wikipedia pages
                     if (tableSplitToLines[j].Contains("flagicon"))
                     {
+                        // Searching for the link two lines below the flagicon keyword
                         var wikipediaLink = Regex.Match(tableSplitToLines[j + 2], @"/wiki/[^""]+");
+
+                        // Searching for the rankinkg two lines below the flagicon keyword
                         string ranking = GetRanking(tableSplitToLines[j - 2]);
+
                         string? sherdogLink = null;
                         try
                         {
-                            // Searching the link two lines below the flagicon keyword
-
                             if (wikipediaLink.Success)
                             {
-                                try
-                                {
-                                    sherdogLink = await GetSherdogLinkFromWikipediaAsync(wikipediaLink.ToString());
-                                }
-                                catch
-                                {
-                                    sherdogLink = await GetSherdogLinkFromGoogleAsync(tableSplitToLines[j + 2]);
-                                }
+                                // Use wikipedia link to get sherdog link
+                                try { sherdogLink = await GetSherdogLinkFromWikipediaAsync(wikipediaLink.ToString()); }
+                                // Use google search if sherdog link was not found inside wikipedia page
+                                catch { sherdogLink = await GetSherdogLinkFromGoogleAsync(tableSplitToLines[j + 2]); }
                             }
-                            else
-                            {
-                                sherdogLink = await GetSherdogLinkFromGoogleAsync(tableSplitToLines[j + 2]);
-                            }
+                            // Use google search if wikipedia link was not found
+                            else { sherdogLink = await GetSherdogLinkFromGoogleAsync(tableSplitToLines[j + 2]); }
 
-                            // If sherdog link was found the fighter is added (otherwise he is ignored)
                             if (!string.IsNullOrEmpty(sherdogLink))
                             {
-                                if (sherdogLink.Contains("&#39;"))
-                                {
-                                    sherdogLink = sherdogLink.Replace("&#39;", "");
-                                }
+                                // Handling edge cases - removing the ' from the link
+                                if (sherdogLink.Contains("&#39;")) sherdogLink = sherdogLink.Replace("&#39;", "");
 
                                 try
                                 {
-                                    bool firstHalf = true;
-                                    if (i >= 4) firstHalf = false;
+                                    bool firstHalf = i >= 4 ? false : true;
 
+                                    // Wait if already 16 tasks are running
                                     await semaphore.WaitAsync();
                                     tasks.Add(Task.Run(async () =>
                                     {
-                                        // Scrap fighter from sherdog
-                                        var fighterModel = await ScrapStatsFromSherdogAsync(sherdogLink, ranking, firstHalf);
-                                        this.logger.LogInformation($"Fighter scrapped: [{weightClassModel.Name.ToUpper()}] - {fighterModel.Ranking}.{fighterModel.Name} '{fighterModel.Nickname}'");
-                                        // Add fighter to weightclass
-                                        weightClassModel.Fighters.Add(fighterModel);
+                                        // Scrap fighter from sherdog page and add fighter to weightclass
+                                        var fighter = await ScrapStatsFromSherdogAsync(sherdogLink, ranking, firstHalf);
+                                        weightClassModel.Fighters.Add(fighter);
+                                        this.logger.LogInformation($"Fighter scrapped: {fighter.Ranking}.{fighter.Name} '{fighter.Nickname}'");
                                     }));
                                 }
                                 catch (Exception ex)
@@ -123,21 +116,24 @@ namespace UfcStatsAPI.Services
                     }
                 }
 
+                // Wait for all tasks to be finished
                 await Task.WhenAll(tasks);
 
+                // Sort the fighter list by ranking
                 weightClassModel.Fighters = weightClassModel.Fighters.OrderBy(f => f.Ranking).ToList();
+
+                // Add the weight class model to the list
                 weightClassModels.Add(weightClassModel);
             }
             return weightClassModels;
         }
 
+        // Getting sherdog link from fighter's wikipedia page
         private async Task<string> GetSherdogLinkFromWikipediaAsync(string wikipediaLink)
         {
-            // Searching for sherdog link on fighters wikipedia page
             try
             {
                 string sherdogLink = await ScrapSherdogLinkFromWikipediaAsync(wikipediaLink);
-                this.logger.LogInformation($"Sherdog link scrapped: {sherdogLink}");
                 return sherdogLink;
             }
             catch (Exception ex)
@@ -147,14 +143,14 @@ namespace UfcStatsAPI.Services
             }
         }
 
+        // Getting sherdog link from google search
         private async Task<string> GetSherdogLinkFromGoogleAsync(string line)
         {
-            // Google sherdog link logic
             try
             {
+                // Scrap fighterName for google search
                 string fighterName = Regex.Match(line, @"<td>(.*)").Groups[1].Value;
                 string sherdogLink = await googleService.GetSherdogLinkAsync(fighterName);
-                this.logger.LogInformation($"Sherdog link scrapped: {sherdogLink}");
                 return sherdogLink;
             }
             catch (Exception ex)
@@ -164,6 +160,7 @@ namespace UfcStatsAPI.Services
             }
         }
 
+        // Scrap ranking and convert to number
         private string GetRanking(string line)
         {
             // Searching for ranking two lines above the flagicon keyword or three lines above if the fighter is champion/interim champion
@@ -201,6 +198,7 @@ namespace UfcStatsAPI.Services
             return weightClassRankings;
         }
 
+        // Scraper for Sherdog link from Wikipedia page
         private async Task<string?> ScrapSherdogLinkFromWikipediaAsync(string url)
         {
             // Downloading fighter wikipedia page content
@@ -241,6 +239,7 @@ namespace UfcStatsAPI.Services
             return null;
         }
 
+        // Scraper for fighter statistics and fight history from Sherdog page
         private async Task<FighterModel> ScrapStatsFromSherdogAsync(string url, string ranking, bool firstHalf)
         {
             // Downloading fighter sherdog page content
@@ -432,13 +431,15 @@ namespace UfcStatsAPI.Services
                     i += 8;
                 }
             }
+
+            // Get youtube videos for each fighter
             try
             {
                 fighter.YoutubeVideos = await this.youtubeService.GetFighterYoutubeVideos(fighter.Name, firstHalf);
             }
             catch (Exception ex)
             {
-                logger.LogInformation("Error fetching videos for fighter: " + fighter.Name);
+                logger.LogError("Error fetching videos for fighter: " + fighter.Name);
             }
 
             return fighter;

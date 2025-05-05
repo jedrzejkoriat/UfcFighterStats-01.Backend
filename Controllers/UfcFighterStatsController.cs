@@ -22,7 +22,7 @@ namespace UfcStatsAPI.Controllers
 		[HttpGet]
 		public async Task<IActionResult> ScrapNow()
         {
-			string json = await scrapperService.GetFightersStatisticsAsync();
+			string json = await scrapperService.GetRankedFightersStatisticsAsync();
             return Ok(json);
         }
 
