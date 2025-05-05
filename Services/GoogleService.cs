@@ -17,9 +17,11 @@ namespace UfcStatsAPI.Services
 
         public async Task<string> GetSherdogLinkAsync(string fighterName)
         {
-            string searchTerm = fighterName + " sherdog";
             string apiKey = this.apiKey;
             string cx = this.searchEngineId;
+
+            // Search for "FIGHTER NAME sherdog"
+            string searchTerm = fighterName + " sherdog";
 
             string url = $"https://www.googleapis.com/customsearch/v1?q={searchTerm}&key={apiKey}&cx={cx}";
 
@@ -28,12 +30,14 @@ namespace UfcStatsAPI.Services
 
             foreach(var item in jsonReponse.items)
             {
+                // If link contains "sherdog.com" it is a valid link
                 if (item.link.ToString().Contains("sherdog.com"))
                 {
                     return item.link.ToString();
                 }
             }
 
+            // Throw exception if sherdog.com link was not found
             throw new Exception("No sherdog link found in google api");
 
         }

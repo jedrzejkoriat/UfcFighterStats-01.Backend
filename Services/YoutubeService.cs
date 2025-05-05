@@ -17,41 +17,39 @@ namespace UfcStatsAPI.Services
 
         public async Task<List<string>> GetFighterYoutubeVideos(string? fullName, bool firstHalf)
         {
-            string currentApiKey = "";
-
-            if (firstHalf) currentApiKey = this.apiKey1;
-            else currentApiKey = this.apiKey2;
+            // Use apiKey1 for the first half of fighters, and apiKey2 for the second half of fighters
+            string apiKey = firstHalf ? this.apiKey1 : this.apiKey2;
 
             var youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
-                ApiKey = currentApiKey,
+                ApiKey = apiKey,
                 ApplicationName = this.GetType().ToString()
             });
 
             var searchListRequest = youtubeService.Search.List("snippet");
-            searchListRequest.Q = $"{fullName} full fight";
             searchListRequest.MaxResults = 50;
+
+            // Search for "FIGHTER NAME full fight"
+            searchListRequest.Q = $"{fullName} full fight";
+
+            // Seach for videos fitted to polish regions
             searchListRequest.RegionCode = "PL";
 
             var searchListResponse = await searchListRequest.ExecuteAsync();
 
             List<string> videos = new List<string>();
 
-            int videoCounter = 0;
-            foreach (var searchResult in searchListResponse.Items)
+            // Loop through whole Items list or until 5 videos are found
+            for (int i = 0, videoCounter = 0; i < searchListResponse.Items.Count && videoCounter < 5; i++)
             {
-                if (searchResult.Id.Kind == "youtube#video")
+                if (searchListResponse.Items[i].Id.Kind == "youtube#video")
                 {
-                    // Tworzenie URL do filmu i dodanie go do listy
-                    string videoUrl = $"https://www.youtube.com/watch?v={searchResult.Id.VideoId}";
-                    videos.Add(videoUrl);
+                    videos.Add($"https://www.youtube.com/watch?v={searchListResponse.Items[i].Id.VideoId}");
                     videoCounter++;
                 }
 
-                if (videoCounter >= 5)
-                {
-                    break;
-                }
+                // Limit to 5 videos
+                if (videoCounter >= 5) return videos;
             }
 
             return videos;

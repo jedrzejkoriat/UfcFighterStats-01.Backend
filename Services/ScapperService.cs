@@ -2,9 +2,9 @@
 using System.Reflection.Metadata.Ecma335;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
-using Newtonsoft.Json;
 using UfcStatsAPI.Contracts;
 using UfcStatsAPI.Model;
+using System.Text.Json;
 
 namespace UfcStatsAPI.Services
 {
@@ -23,9 +23,9 @@ namespace UfcStatsAPI.Services
             this.googleService = googleService;
         }
 
-        public async Task<string> GetRankedFightersStatisticsAsync()
+        public async Task<string> GetRankedFighterStatsAsync()
         {
-            return JsonConvert.SerializeObject(await ScrapDataAsync(), Newtonsoft.Json.Formatting.Indented);
+            return JsonSerializer.Serialize(await ScrapDataAsync(), new JsonSerializerOptions { WriteIndented = true});
         }
 
         /// <summary>
