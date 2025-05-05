@@ -9,7 +9,11 @@ using UfcStatsAPI.Model;
 namespace UfcStatsAPI.Services
 {
     /* 
-	-Scrap top 3 youtube links (maybe some youtube API)
+	    - [WAITING FOR REPONSE FROM YOUTOUBE API]
+        - Split scrapping on two parts(?)
+        - Save data to seperate files for each weightclass(?)
+        - Scrap sherdog links from google search for fighters without wikipedia link
+        
 	 */
     public class ScrapperService : IScrapperService
     {
@@ -102,8 +106,13 @@ namespace UfcStatsAPI.Services
 
                                         try
                                         {
+                                            bool firstHalf = true;
                                             // Scrap fighter from sherdog
-                                            var fighterModel = await ScrapStatsFromSherdogAsync(sherdogLink, ranking);
+                                            if (i >= 4)
+                                            {
+                                                firstHalf = false;
+                                            }
+                                            var fighterModel = await ScrapStatsFromSherdogAsync(sherdogLink, ranking, firstHalf);
                                             this.logger.LogInformation($"Fighter scrapped: [{weightClassModel.Name.ToUpper()}] - {fighterModel.Ranking}.{fighterModel.Name} '{fighterModel.Nickname}'");
                                             // Add fighter to weightclass
                                             weightClassModel.Fighters.Add(fighterModel);
@@ -199,7 +208,7 @@ namespace UfcStatsAPI.Services
             return null;
         }
 
-        private async Task<FighterModel> ScrapStatsFromSherdogAsync(string url, string ranking)
+        private async Task<FighterModel> ScrapStatsFromSherdogAsync(string url, string ranking, bool firstHalf)
         {
             // Downloading fighter sherdog page content
             var response = await httpClient.GetStringAsync("https://www.sherdog.com/fighter/" + url);
@@ -392,7 +401,7 @@ namespace UfcStatsAPI.Services
             }
             try
             {
-                fighter.YoutubeVideos = await this.youtubeService.GetFighterYoutubeVideos(fighter.Name);
+                fighter.YoutubeVideos = await this.youtubeService.GetFighterYoutubeVideos(fighter.Name, firstHalf);
             }
             catch (Exception ex)
             {

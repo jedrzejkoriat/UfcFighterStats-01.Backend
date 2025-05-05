@@ -2,6 +2,6 @@
 {
     public interface IYoutubeService
     {
-        Task<List<string>> GetFighterYoutubeVideos(string fullName);
+        Task<List<string>> GetFighterYoutubeVideos(string fullName, bool firstHalf);
     }
 }

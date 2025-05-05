@@ -6,18 +6,25 @@ namespace UfcStatsAPI.Services
 {
     public class YoutubeService : IYoutubeService
     {
-        private readonly string apiKey;
+        private readonly string apiKey1;
+        private readonly string apiKey2;
 
-        public YoutubeService(string apiKey)
+        public YoutubeService(IConfiguration configuration)
         {
-            this.apiKey = apiKey;
+            this.apiKey1 = configuration.GetSection("Youtube")["ApiKey1"];
+            this.apiKey2 = configuration.GetSection("Youtube")["ApiKey2"];
         }
 
-        public async Task<List<string>> GetFighterYoutubeVideos(string? fullName)
+        public async Task<List<string>> GetFighterYoutubeVideos(string? fullName, bool firstHalf)
         {
+            string currentApiKey = "";
+
+            if (firstHalf) currentApiKey = this.apiKey1;
+            else currentApiKey = this.apiKey2;
+
             var youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
-                ApiKey = this.apiKey,
+                ApiKey = currentApiKey,
                 ApplicationName = this.GetType().ToString()
             });
 
