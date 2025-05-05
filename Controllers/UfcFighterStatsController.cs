@@ -10,12 +10,10 @@ namespace UfcStatsAPI.Controllers
 	[ApiController]
 	public class UfcFighterStatsController : ControllerBase
 	{
-		private readonly IScrapperService scrapperService;
         private readonly ILogger<UfcFighterStatsController> logger;
 
-        public UfcFighterStatsController(IScrapperService scrapperService, ILogger<UfcFighterStatsController> logger)
+        public UfcFighterStatsController(ILogger<UfcFighterStatsController> logger)
 		{
-			this.scrapperService = scrapperService;
             this.logger = logger;
         }
 
