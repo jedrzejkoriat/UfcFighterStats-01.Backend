@@ -28,7 +28,7 @@ builder.Services.AddQuartz(q =>
     q.AddTrigger(opts => opts
     .ForJob(jobKey)
     .WithIdentity("TriggerAfterRankingUpdate")
-    .WithCronSchedule("0 59 23 ? * WED *"));
+    .WithCronSchedule("0 0 0 ? * * *", x => x.InTimeZone(TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"))));
 });
 
 builder.Logging.ClearProviders();
