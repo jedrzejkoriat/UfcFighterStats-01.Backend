@@ -8,17 +8,17 @@ namespace UfcStatsAPI.Controllers
 {
 	[Route("")]
 	[ApiController]
-	public class UfcFighterStatsController : ControllerBase
+	public class FigtherStatsController : ControllerBase
 	{
-        private readonly ILogger<UfcFighterStatsController> logger;
+        private readonly ILogger<FigtherStatsController> logger;
 
-        public UfcFighterStatsController(ILogger<UfcFighterStatsController> logger)
+        public FigtherStatsController(ILogger<FigtherStatsController> logger)
 		{
             this.logger = logger;
         }
 
 		[HttpGet]
-        public async Task<IActionResult> GetUFCStats()
+        public async Task<IActionResult> GetUfcFighterStats()
 		{
 			logger.LogInformation("UFC Stats requiested");
 
@@ -26,5 +26,12 @@ namespace UfcStatsAPI.Controllers
 			string json = await System.IO.File.ReadAllTextAsync(filePath);
 			return Ok(json);
 		}
-	}
+
+		[HttpGet("pulse")]
+		public IActionResult GetPulse()
+        {
+            logger.LogInformation("Pulse requiested");
+            return Ok("PULSE");
+        }
+    }
 }
