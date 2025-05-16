@@ -54,6 +54,7 @@ app.UseHttpsRedirection();
 
 var api = app.MapGroup("/");
 
+// GET /
 app.MapGet("", async (ILogger<Program> logger) =>
 {
     logger.LogInformation("UFC Stats requiested");
@@ -63,11 +64,18 @@ app.MapGet("", async (ILogger<Program> logger) =>
     return Results.Ok(json);
 });
 
+// GET /pulse
 app.MapGet("pulse", (ILogger<Program> logger) =>
 {
     logger.LogInformation("Pulse requiested");
     return Results.Ok("PULSE");
 });
 
+/*app.MapGet("scrap", async (IScrapperService scrapperService, ILogger<Program> logger) =>
+{
+    logger.LogInformation("Scrap requiested");
+    await scrapperService.GetRankedFighterStatsAsync();
+    return Results.Ok("Scrap done");
+});*/
 
 app.Run();

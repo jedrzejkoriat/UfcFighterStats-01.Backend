@@ -263,11 +263,29 @@ namespace UfcStatsAPI.Services
                     int age = Convert.ToInt32(Regex.Match(bioHtml[i + 1], @"<td><b>(\d+)").ToString().Substring(7));
                     fighter.Age = age;
                 }
+                if (bioHtml[i].Contains("birthDate"))
+                {
+                    // Birthdate
+                    string birthdate = Regex.Match(bioHtml[i], @">([^<]+)</span>").ToString();
+                    birthdate = birthdate.Substring(1, birthdate.Length - "</span>".Length - 1);
+                    fighter.Birthdate = birthdate;
+                }
+                if (bioHtml[i].Contains("WEIGHT"))
+                {
+                    // Weight
+                    string weight = Regex.Match(bioHtml[i], @"(\d+)\.").Groups[1].Value;
+                    fighter.Weight = int.Parse(weight);
+                }
                 if (bioHtml[i].Contains("HEIGHT"))
                 {
                     // Height
                     int height = Convert.ToInt32(Regex.Match(bioHtml[i], @"(\d+\.\d+)\s*cm").ToString().Substring(0, 3));
                     fighter.Height = height;
+                }
+                if (bioHtml[i].Contains("ASSOCIATION"))
+                {
+                    string association = Regex.Match(bioHtml[i + 1], @">([^<]+)<").ToString().Substring(1).TrimEnd('<');
+                    fighter.Association = association;
                 }
             }
 
@@ -281,6 +299,12 @@ namespace UfcStatsAPI.Services
                     // Country
                     string country = Regex.Match(fighterTitleHtml[i + 2], @">(.*?)<").ToString().TrimEnd('<').Substring(1);
                     fighter.Country = country;
+                }
+                if (fighterTitleHtml[i].Contains("addressLocality"))
+                {
+                    // Region
+                    string region = Regex.Match(fighterTitleHtml[i], @">([^<]+)<").ToString().Substring(1).TrimEnd('<');
+                    fighter.Region = region;
                 }
                 if (fighterTitleHtml[i].Contains("fn"))
                 {
@@ -435,7 +459,7 @@ namespace UfcStatsAPI.Services
             // Get youtube videos for each fighter
             try
             {
-                fighter.YoutubeVideos = await this.youtubeService.GetFighterYoutubeVideos(fighter.Name, firstHalf);
+                //fighter.YoutubeVideos = await this.youtubeService.GetFighterYoutubeVideos(fighter.Name, firstHalf);
             }
             catch (Exception ex)
             {

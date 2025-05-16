@@ -15,12 +15,20 @@ namespace UfcStatsAPI.Model
 
         [JsonPropertyName("country")]
         public string? Country { get; set; }
+        [JsonPropertyName("region")]
+        public string? Region { get; set; }
 
         [JsonPropertyName("age")]
         public int? Age { get; set; }
+        [JsonPropertyName("birthdate")]
+        public string? Birthdate { get; set; }
+        [JsonPropertyName("weight")]
+        public int? Weight { get; set; }
 
         [JsonPropertyName("height")]
         public int? Height { get; set; }
+        [JsonPropertyName("association")]
+        public string? Association { get; set; }
 
         [JsonPropertyName("wins")]
         public int? Wins { get; set; }
