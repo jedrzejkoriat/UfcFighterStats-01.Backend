@@ -459,7 +459,7 @@ namespace UfcStatsAPI.Services
             // Get youtube videos for each fighter
             try
             {
-                //fighter.YoutubeVideos = await this.youtubeService.GetFighterYoutubeVideos(fighter.Name, firstHalf);
+                fighter.YoutubeVideos = await this.youtubeService.GetFighterYoutubeVideos(fighter.Name, firstHalf);
             }
             catch (Exception ex)
             {
