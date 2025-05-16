@@ -295,9 +295,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=Pzi8UFEWRxI",
           "https://www.youtube.com/watch?v=BV3FcAecXL0",
-          "https://www.youtube.com/watch?v=ES8zfCqOlUk",
           "https://www.youtube.com/watch?v=lasmzMh2XjY",
-          "https://www.youtube.com/watch?v=vdY36eZZ6IY"
+          "https://www.youtube.com/watch?v=ES8zfCqOlUk",
+          "https://www.youtube.com/watch?v=OEM2Hvb7IQA"
         ]
       },
       {
@@ -486,8 +486,8 @@
           "https://www.youtube.com/watch?v=onhnV93-EyI",
           "https://www.youtube.com/watch?v=vAaEkb0DctA",
           "https://www.youtube.com/watch?v=aCS_rPXRFGY",
-          "https://www.youtube.com/watch?v=IxpkMrdBs-4",
-          "https://www.youtube.com/watch?v=J33tZixvK_c"
+          "https://www.youtube.com/watch?v=J33tZixvK_c",
+          "https://www.youtube.com/watch?v=IxpkMrdBs-4"
         ]
       },
       {
@@ -646,11 +646,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=o_egG3N_PPA",
           "https://www.youtube.com/watch?v=JtBiK29Cc70",
-          "https://www.youtube.com/watch?v=YVZrMsqrkSk",
-          "https://www.youtube.com/watch?v=LIyDIcxhruw",
-          "https://www.youtube.com/watch?v=Eo-e4z0yjSQ"
+          "https://www.youtube.com/watch?v=o_egG3N_PPA",
+          "https://www.youtube.com/watch?v=SEKBbBGfuGQ",
+          "https://www.youtube.com/watch?v=tQKwF_Zu1q4",
+          "https://www.youtube.com/watch?v=dAz6Y1CzAxo"
         ]
       },
       {
@@ -1118,8 +1118,8 @@
           "https://www.youtube.com/watch?v=nwO_KHP7-pw",
           "https://www.youtube.com/watch?v=aCS_rPXRFGY",
           "https://www.youtube.com/watch?v=EdWXckzyWxM",
-          "https://www.youtube.com/watch?v=w5m9AQXnIuw",
-          "https://www.youtube.com/watch?v=Pn1uwmXNf8g"
+          "https://www.youtube.com/watch?v=Pn1uwmXNf8g",
+          "https://www.youtube.com/watch?v=w5m9AQXnIuw"
         ]
       },
       {
@@ -1127,7 +1127,7 @@
         "name": "Sergei Pavlovich",
         "nickname": "",
         "country": "Russia",
-        "age": 32,
+        "age": 33,
         "height": 190,
         "wins": 19,
         "winKo": 15,
@@ -1342,8 +1342,8 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=w5m9AQXnIuw",
-          "https://www.youtube.com/watch?v=zuvq-DUORFI",
           "https://www.youtube.com/watch?v=vAaEkb0DctA",
+          "https://www.youtube.com/watch?v=zuvq-DUORFI",
           "https://www.youtube.com/watch?v=0gjQXW0yYTs",
           "https://www.youtube.com/watch?v=V0aRZpL2s_g"
         ]
@@ -1588,8 +1588,8 @@
           "https://www.youtube.com/watch?v=TjLy3yfw30U",
           "https://www.youtube.com/watch?v=gym0g4ncMe0",
           "https://www.youtube.com/watch?v=J33tZixvK_c",
-          "https://www.youtube.com/watch?v=NR3SEWZ481E",
-          "https://www.youtube.com/watch?v=IxpkMrdBs-4"
+          "https://www.youtube.com/watch?v=IxpkMrdBs-4",
+          "https://www.youtube.com/watch?v=NR3SEWZ481E"
         ]
       },
       {
@@ -1840,9 +1840,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=4A-kEN-9Ksw",
           "https://www.youtube.com/watch?v=P5sReaaWEhg",
+          "https://www.youtube.com/watch?v=uedSQPb5Wks",
           "https://www.youtube.com/watch?v=B9V6u2GWNjk",
-          "https://www.youtube.com/watch?v=TwfSG70NBBQ",
-          "https://www.youtube.com/watch?v=uedSQPb5Wks"
+          "https://www.youtube.com/watch?v=hEq1Ipb3DrQ"
         ]
       },
       {
@@ -2065,8 +2065,8 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=hgxxtJtM8eQ",
-          "https://www.youtube.com/watch?v=DBtqJXq0VeY",
           "https://www.youtube.com/watch?v=HeGIXG_Fml0",
+          "https://www.youtube.com/watch?v=DBtqJXq0VeY",
           "https://www.youtube.com/watch?v=B9V6u2GWNjk",
           "https://www.youtube.com/watch?v=8ZKpuLRCCGg"
         ]
@@ -2263,7 +2263,7 @@
           },
           {
             "result": "win",
-            "opponent": "Luis Henrique Barbosa de Oliveira",
+            "opponent": "Luis Henrique",
             "eventName": "UFC 209 - Woodley vs. Thompson 2",
             "date": "04-03-2017",
             "method": "TKO (Punches)",
@@ -2814,10 +2814,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=WBK73PF1aoY",
-          "https://www.youtube.com/watch?v=SHzSNgVqCAY",
           "https://www.youtube.com/watch?v=LYA5ie_gsro",
           "https://www.youtube.com/watch?v=gym0g4ncMe0",
-          "https://www.youtube.com/watch?v=Q7ig45n0W8Q"
+          "https://www.youtube.com/watch?v=Q7ig45n0W8Q",
+          "https://www.youtube.com/watch?v=Pn1uwmXNf8g"
         ]
       },
       {
@@ -3041,8 +3041,8 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=WBK73PF1aoY",
           "https://www.youtube.com/watch?v=Y2juZ6iP3nA",
-          "https://www.youtube.com/watch?v=o_egG3N_PPA",
           "https://www.youtube.com/watch?v=nwO_KHP7-pw",
+          "https://www.youtube.com/watch?v=o_egG3N_PPA",
           "https://www.youtube.com/watch?v=8FvO-Rbjqms"
         ]
       },
@@ -3195,9 +3195,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=41zp9D94uNQ",
           "https://www.youtube.com/watch?v=S7KlPJvJSe0",
+          "https://www.youtube.com/watch?v=Tq99XARR1go",
           "https://www.youtube.com/watch?v=FJzCPhyeeac",
-          "https://www.youtube.com/watch?v=H8ueP24HPOg",
-          "https://www.youtube.com/watch?v=Twmi4AxollY"
+          "https://www.youtube.com/watch?v=H8ueP24HPOg"
         ]
       },
       {
@@ -3487,7 +3487,7 @@
           "https://www.youtube.com/watch?v=MQtaa5nqyrw",
           "https://www.youtube.com/watch?v=FtYjASHhbz0",
           "https://www.youtube.com/watch?v=Yy0eLE4FdDs",
-          "https://www.youtube.com/watch?v=bkTv0g8XLL8"
+          "https://www.youtube.com/watch?v=-BDFNj6PkYA"
         ]
       },
       {
@@ -4004,11 +4004,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=j9wnN3YGThw",
           "https://www.youtube.com/watch?v=1AMABXCSpF4",
+          "https://www.youtube.com/watch?v=j9wnN3YGThw",
           "https://www.youtube.com/watch?v=sX6PbYXvWLI",
-          "https://www.youtube.com/watch?v=TBXgzkb4PbM",
-          "https://www.youtube.com/watch?v=aQTRrbOA7fY"
+          "https://www.youtube.com/watch?v=aQTRrbOA7fY",
+          "https://www.youtube.com/watch?v=TBXgzkb4PbM"
         ]
       },
       {
@@ -4169,9 +4169,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=yKdi_7cscd0",
           "https://www.youtube.com/watch?v=rnloMlZLH84",
+          "https://www.youtube.com/watch?v=SqQ8VRUKx2g",
           "https://www.youtube.com/watch?v=AD-xFC5ky1s",
-          "https://www.youtube.com/watch?v=jFtIa_AEFiA",
-          "https://www.youtube.com/watch?v=SqQ8VRUKx2g"
+          "https://www.youtube.com/watch?v=jFtIa_AEFiA"
         ]
       },
       {
@@ -4674,10 +4674,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=OIi00xClU7Y",
-          "https://www.youtube.com/watch?v=IO4YoVs2PKA",
           "https://www.youtube.com/watch?v=LetSPV_Sma0",
-          "https://www.youtube.com/watch?v=_fCIH-429l0",
-          "https://www.youtube.com/watch?v=ENnBQy46LmY"
+          "https://www.youtube.com/watch?v=IO4YoVs2PKA",
+          "https://www.youtube.com/watch?v=ENnBQy46LmY",
+          "https://www.youtube.com/watch?v=_fCIH-429l0"
         ]
       },
       {
@@ -4847,9 +4847,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=9ZB0T7aPx80",
           "https://www.youtube.com/watch?v=4KE0lb0liuY",
-          "https://www.youtube.com/watch?v=17iF25KLQsI",
           "https://www.youtube.com/watch?v=yyUbEbMoDsE",
-          "https://www.youtube.com/watch?v=n8SfQtoaS88"
+          "https://www.youtube.com/watch?v=n8SfQtoaS88",
+          "https://www.youtube.com/watch?v=-90dINvcK3o"
         ]
       },
       {
@@ -5243,10 +5243,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=rD6y-oCRhSQ",
-          "https://www.youtube.com/watch?v=pYy_y54jqMU",
           "https://www.youtube.com/watch?v=DSt5mNt1RfM",
-          "https://www.youtube.com/watch?v=luvNznE0-DY",
-          "https://www.youtube.com/watch?v=GEQM4MSqTLU"
+          "https://www.youtube.com/watch?v=pYy_y54jqMU",
+          "https://www.youtube.com/watch?v=GEQM4MSqTLU",
+          "https://www.youtube.com/watch?v=luvNznE0-DY"
         ]
       },
       {
@@ -5444,8 +5444,8 @@
           "https://www.youtube.com/watch?v=apHk_wCmV8g",
           "https://www.youtube.com/watch?v=n685SUlDQTo",
           "https://www.youtube.com/watch?v=omXBdVisz0E",
-          "https://www.youtube.com/watch?v=phMLwwvSjcU",
-          "https://www.youtube.com/watch?v=kmlmNK1iyBw"
+          "https://www.youtube.com/watch?v=kmlmNK1iyBw",
+          "https://www.youtube.com/watch?v=phMLwwvSjcU"
         ]
       },
       {
@@ -5652,8 +5652,8 @@
           "https://www.youtube.com/watch?v=JL9XLENpANU",
           "https://www.youtube.com/watch?v=tryV9arLomM",
           "https://www.youtube.com/watch?v=ebc6AH9Hldw",
-          "https://www.youtube.com/watch?v=xkBBswA1mDU",
-          "https://www.youtube.com/watch?v=jFtIa_AEFiA"
+          "https://www.youtube.com/watch?v=jFtIa_AEFiA",
+          "https://www.youtube.com/watch?v=xkBBswA1mDU"
         ]
       },
       {
@@ -5851,8 +5851,8 @@
           "https://www.youtube.com/watch?v=KXU75KQ9IbM",
           "https://www.youtube.com/watch?v=-hPJQU-4bk0",
           "https://www.youtube.com/watch?v=c0dOAIZSdaw",
-          "https://www.youtube.com/watch?v=YTNq8wrPrMw",
-          "https://www.youtube.com/watch?v=Vixmm7zIw6w"
+          "https://www.youtube.com/watch?v=Vixmm7zIw6w",
+          "https://www.youtube.com/watch?v=YTNq8wrPrMw"
         ]
       },
       {
@@ -6129,8 +6129,8 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=d-6nJvPDd3U",
-          "https://www.youtube.com/watch?v=omXBdVisz0E",
           "https://www.youtube.com/watch?v=w9dBzuutoKg",
+          "https://www.youtube.com/watch?v=omXBdVisz0E",
           "https://www.youtube.com/watch?v=c_CvToMDPTI",
           "https://www.youtube.com/watch?v=ezTCUQh4d_A"
         ]
@@ -6518,8 +6518,8 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=lRRA2ff8V0w",
           "https://www.youtube.com/watch?v=gLpkDObJSjA",
-          "https://www.youtube.com/watch?v=z_bPVUWtzmM",
           "https://www.youtube.com/watch?v=hzX1kESJazw",
+          "https://www.youtube.com/watch?v=z_bPVUWtzmM",
           "https://www.youtube.com/watch?v=W62Ypm4VqTI"
         ]
       },
@@ -6824,10 +6824,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=mU5EyS1g5DM",
-          "https://www.youtube.com/watch?v=TolNkpRBYnc",
           "https://www.youtube.com/watch?v=H8mpyqgNkwU",
-          "https://www.youtube.com/watch?v=j9wnN3YGThw",
-          "https://www.youtube.com/watch?v=m6Z2fauC5gc"
+          "https://www.youtube.com/watch?v=TolNkpRBYnc",
+          "https://www.youtube.com/watch?v=m6Z2fauC5gc",
+          "https://www.youtube.com/watch?v=hqLoGG42_AI"
         ]
       },
       {
@@ -6979,9 +6979,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=VmZ817HgznU",
           "https://www.youtube.com/watch?v=SduOu_yQRBE",
-          "https://www.youtube.com/watch?v=2Zo8cK1Jb4M",
           "https://www.youtube.com/watch?v=H9kUVlImd8Q",
-          "https://www.youtube.com/watch?v=AXAhJEDr1Sc"
+          "https://www.youtube.com/watch?v=AXAhJEDr1Sc",
+          "https://www.youtube.com/watch?v=YSaHxtMY2OM"
         ]
       },
       {
@@ -7231,10 +7231,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=2ea9qMfiGyI",
-          "https://www.youtube.com/watch?v=mO5jC3VScuI",
           "https://www.youtube.com/watch?v=nczAeFzJVok",
-          "https://www.youtube.com/watch?v=BxOPkCyPgXA",
-          "https://www.youtube.com/watch?v=GsKLu4yUVy4"
+          "https://www.youtube.com/watch?v=GsKLu4yUVy4",
+          "https://www.youtube.com/watch?v=2kyHN8klvZs",
+          "https://www.youtube.com/watch?v=XZO1sj_wCdw"
         ]
       },
       {
@@ -7442,7 +7442,7 @@
           "https://www.youtube.com/watch?v=gejOUEyEJO8",
           "https://www.youtube.com/watch?v=YKlhDcq4uhA",
           "https://www.youtube.com/watch?v=Ls23e3wxfok",
-          "https://www.youtube.com/watch?v=Jfb0ALLEBfo"
+          "https://www.youtube.com/watch?v=I7xSSjILdds"
         ]
       },
       {
@@ -7665,8 +7665,8 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=IO4YoVs2PKA",
-          "https://www.youtube.com/watch?v=5rS91Yhq-II",
           "https://www.youtube.com/watch?v=jNjr7LX77lc",
+          "https://www.youtube.com/watch?v=5rS91Yhq-II",
           "https://www.youtube.com/watch?v=JXNxgCLNUmU",
           "https://www.youtube.com/watch?v=ZtpqTwyTSjo"
         ]
@@ -8142,8 +8142,8 @@
           "https://www.youtube.com/watch?v=jeP8N3hcctc",
           "https://www.youtube.com/watch?v=nzbLdIwsVAU",
           "https://www.youtube.com/watch?v=sRHUQlprfYo",
-          "https://www.youtube.com/watch?v=Mf6w1lUZGf8",
-          "https://www.youtube.com/watch?v=_iuJIuFry40"
+          "https://www.youtube.com/watch?v=_iuJIuFry40",
+          "https://www.youtube.com/watch?v=Mf6w1lUZGf8"
         ]
       },
       {
@@ -8494,8 +8494,8 @@
           "https://www.youtube.com/watch?v=mbBRMZZz_qk",
           "https://www.youtube.com/watch?v=gAXqlHGpw-I",
           "https://www.youtube.com/watch?v=RCw6lEJVsss",
-          "https://www.youtube.com/watch?v=9uEf-WlUPdw",
-          "https://www.youtube.com/watch?v=_99w7g5GcGs"
+          "https://www.youtube.com/watch?v=_99w7g5GcGs",
+          "https://www.youtube.com/watch?v=9uEf-WlUPdw"
         ]
       },
       {
@@ -8646,10 +8646,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=URkC-KTMwWE",
-          "https://www.youtube.com/watch?v=td6hAl_G7tQ",
-          "https://www.youtube.com/watch?v=CCGQwr4-ibY",
-          "https://www.youtube.com/watch?v=s3L0SAT9db4",
-          "https://www.youtube.com/watch?v=8k5epb9xHRY"
+          "https://www.youtube.com/watch?v=OyTZSuINv-s",
+          "https://www.youtube.com/watch?v=fUJBM0Sy62o",
+          "https://www.youtube.com/watch?v=8k5epb9xHRY",
+          "https://www.youtube.com/watch?v=CCGQwr4-ibY"
         ]
       },
       {
@@ -8934,11 +8934,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=aGB0YhN0HG0",
           "https://www.youtube.com/watch?v=zea_QpSpfGs",
           "https://www.youtube.com/watch?v=yKdi_7cscd0",
-          "https://www.youtube.com/watch?v=SrU8PlZepbA",
-          "https://www.youtube.com/watch?v=Skv1dKPwdiY"
+          "https://www.youtube.com/watch?v=aGB0YhN0HG0",
+          "https://www.youtube.com/watch?v=Skv1dKPwdiY",
+          "https://www.youtube.com/watch?v=SrU8PlZepbA"
         ]
       },
       {
@@ -9271,8 +9271,8 @@
           "https://www.youtube.com/watch?v=7CAkyfHMhhA",
           "https://www.youtube.com/watch?v=8k5epb9xHRY",
           "https://www.youtube.com/watch?v=pNccYVreROs",
-          "https://www.youtube.com/watch?v=td0mNyKnUMY",
-          "https://www.youtube.com/watch?v=wteSAv8v4kE"
+          "https://www.youtube.com/watch?v=wteSAv8v4kE",
+          "https://www.youtube.com/watch?v=td0mNyKnUMY"
         ]
       },
       {
@@ -9729,8 +9729,8 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=6JGEe5_0zzQ",
           "https://www.youtube.com/watch?v=JltDq7BHPjQ",
+          "https://www.youtube.com/watch?v=6JGEe5_0zzQ",
           "https://www.youtube.com/watch?v=ZWfW881Kuf8",
           "https://www.youtube.com/watch?v=BemrLfJHivI",
           "https://www.youtube.com/watch?v=I0DegDT3ISU"
@@ -10104,7 +10104,7 @@
           "https://www.youtube.com/watch?v=TOD4CHBUx0Y",
           "https://www.youtube.com/watch?v=y_VVpLc0E-w",
           "https://www.youtube.com/watch?v=LPqRyWgIWaw",
-          "https://www.youtube.com/watch?v=A08JoyyO7Ys"
+          "https://www.youtube.com/watch?v=MISu_v233gc"
         ]
       },
       {
@@ -10688,10 +10688,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=pFJA5xMyu2c",
-          "https://www.youtube.com/watch?v=D7HPW3PhstA",
-          "https://www.youtube.com/watch?v=TOD4CHBUx0Y",
           "https://www.youtube.com/watch?v=3EMSSEfaUAg",
-          "https://www.youtube.com/watch?v=Mf6w1lUZGf8"
+          "https://www.youtube.com/watch?v=D7HPW3PhstA",
+          "https://www.youtube.com/watch?v=Mf6w1lUZGf8",
+          "https://www.youtube.com/watch?v=TOD4CHBUx0Y"
         ]
       },
       {
@@ -11105,9 +11105,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=oa7gQuzFYvc",
           "https://www.youtube.com/watch?v=8fd8UgsjhsE",
-          "https://www.youtube.com/watch?v=N6cGW67yqeE",
+          "https://www.youtube.com/watch?v=tv5VmOYVcV8",
           "https://www.youtube.com/watch?v=biZKvetIpIk",
-          "https://www.youtube.com/watch?v=2-YHHNOxM1o"
+          "https://www.youtube.com/watch?v=LUq3uJgiXAM"
         ]
       },
       {
@@ -11288,7 +11288,7 @@
           "https://www.youtube.com/watch?v=HNKwl4TLvhs",
           "https://www.youtube.com/watch?v=L2CZfx9dGpg",
           "https://www.youtube.com/watch?v=owocMeRYzpI",
-          "https://www.youtube.com/watch?v=BFdN4Atnhh4"
+          "https://www.youtube.com/watch?v=LmeboAAy45o"
         ]
       },
       {
@@ -11627,11 +11627,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=O8gsc5LB5R0",
           "https://www.youtube.com/watch?v=-bT6bBHTEuI",
           "https://www.youtube.com/watch?v=crfVgHwJt9U",
           "https://www.youtube.com/watch?v=4JwOOyBgZAU",
-          "https://www.youtube.com/watch?v=kC-49G8hGQU"
+          "https://www.youtube.com/watch?v=47G6wkYYUwQ",
+          "https://www.youtube.com/watch?v=FXYDghtKsMc"
         ]
       }
     ]
@@ -11641,6 +11641,214 @@
     "fighters": [
       {
         "ranking": 0,
+        "name": "Jack Della Maddalena",
+        "nickname": "",
+        "country": "Australia",
+        "age": 28,
+        "height": 180,
+        "wins": 18,
+        "winKo": 12,
+        "winSub": 2,
+        "winDec": 4,
+        "winOth": 0,
+        "losses": 2,
+        "lossesKo": 1,
+        "lossesSub": 1,
+        "lossesDec": 0,
+        "lossesOth": 0,
+        "noContest": 0,
+        "fightHistory": [
+          {
+            "result": "win",
+            "opponent": "Belal Muhammad",
+            "eventName": "UFC 315 - Muhammad vs. Della Maddalena",
+            "date": "10-05-2025",
+            "method": "Decision (Unanimous)",
+            "round": 5,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Gilbert Burns",
+            "eventName": "UFC 299 - O\u0027Malley vs. Vera 2",
+            "date": "09-03-2024",
+            "method": "KO (Knee and Elbows)",
+            "round": 3,
+            "time": "3:43"
+          },
+          {
+            "result": "win",
+            "opponent": "Kevin Holland",
+            "eventName": "UFC Fight Night 227 - Grasso vs. Shevchenko 2",
+            "date": "16-09-2023",
+            "method": "Decision (Split)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Bassil Hafez",
+            "eventName": "UFC on ESPN 49 - Holm vs. Bueno Silva",
+            "date": "15-07-2023",
+            "method": "Decision (Split)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Randy Brown",
+            "eventName": "UFC 284 - Makhachev vs. Volkanovski",
+            "date": "11-02-2023",
+            "method": "Submission (Rear-Naked Choke)",
+            "round": 1,
+            "time": "2:13"
+          },
+          {
+            "result": "win",
+            "opponent": "Danny Roberts",
+            "eventName": "UFC Fight Night 215 - Nzechukwu vs. Cutelaba",
+            "date": "19-11-2022",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "3:24"
+          },
+          {
+            "result": "win",
+            "opponent": "Ramazan Emeev",
+            "eventName": "UFC 275 - Teixeira vs. Prochazka",
+            "date": "12-06-2022",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "2:32"
+          },
+          {
+            "result": "win",
+            "opponent": "Pete Rodriguez",
+            "eventName": "UFC 270 - Ngannou vs. Gane",
+            "date": "22-01-2022",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "2:59"
+          },
+          {
+            "result": "win",
+            "opponent": "Ange Loosa",
+            "eventName": "Dana White\u0027s Contender Series - Contender Series 2021: Week 3",
+            "date": "14-09-2021",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Aldin Bates",
+            "eventName": "EMMA - Eternal MMA 53",
+            "date": "10-10-2020",
+            "method": "KO (Punch)",
+            "round": 1,
+            "time": "1:12"
+          },
+          {
+            "result": "win",
+            "opponent": "Glen Pettigrew",
+            "eventName": "EMMA - Eternal MMA 51",
+            "date": "29-02-2020",
+            "method": "TKO (Punches)",
+            "round": 2,
+            "time": "1:55"
+          },
+          {
+            "result": "win",
+            "opponent": "Kevin Jousset",
+            "eventName": "EMMA - Eternal MMA 48",
+            "date": "04-10-2019",
+            "method": "TKO (Doctor Stoppage)",
+            "round": 2,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Dean Abramo",
+            "eventName": "EMMA - Eternal MMA 37",
+            "date": "22-09-2018",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "2:27"
+          },
+          {
+            "result": "win",
+            "opponent": "Luke Howard",
+            "eventName": "EMMA - Eternal MMA 31",
+            "date": "10-03-2018",
+            "method": "KO (Punch)",
+            "round": 2,
+            "time": "0:28"
+          },
+          {
+            "result": "win",
+            "opponent": "James Duckett",
+            "eventName": "CWFC 88 - Cage Warriors Fighting Championship 88",
+            "date": "28-10-2017",
+            "method": "Submission (Rear-Naked Choke)",
+            "round": 2,
+            "time": "3:44"
+          },
+          {
+            "result": "win",
+            "opponent": "Ty Duncan",
+            "eventName": "EMMA - Eternal MMA 26",
+            "date": "08-07-2017",
+            "method": "TKO (Punches)",
+            "round": 2,
+            "time": "0:19"
+          },
+          {
+            "result": "win",
+            "opponent": "Glen Pettigrew",
+            "eventName": "Reign - Reign Fighting 3",
+            "date": "08-04-2017",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "3:26"
+          },
+          {
+            "result": "win",
+            "opponent": "Brandt Cogill",
+            "eventName": "EMMA - Eternal MMA 20",
+            "date": "15-10-2016",
+            "method": "KO (Elbow)",
+            "round": 1,
+            "time": "N/A"
+          },
+          {
+            "result": "loss",
+            "opponent": "Darcy Vendy",
+            "eventName": "EMMA - Eternal MMA 17",
+            "date": "28-05-2016",
+            "method": "Submission (Rear-Naked Choke)",
+            "round": 1,
+            "time": "4:11"
+          },
+          {
+            "result": "loss",
+            "opponent": "Aldin Bates",
+            "eventName": "EMMA - Eternal MMA 15",
+            "date": "12-03-2016",
+            "method": "TKO (Punches)",
+            "round": 3,
+            "time": "2:16"
+          }
+        ],
+        "youtubeVideos": [
+          "https://www.youtube.com/watch?v=MwuhNGZJefw",
+          "https://www.youtube.com/watch?v=6w5VoFbc0rw",
+          "https://www.youtube.com/watch?v=TWwbppp-weg",
+          "https://www.youtube.com/watch?v=xPOQpI2SpdE",
+          "https://www.youtube.com/watch?v=LzR2c0poh5Y"
+        ]
+      },
+      {
+        "ranking": 1,
         "name": "Belal Muhammad",
         "nickname": "Remember the Name",
         "country": "United States",
@@ -11651,13 +11859,22 @@
         "winSub": 1,
         "winDec": 18,
         "winOth": 0,
-        "losses": 3,
+        "losses": 4,
         "lossesKo": 1,
         "lossesSub": 0,
-        "lossesDec": 2,
+        "lossesDec": 3,
         "lossesOth": 0,
         "noContest": 1,
         "fightHistory": [
+          {
+            "result": "loss",
+            "opponent": "Jack Della Maddalena",
+            "eventName": "UFC 315 - Muhammad vs. Della Maddalena",
+            "date": "10-05-2025",
+            "method": "Decision (Unanimous)",
+            "round": 5,
+            "time": "5:00"
+          },
           {
             "result": "win",
             "opponent": "Leon Edwards",
@@ -11912,15 +12129,15 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=xk7ei4IIqbo",
-          "https://www.youtube.com/watch?v=8CSI43PVL-E",
-          "https://www.youtube.com/watch?v=TB9fqGQJ5Ao",
           "https://www.youtube.com/watch?v=nb0wOvtfS8A",
-          "https://www.youtube.com/watch?v=GWTw8sXgukE"
+          "https://www.youtube.com/watch?v=fFgJuqrqVh4",
+          "https://www.youtube.com/watch?v=NbeyeLkMBWs",
+          "https://www.youtube.com/watch?v=TWwbppp-weg",
+          "https://www.youtube.com/watch?v=yL79Vu4EVw4"
         ]
       },
       {
-        "ranking": 1,
+        "ranking": 2,
         "name": "Sean Brady",
         "nickname": "",
         "country": "United States",
@@ -12115,11 +12332,11 @@
           "https://www.youtube.com/watch?v=53-wfhPhsTA",
           "https://www.youtube.com/watch?v=6tKD1wNm2_0",
           "https://www.youtube.com/watch?v=NvmIkwsyaSo",
-          "https://www.youtube.com/watch?v=ZTOR9b1IOO8"
+          "https://www.youtube.com/watch?v=ad4Z4tp_JMg"
         ]
       },
       {
-        "ranking": 2,
+        "ranking": 3,
         "name": "Shavkat Rakhmonov",
         "nickname": "Nomad",
         "country": "Kazakhstan",
@@ -12318,7 +12535,7 @@
         ]
       },
       {
-        "ranking": 3,
+        "ranking": 4,
         "name": "Leon Edwards",
         "nickname": "Rocky",
         "country": "England",
@@ -12590,19 +12807,19 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=xk7ei4IIqbo",
-          "https://www.youtube.com/watch?v=9fxRpRSGqE0",
           "https://www.youtube.com/watch?v=HvpVv6A7IL8",
-          "https://www.youtube.com/watch?v=TB9fqGQJ5Ao",
-          "https://www.youtube.com/watch?v=HYi47Hx07OM"
+          "https://www.youtube.com/watch?v=9fxRpRSGqE0",
+          "https://www.youtube.com/watch?v=HYi47Hx07OM",
+          "https://www.youtube.com/watch?v=NbeyeLkMBWs",
+          "https://www.youtube.com/watch?v=Vzkfrw6GKfA"
         ]
       },
       {
-        "ranking": 4,
+        "ranking": 5,
         "name": "Kamaru Usman",
         "nickname": "The Nigerian Nightmare",
         "country": "United States",
-        "age": 37,
+        "age": 38,
         "height": 182,
         "wins": 20,
         "winKo": 9,
@@ -12842,205 +13059,6 @@
         ]
       },
       {
-        "ranking": 5,
-        "name": "Jack Della Maddalena",
-        "nickname": "",
-        "country": "Australia",
-        "age": 28,
-        "height": 180,
-        "wins": 17,
-        "winKo": 12,
-        "winSub": 2,
-        "winDec": 3,
-        "winOth": 0,
-        "losses": 2,
-        "lossesKo": 1,
-        "lossesSub": 1,
-        "lossesDec": 0,
-        "lossesOth": 0,
-        "noContest": 0,
-        "fightHistory": [
-          {
-            "result": "win",
-            "opponent": "Gilbert Burns",
-            "eventName": "UFC 299 - O\u0027Malley vs. Vera 2",
-            "date": "09-03-2024",
-            "method": "KO (Knee and Elbows)",
-            "round": 3,
-            "time": "3:43"
-          },
-          {
-            "result": "win",
-            "opponent": "Kevin Holland",
-            "eventName": "UFC Fight Night 227 - Grasso vs. Shevchenko 2",
-            "date": "16-09-2023",
-            "method": "Decision (Split)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Bassil Hafez",
-            "eventName": "UFC on ESPN 49 - Holm vs. Bueno Silva",
-            "date": "15-07-2023",
-            "method": "Decision (Split)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Randy Brown",
-            "eventName": "UFC 284 - Makhachev vs. Volkanovski",
-            "date": "11-02-2023",
-            "method": "Submission (Rear-Naked Choke)",
-            "round": 1,
-            "time": "2:13"
-          },
-          {
-            "result": "win",
-            "opponent": "Danny Roberts",
-            "eventName": "UFC Fight Night 215 - Nzechukwu vs. Cutelaba",
-            "date": "19-11-2022",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "3:24"
-          },
-          {
-            "result": "win",
-            "opponent": "Ramazan Emeev",
-            "eventName": "UFC 275 - Teixeira vs. Prochazka",
-            "date": "12-06-2022",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "2:32"
-          },
-          {
-            "result": "win",
-            "opponent": "Pete Rodriguez",
-            "eventName": "UFC 270 - Ngannou vs. Gane",
-            "date": "22-01-2022",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "2:59"
-          },
-          {
-            "result": "win",
-            "opponent": "Ange Loosa",
-            "eventName": "Dana White\u0027s Contender Series - Contender Series 2021: Week 3",
-            "date": "14-09-2021",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Aldin Bates",
-            "eventName": "EMMA - Eternal MMA 53",
-            "date": "10-10-2020",
-            "method": "KO (Punch)",
-            "round": 1,
-            "time": "1:12"
-          },
-          {
-            "result": "win",
-            "opponent": "Glen Pettigrew",
-            "eventName": "EMMA - Eternal MMA 51",
-            "date": "29-02-2020",
-            "method": "TKO (Punches)",
-            "round": 2,
-            "time": "1:55"
-          },
-          {
-            "result": "win",
-            "opponent": "Kevin Jousset",
-            "eventName": "EMMA - Eternal MMA 48",
-            "date": "04-10-2019",
-            "method": "TKO (Doctor Stoppage)",
-            "round": 2,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Dean Abramo",
-            "eventName": "EMMA - Eternal MMA 37",
-            "date": "22-09-2018",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "2:27"
-          },
-          {
-            "result": "win",
-            "opponent": "Luke Howard",
-            "eventName": "EMMA - Eternal MMA 31",
-            "date": "10-03-2018",
-            "method": "KO (Punch)",
-            "round": 2,
-            "time": "0:28"
-          },
-          {
-            "result": "win",
-            "opponent": "James Duckett",
-            "eventName": "CWFC 88 - Cage Warriors Fighting Championship 88",
-            "date": "28-10-2017",
-            "method": "Submission (Rear-Naked Choke)",
-            "round": 2,
-            "time": "3:44"
-          },
-          {
-            "result": "win",
-            "opponent": "Ty Duncan",
-            "eventName": "EMMA - Eternal MMA 26",
-            "date": "08-07-2017",
-            "method": "TKO (Punches)",
-            "round": 2,
-            "time": "0:19"
-          },
-          {
-            "result": "win",
-            "opponent": "Glen Pettigrew",
-            "eventName": "Reign - Reign Fighting 3",
-            "date": "08-04-2017",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "3:26"
-          },
-          {
-            "result": "win",
-            "opponent": "Brandt Cogill",
-            "eventName": "EMMA - Eternal MMA 20",
-            "date": "15-10-2016",
-            "method": "KO (Elbow)",
-            "round": 1,
-            "time": "N/A"
-          },
-          {
-            "result": "loss",
-            "opponent": "Darcy Vendy",
-            "eventName": "EMMA - Eternal MMA 17",
-            "date": "28-05-2016",
-            "method": "Submission (Rear-Naked Choke)",
-            "round": 1,
-            "time": "4:11"
-          },
-          {
-            "result": "loss",
-            "opponent": "Aldin Bates",
-            "eventName": "EMMA - Eternal MMA 15",
-            "date": "12-03-2016",
-            "method": "TKO (Punches)",
-            "round": 3,
-            "time": "2:16"
-          }
-        ],
-        "youtubeVideos": [
-          "https://www.youtube.com/watch?v=RWZR4BJHh74",
-          "https://www.youtube.com/watch?v=L1mafcahaU0",
-          "https://www.youtube.com/watch?v=GWTw8sXgukE",
-          "https://www.youtube.com/watch?v=MwuhNGZJefw",
-          "https://www.youtube.com/watch?v=xPOQpI2SpdE"
-        ]
-      },
-      {
         "ranking": 6,
         "name": "Ian Garry",
         "nickname": "The Future",
@@ -13217,8 +13235,8 @@
           "https://www.youtube.com/watch?v=HOiuLm-sVlI",
           "https://www.youtube.com/watch?v=A5LOiDCpAx8",
           "https://www.youtube.com/watch?v=NH2VcwM4SqY",
-          "https://www.youtube.com/watch?v=pYx4jEiBiTY",
-          "https://www.youtube.com/watch?v=tk9MQhD0uqo"
+          "https://www.youtube.com/watch?v=tk9MQhD0uqo",
+          "https://www.youtube.com/watch?v=pYx4jEiBiTY"
         ]
       },
       {
@@ -13783,11 +13801,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=RWZR4BJHh74",
+          "https://www.youtube.com/watch?v=g0SziDLLWGg",
           "https://www.youtube.com/watch?v=6w5VoFbc0rw",
+          "https://www.youtube.com/watch?v=fUJBM0Sy62o",
           "https://www.youtube.com/watch?v=td6hAl_G7tQ",
-          "https://www.youtube.com/watch?v=fFgJuqrqVh4",
-          "https://www.youtube.com/watch?v=4iYuBYlJ-_w"
+          "https://www.youtube.com/watch?v=fFgJuqrqVh4"
         ]
       },
       {
@@ -14013,7 +14031,7 @@
           "https://www.youtube.com/watch?v=QWswc8oJuEA",
           "https://www.youtube.com/watch?v=WaNhcOML4nA",
           "https://www.youtube.com/watch?v=AjJcMWYokC8",
-          "https://www.youtube.com/watch?v=ACVuLmqfdB4"
+          "https://www.youtube.com/watch?v=AbHjqggJbR8"
         ]
       },
       {
@@ -14237,9 +14255,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=nb0wOvtfS8A",
           "https://www.youtube.com/watch?v=4NE-sNPxT9I",
-          "https://www.youtube.com/watch?v=8zxfctXIv7w",
+          "https://www.youtube.com/watch?v=AtdeeRifkHE",
           "https://www.youtube.com/watch?v=BNBaVXfpkP0",
-          "https://www.youtube.com/watch?v=8HUwH4JFPKE"
+          "https://www.youtube.com/watch?v=8zxfctXIv7w"
         ]
       },
       {
@@ -14499,8 +14517,8 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=jieiLeQPKHs",
           "https://www.youtube.com/watch?v=8SEJIUHQzeg",
-          "https://www.youtube.com/watch?v=AErmQ-tMqTA",
           "https://www.youtube.com/watch?v=t4gWofTSFo4",
+          "https://www.youtube.com/watch?v=AErmQ-tMqTA",
           "https://www.youtube.com/watch?v=vtG1I3gbK-E"
         ]
       },
@@ -14678,11 +14696,11 @@
           }
         ],
         "youtubeVideos": [
+          "https://www.youtube.com/watch?v=clZY5UGFE0c",
+          "https://www.youtube.com/watch?v=sraNN4Kp0po",
           "https://www.youtube.com/watch?v=vKp_zz2t8eU",
-          "https://www.youtube.com/watch?v=c7QEX4PkNyc",
-          "https://www.youtube.com/watch?v=TcNUljcCQco",
-          "https://www.youtube.com/watch?v=ozo5U-_CgbM",
-          "https://www.youtube.com/watch?v=ixP_1lQhsvg"
+          "https://www.youtube.com/watch?v=uwAxinoYSFQ",
+          "https://www.youtube.com/watch?v=TcNUljcCQco"
         ]
       },
       {
@@ -14959,10 +14977,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=xgQ-VaxVjB8",
-          "https://www.youtube.com/watch?v=Nltgg_jBoLc",
           "https://www.youtube.com/watch?v=qdUrafvhzZo",
-          "https://www.youtube.com/watch?v=4GYPB2ZE_fM",
-          "https://www.youtube.com/watch?v=TMYELhJfYe0"
+          "https://www.youtube.com/watch?v=Nltgg_jBoLc",
+          "https://www.youtube.com/watch?v=TMYELhJfYe0",
+          "https://www.youtube.com/watch?v=u0F21m_MzPg"
         ]
       },
       {
@@ -15294,9 +15312,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=SEC_z5guD_I",
           "https://www.youtube.com/watch?v=oRjWawBmlDQ",
-          "https://www.youtube.com/watch?v=RoCxUcFxBYA",
           "https://www.youtube.com/watch?v=NGV2rvtsrOg",
-          "https://www.youtube.com/watch?v=SlLZR-pd7D8"
+          "https://www.youtube.com/watch?v=RoCxUcFxBYA",
+          "https://www.youtube.com/watch?v=uu0a79lPL0k"
         ]
       },
       {
@@ -15555,9 +15573,9 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=7arGM3znHFU",
-          "https://www.youtube.com/watch?v=I7YuYW9ulXw",
+          "https://www.youtube.com/watch?v=kCHjxxikrcE",
           "https://www.youtube.com/watch?v=feWqqdV09ZA",
-          "https://www.youtube.com/watch?v=Y1OjYaDsQbw",
+          "https://www.youtube.com/watch?v=sd0Vy7kKU40",
           "https://www.youtube.com/watch?v=Ob9vcaAlnxk"
         ]
       }
@@ -15842,7 +15860,7 @@
           "https://www.youtube.com/watch?v=Le54YxyKekQ",
           "https://www.youtube.com/watch?v=9fUv8IiZ1To",
           "https://www.youtube.com/watch?v=nxFJlyGLdJ8",
-          "https://www.youtube.com/watch?v=h9oj6HEdZSI",
+          "https://www.youtube.com/watch?v=HFozJmSOiiQ",
           "https://www.youtube.com/watch?v=AE2LqYywMms"
         ]
       },
@@ -16534,11 +16552,11 @@
           }
         ],
         "youtubeVideos": [
+          "https://www.youtube.com/watch?v=hKuuETqGfDI",
           "https://www.youtube.com/watch?v=36b-wcje0gE",
           "https://www.youtube.com/watch?v=5sX_HzPNPoM",
           "https://www.youtube.com/watch?v=x3JzaGtj2B0",
-          "https://www.youtube.com/watch?v=Ig1uEluqs2s",
-          "https://www.youtube.com/watch?v=EBbKU3F7SoA"
+          "https://www.youtube.com/watch?v=qDSdudtsz1A"
         ]
       },
       {
@@ -16845,7 +16863,7 @@
           "https://www.youtube.com/watch?v=solphxML3FQ",
           "https://www.youtube.com/watch?v=yo4TbB57xWk",
           "https://www.youtube.com/watch?v=GoUjizSdLEw",
-          "https://www.youtube.com/watch?v=mx-QZcBhZZM"
+          "https://www.youtube.com/watch?v=xBcAMpDNzpI"
         ]
       },
       {
@@ -17176,8 +17194,8 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=AgoyvEWTRfA",
-          "https://www.youtube.com/watch?v=BCOy-PG8EIw",
           "https://www.youtube.com/watch?v=KTiZcnzUj6s",
+          "https://www.youtube.com/watch?v=BCOy-PG8EIw",
           "https://www.youtube.com/watch?v=mx-QZcBhZZM",
           "https://www.youtube.com/watch?v=orizekcl6BQ"
         ]
@@ -17564,10 +17582,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=8hV0koGoFEI",
-          "https://www.youtube.com/watch?v=vInofmlPu3w",
           "https://www.youtube.com/watch?v=GoUjizSdLEw",
-          "https://www.youtube.com/watch?v=zhC7KhFk49M",
-          "https://www.youtube.com/watch?v=KTiZcnzUj6s"
+          "https://www.youtube.com/watch?v=vInofmlPu3w",
+          "https://www.youtube.com/watch?v=KTiZcnzUj6s",
+          "https://www.youtube.com/watch?v=zhC7KhFk49M"
         ]
       },
       {
@@ -17915,11 +17933,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=YbhMMOnTeMo",
           "https://www.youtube.com/watch?v=mr64Pu9LZ7A",
+          "https://www.youtube.com/watch?v=YbhMMOnTeMo",
+          "https://www.youtube.com/watch?v=i63lQUwPVz8",
           "https://www.youtube.com/watch?v=NNg2zAp5SMY",
-          "https://www.youtube.com/watch?v=K17mB3Zzp5g",
-          "https://www.youtube.com/watch?v=ohgMDvJtY_M"
+          "https://www.youtube.com/watch?v=K17mB3Zzp5g"
         ]
       },
       {
@@ -18199,7 +18217,7 @@
           "https://www.youtube.com/watch?v=BOAIEqdFOf0",
           "https://www.youtube.com/watch?v=gcqy4HsW2Nc",
           "https://www.youtube.com/watch?v=f1A8zOjjJ14",
-          "https://www.youtube.com/watch?v=dtlX6rUgRSQ"
+          "https://www.youtube.com/watch?v=fhAjllT-IyQ"
         ]
       },
       {
@@ -18460,8 +18478,8 @@
           "https://www.youtube.com/watch?v=X82ClCsaAKs",
           "https://www.youtube.com/watch?v=qbkxVD6GVu8",
           "https://www.youtube.com/watch?v=b0hTuJdncKc",
-          "https://www.youtube.com/watch?v=h8c0ajPiCe4",
-          "https://www.youtube.com/watch?v=io8O_Q-MFFw"
+          "https://www.youtube.com/watch?v=io8O_Q-MFFw",
+          "https://www.youtube.com/watch?v=t-7n9dUz63s"
         ]
       },
       {
@@ -19021,7 +19039,7 @@
           "https://www.youtube.com/watch?v=thLRmHbecN0",
           "https://www.youtube.com/watch?v=20Z1LaitTMg",
           "https://www.youtube.com/watch?v=zJY9-oPPp6M",
-          "https://www.youtube.com/watch?v=mP5d3mLrsig"
+          "https://www.youtube.com/watch?v=iYbLWKRl-dk"
         ]
       },
       {
@@ -19517,7 +19535,7 @@
           "https://www.youtube.com/watch?v=36b-wcje0gE",
           "https://www.youtube.com/watch?v=zhC7KhFk49M",
           "https://www.youtube.com/watch?v=yo4TbB57xWk",
-          "https://www.youtube.com/watch?v=K50CfyCAlzM",
+          "https://www.youtube.com/watch?v=ZErFkcNpqsw",
           "https://www.youtube.com/watch?v=GOc61SVIMmA"
         ]
       },
@@ -19528,9 +19546,9 @@
         "country": "France",
         "age": 29,
         "height": 180,
-        "wins": 13,
+        "wins": 14,
         "winKo": 4,
-        "winSub": 9,
+        "winSub": 10,
         "winDec": 0,
         "winOth": 0,
         "losses": 3,
@@ -19540,6 +19558,15 @@
         "lossesOth": 0,
         "noContest": 1,
         "fightHistory": [
+          {
+            "result": "win",
+            "opponent": "Kyle Prepolec",
+            "eventName": "UFC 315 - Muhammad vs. Della Maddalena",
+            "date": "10-05-2025",
+            "method": "Submission (Arm-Triangle Choke)",
+            "round": 2,
+            "time": "2:35"
+          },
           {
             "result": "loss",
             "opponent": "Renato Carneiro",
@@ -19698,8 +19725,8 @@
           "https://www.youtube.com/watch?v=8hV0koGoFEI",
           "https://www.youtube.com/watch?v=UqZBqP1hYUI",
           "https://www.youtube.com/watch?v=mP5d3mLrsig",
-          "https://www.youtube.com/watch?v=XvUaIhHnwHM",
-          "https://www.youtube.com/watch?v=Huq0wmpG6VY"
+          "https://www.youtube.com/watch?v=BuAKQ1dpD4s",
+          "https://www.youtube.com/watch?v=e4UtCpkdXug"
         ]
       },
       {
@@ -19959,9 +19986,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=Wol5B2nfuoQ",
           "https://www.youtube.com/watch?v=63pSQ1Rb5d8",
-          "https://www.youtube.com/watch?v=i1PmIUDfOog",
           "https://www.youtube.com/watch?v=1H1i0hum7EA",
-          "https://www.youtube.com/watch?v=SSNCt36GcHk"
+          "https://www.youtube.com/watch?v=SSNCt36GcHk",
+          "https://www.youtube.com/watch?v=cxhkl2MRZ30"
         ]
       },
       {
@@ -20526,7 +20553,7 @@
           "https://www.youtube.com/watch?v=h9oj6HEdZSI",
           "https://www.youtube.com/watch?v=9fUv8IiZ1To",
           "https://www.youtube.com/watch?v=OhB4IPuwdgQ",
-          "https://www.youtube.com/watch?v=YvBsc58rnR4"
+          "https://www.youtube.com/watch?v=vE-Vu1EA94A"
         ]
       },
       {
@@ -20857,8 +20884,8 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=AgoyvEWTRfA",
-          "https://www.youtube.com/watch?v=KTiZcnzUj6s",
           "https://www.youtube.com/watch?v=BCOy-PG8EIw",
+          "https://www.youtube.com/watch?v=KTiZcnzUj6s",
           "https://www.youtube.com/watch?v=mx-QZcBhZZM",
           "https://www.youtube.com/watch?v=orizekcl6BQ"
         ]
@@ -21185,7 +21212,7 @@
           "https://www.youtube.com/watch?v=x0T1aq6kvrc",
           "https://www.youtube.com/watch?v=5eA7xNFwdMQ",
           "https://www.youtube.com/watch?v=7qdZbPjU0Zo",
-          "https://www.youtube.com/watch?v=oFaBKkBEuw0"
+          "https://www.youtube.com/watch?v=PP_r0elBHfk"
         ]
       },
       {
@@ -21353,210 +21380,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=MswUiwOftB4",
           "https://www.youtube.com/watch?v=rywBpVIzGy0",
+          "https://www.youtube.com/watch?v=MswUiwOftB4",
           "https://www.youtube.com/watch?v=TX0KzTg99F0",
-          "https://www.youtube.com/watch?v=wRRBAGmJxx4",
+          "https://www.youtube.com/watch?v=hKuuETqGfDI",
           "https://www.youtube.com/watch?v=cZF7yHwluUc"
-        ]
-      },
-      {
-        "ranking": 4,
-        "name": "Movsar Evloev",
-        "nickname": "",
-        "country": "Russia",
-        "age": 31,
-        "height": 172,
-        "wins": 19,
-        "winKo": 3,
-        "winSub": 4,
-        "winDec": 12,
-        "winOth": 0,
-        "losses": 0,
-        "lossesKo": 0,
-        "lossesSub": 0,
-        "lossesDec": 0,
-        "lossesOth": 0,
-        "noContest": 0,
-        "fightHistory": [
-          {
-            "result": "win",
-            "opponent": "Aljamain Sterling",
-            "eventName": "UFC 310 - Pantoja vs. Asakura",
-            "date": "07-12-2024",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Arnold Allen",
-            "eventName": "UFC 297 - Strickland vs. Du Plessis",
-            "date": "20-01-2024",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Diego Lopes",
-            "eventName": "UFC 288 - Sterling vs. Cejudo",
-            "date": "06-05-2023",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Dan Ige",
-            "eventName": "UFC Fight Night 207 - Volkov vs. Rozenstruik",
-            "date": "04-06-2022",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Hakeem Dawodu",
-            "eventName": "UFC 263 - Adesanya vs. Vettori 2",
-            "date": "12-06-2021",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Nik Lentz",
-            "eventName": "UFC 257 - Poirier vs. McGregor 2",
-            "date": "23-01-2021",
-            "method": "Decision (Split)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Mike Grundy",
-            "eventName": "UFC on ESPN 14 - Whittaker vs. Till",
-            "date": "25-07-2020",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Enrique Barzola",
-            "eventName": "UFC Fight Night 162 - Maia vs. Askren",
-            "date": "26-10-2019",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Seung Woo Choi",
-            "eventName": "UFC Fight Night 149 - Overeem vs. Oleynik",
-            "date": "20-04-2019",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Rafael Dias",
-            "eventName": "M-1 Challenge 95 - Battle in the Mountains 7",
-            "date": "21-07-2018",
-            "method": "KO (Punch)",
-            "round": 5,
-            "time": "0:21"
-          },
-          {
-            "result": "win",
-            "opponent": "Sergey Morozov",
-            "eventName": "M-1 Challenge 88 - Ismagulov vs. Tutarauli",
-            "date": "22-02-2018",
-            "method": "Technical Submission (Rear-Naked Choke)",
-            "round": 3,
-            "time": "3:47"
-          },
-          {
-            "result": "win",
-            "opponent": "Pavel Vitruk",
-            "eventName": "M-1 Challenge 81 - Battle in the Mountains 6",
-            "date": "22-07-2017",
-            "method": "Decision (Unanimous)",
-            "round": 5,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Alexey Nevzorov",
-            "eventName": "M-1 Challenge 76 - Nevzorov vs. Evloev",
-            "date": "22-04-2017",
-            "method": "KO (Head Kick)",
-            "round": 2,
-            "time": "2:15"
-          },
-          {
-            "result": "win",
-            "opponent": "Lee Morrison",
-            "eventName": "M-1 Challenge 73 - Battle of Narts",
-            "date": "09-12-2016",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Aleksander Krupenkin",
-            "eventName": "M-1 Challenge 66 - Nemkov vs. Yusupov",
-            "date": "27-05-2016",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "4:09"
-          },
-          {
-            "result": "win",
-            "opponent": "Djulustan Akimov",
-            "eventName": "M-1 Global - Road to M-1: Battle in Nazran 3",
-            "date": "07-05-2016",
-            "method": "Submission (Rear-Naked Choke)",
-            "round": 2,
-            "time": "2:01"
-          },
-          {
-            "result": "win",
-            "opponent": "Andrey Syrovatkin",
-            "eventName": "M-1 Global - Road to M-1: Battle in Nazran",
-            "date": "12-12-2015",
-            "method": "Submission (Rear-Naked Choke)",
-            "round": 1,
-            "time": "1:44"
-          },
-          {
-            "result": "win",
-            "opponent": "Zhenhong Lu",
-            "eventName": "M-1 Challenge 58 - Battle in the Mountains 4",
-            "date": "06-06-2015",
-            "method": "Decision (Unanimous)",
-            "round": 2,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Jianwei He",
-            "eventName": "M-1 Challenge 53 - Battle in the Celestial Empire",
-            "date": "25-11-2014",
-            "method": "Submission (Rear-Naked Choke)",
-            "round": 2,
-            "time": "2:56"
-          }
-        ],
-        "youtubeVideos": [
-          "https://www.youtube.com/watch?v=A5IpkoL0JCQ",
-          "https://www.youtube.com/watch?v=7kVwER90OMQ",
-          "https://www.youtube.com/watch?v=lrCd0wk6szs",
-          "https://www.youtube.com/watch?v=oFaBKkBEuw0",
-          "https://www.youtube.com/watch?v=CC1_0kUT3VI"
         ]
       },
       {
@@ -21814,11 +21642,210 @@
           }
         ],
         "youtubeVideos": [
+          "https://www.youtube.com/watch?v=i63lQUwPVz8",
           "https://www.youtube.com/watch?v=AOT4pqtAnrM",
           "https://www.youtube.com/watch?v=W4-LEgjxokI",
           "https://www.youtube.com/watch?v=wUWpEDRGg8Y",
-          "https://www.youtube.com/watch?v=OhB4IPuwdgQ",
-          "https://www.youtube.com/watch?v=DwtJROlZU68"
+          "https://www.youtube.com/watch?v=OhB4IPuwdgQ"
+        ]
+      },
+      {
+        "ranking": 4,
+        "name": "Movsar Evloev",
+        "nickname": "",
+        "country": "Russia",
+        "age": 31,
+        "height": 172,
+        "wins": 19,
+        "winKo": 3,
+        "winSub": 4,
+        "winDec": 12,
+        "winOth": 0,
+        "losses": 0,
+        "lossesKo": 0,
+        "lossesSub": 0,
+        "lossesDec": 0,
+        "lossesOth": 0,
+        "noContest": 0,
+        "fightHistory": [
+          {
+            "result": "win",
+            "opponent": "Aljamain Sterling",
+            "eventName": "UFC 310 - Pantoja vs. Asakura",
+            "date": "07-12-2024",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Arnold Allen",
+            "eventName": "UFC 297 - Strickland vs. Du Plessis",
+            "date": "20-01-2024",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Diego Lopes",
+            "eventName": "UFC 288 - Sterling vs. Cejudo",
+            "date": "06-05-2023",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Dan Ige",
+            "eventName": "UFC Fight Night 207 - Volkov vs. Rozenstruik",
+            "date": "04-06-2022",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Hakeem Dawodu",
+            "eventName": "UFC 263 - Adesanya vs. Vettori 2",
+            "date": "12-06-2021",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Nik Lentz",
+            "eventName": "UFC 257 - Poirier vs. McGregor 2",
+            "date": "23-01-2021",
+            "method": "Decision (Split)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Mike Grundy",
+            "eventName": "UFC on ESPN 14 - Whittaker vs. Till",
+            "date": "25-07-2020",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Enrique Barzola",
+            "eventName": "UFC Fight Night 162 - Maia vs. Askren",
+            "date": "26-10-2019",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Seung Woo Choi",
+            "eventName": "UFC Fight Night 149 - Overeem vs. Oleynik",
+            "date": "20-04-2019",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Rafael Dias",
+            "eventName": "M-1 Challenge 95 - Battle in the Mountains 7",
+            "date": "21-07-2018",
+            "method": "KO (Punch)",
+            "round": 5,
+            "time": "0:21"
+          },
+          {
+            "result": "win",
+            "opponent": "Sergey Morozov",
+            "eventName": "M-1 Challenge 88 - Ismagulov vs. Tutarauli",
+            "date": "22-02-2018",
+            "method": "Technical Submission (Rear-Naked Choke)",
+            "round": 3,
+            "time": "3:47"
+          },
+          {
+            "result": "win",
+            "opponent": "Pavel Vitruk",
+            "eventName": "M-1 Challenge 81 - Battle in the Mountains 6",
+            "date": "22-07-2017",
+            "method": "Decision (Unanimous)",
+            "round": 5,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Alexey Nevzorov",
+            "eventName": "M-1 Challenge 76 - Nevzorov vs. Evloev",
+            "date": "22-04-2017",
+            "method": "KO (Head Kick)",
+            "round": 2,
+            "time": "2:15"
+          },
+          {
+            "result": "win",
+            "opponent": "Lee Morrison",
+            "eventName": "M-1 Challenge 73 - Battle of Narts",
+            "date": "09-12-2016",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Aleksander Krupenkin",
+            "eventName": "M-1 Challenge 66 - Nemkov vs. Yusupov",
+            "date": "27-05-2016",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "4:09"
+          },
+          {
+            "result": "win",
+            "opponent": "Djulustan Akimov",
+            "eventName": "M-1 Global - Road to M-1: Battle in Nazran 3",
+            "date": "07-05-2016",
+            "method": "Submission (Rear-Naked Choke)",
+            "round": 2,
+            "time": "2:01"
+          },
+          {
+            "result": "win",
+            "opponent": "Andrey Syrovatkin",
+            "eventName": "M-1 Global - Road to M-1: Battle in Nazran",
+            "date": "12-12-2015",
+            "method": "Submission (Rear-Naked Choke)",
+            "round": 1,
+            "time": "1:44"
+          },
+          {
+            "result": "win",
+            "opponent": "Zhenhong Lu",
+            "eventName": "M-1 Challenge 58 - Battle in the Mountains 4",
+            "date": "06-06-2015",
+            "method": "Decision (Unanimous)",
+            "round": 2,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Jianwei He",
+            "eventName": "M-1 Challenge 53 - Battle in the Celestial Empire",
+            "date": "25-11-2014",
+            "method": "Submission (Rear-Naked Choke)",
+            "round": 2,
+            "time": "2:56"
+          }
+        ],
+        "youtubeVideos": [
+          "https://www.youtube.com/watch?v=A5IpkoL0JCQ",
+          "https://www.youtube.com/watch?v=7kVwER90OMQ",
+          "https://www.youtube.com/watch?v=lrCd0wk6szs",
+          "https://www.youtube.com/watch?v=oFaBKkBEuw0",
+          "https://www.youtube.com/watch?v=CC1_0kUT3VI"
         ]
       },
       {
@@ -22267,10 +22294,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=AgoyvEWTRfA",
-          "https://www.youtube.com/watch?v=Uo1mcul8Yqc",
           "https://www.youtube.com/watch?v=lwAQDIwMy7M",
+          "https://www.youtube.com/watch?v=ZyQYQdBN7aM",
           "https://www.youtube.com/watch?v=ZRY6tDgYj5E",
-          "https://www.youtube.com/watch?v=ZyQYQdBN7aM"
+          "https://www.youtube.com/watch?v=Uo1mcul8Yqc"
         ]
       },
       {
@@ -22737,10 +22764,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=ye2gmhJa0xc",
-          "https://www.youtube.com/watch?v=AbKfrd7stG8",
           "https://www.youtube.com/watch?v=n82e_lo9RRM",
+          "https://www.youtube.com/watch?v=AbKfrd7stG8",
           "https://www.youtube.com/watch?v=I6WajDmm3yk",
-          "https://www.youtube.com/watch?v=JvjdFPwTlMo"
+          "https://www.youtube.com/watch?v=lrCd0wk6szs"
         ]
       },
       {
@@ -22983,8 +23010,8 @@
           "https://www.youtube.com/watch?v=AOT4pqtAnrM",
           "https://www.youtube.com/watch?v=MswUiwOftB4",
           "https://www.youtube.com/watch?v=4kLgGsKW2n8",
-          "https://www.youtube.com/watch?v=gzmQDYFQIgQ",
-          "https://www.youtube.com/watch?v=XocZBxB0H80"
+          "https://www.youtube.com/watch?v=XocZBxB0H80",
+          "https://www.youtube.com/watch?v=gzmQDYFQIgQ"
         ]
       },
       {
@@ -23170,8 +23197,8 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=tHxcbcaNzvk",
           "https://www.youtube.com/watch?v=iqXdUgp4cj8",
+          "https://www.youtube.com/watch?v=tHxcbcaNzvk",
           "https://www.youtube.com/watch?v=MhzIKJJBxI8",
           "https://www.youtube.com/watch?v=Fa35Ohzy1tw",
           "https://www.youtube.com/watch?v=GQAMl9uJIzI"
@@ -23409,7 +23436,7 @@
           "https://www.youtube.com/watch?v=lROzJMj9oU4",
           "https://www.youtube.com/watch?v=yekiRWMlzFc",
           "https://www.youtube.com/watch?v=Xz9Ct2zRj7Q",
-          "https://www.youtube.com/watch?v=0zfxMaO9Z8A"
+          "https://www.youtube.com/watch?v=J713Gjr2gwQ"
         ]
       },
       {
@@ -23579,9 +23606,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=BoYAdIvchRg",
           "https://www.youtube.com/watch?v=I7fCPLMZXgs",
-          "https://www.youtube.com/watch?v=2bSFWyk5ZUw",
-          "https://www.youtube.com/watch?v=o_cgtO7xwsY",
-          "https://www.youtube.com/watch?v=6XfUPX416lg"
+          "https://www.youtube.com/watch?v=6XfUPX416lg",
+          "https://www.youtube.com/watch?v=VIbIpZt4HLM",
+          "https://www.youtube.com/watch?v=o_cgtO7xwsY"
         ]
       },
       {
@@ -24173,10 +24200,10 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=IwgdpPUbr94",
           "https://www.youtube.com/watch?v=ShdXuZZJ0Ys",
+          "https://www.youtube.com/watch?v=IwgdpPUbr94",
           "https://www.youtube.com/watch?v=Ibcu7CFnogI",
-          "https://www.youtube.com/watch?v=SxqQjbGG50w",
+          "https://www.youtube.com/watch?v=AbKfrd7stG8",
           "https://www.youtube.com/watch?v=-xQPxPoS9uE"
         ]
       }
@@ -24415,9 +24442,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=EV3CyO-2xGU",
           "https://www.youtube.com/watch?v=MhwAZPim9L8",
+          "https://www.youtube.com/watch?v=5U0-Hq14XFI",
           "https://www.youtube.com/watch?v=PZx3NTf8Ov0",
-          "https://www.youtube.com/watch?v=Xm6_d14IYFc",
-          "https://www.youtube.com/watch?v=c_XAkL_AFKs"
+          "https://www.youtube.com/watch?v=Xm6_d14IYFc"
         ]
       },
       {
@@ -24632,8 +24659,8 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=_l--9VGl9js",
           "https://www.youtube.com/watch?v=BVztNzi5zNw",
+          "https://www.youtube.com/watch?v=5U0-Hq14XFI",
           "https://www.youtube.com/watch?v=JvjdFPwTlMo",
-          "https://www.youtube.com/watch?v=Xm6_d14IYFc",
           "https://www.youtube.com/watch?v=MhwAZPim9L8"
         ]
       },
@@ -24867,8 +24894,8 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=xZRZS39JcJM",
           "https://www.youtube.com/watch?v=CNfdnJSvoTo",
-          "https://www.youtube.com/watch?v=BVztNzi5zNw",
           "https://www.youtube.com/watch?v=NoUgE47JMGE",
+          "https://www.youtube.com/watch?v=BVztNzi5zNw",
           "https://www.youtube.com/watch?v=GQ356ssY2QY"
         ]
       },
@@ -25065,8 +25092,8 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=Btl2M66gJCw",
-          "https://www.youtube.com/watch?v=nKDvJMgOmqs",
           "https://www.youtube.com/watch?v=GOmQsCGR71g",
+          "https://www.youtube.com/watch?v=nKDvJMgOmqs",
           "https://www.youtube.com/watch?v=AEkDQxTF_OI",
           "https://www.youtube.com/watch?v=BySA657_Ilc"
         ]
@@ -25299,8 +25326,8 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=HuYDJieZSQk",
           "https://www.youtube.com/watch?v=VAneP_gANP4",
+          "https://www.youtube.com/watch?v=HuYDJieZSQk",
           "https://www.youtube.com/watch?v=HfMHWjsIxkQ",
           "https://www.youtube.com/watch?v=CNfdnJSvoTo",
           "https://www.youtube.com/watch?v=0pB24Hu51Tg"
@@ -25618,8 +25645,8 @@
           "https://www.youtube.com/watch?v=xZRZS39JcJM",
           "https://www.youtube.com/watch?v=ZPZeHejRsps",
           "https://www.youtube.com/watch?v=HfMHWjsIxkQ",
-          "https://www.youtube.com/watch?v=F_9SK-vWOSc",
-          "https://www.youtube.com/watch?v=VOX6QoHpjug"
+          "https://www.youtube.com/watch?v=VOX6QoHpjug",
+          "https://www.youtube.com/watch?v=F_9SK-vWOSc"
         ]
       },
       {
@@ -25913,11 +25940,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=DLz1ecKdMhk",
-          "https://www.youtube.com/watch?v=-cEEbLnvPGs",
           "https://www.youtube.com/watch?v=_DH08VSlPc8",
-          "https://www.youtube.com/watch?v=Ar_gcUxPvmY",
-          "https://www.youtube.com/watch?v=SLD3EsDGvEI"
+          "https://www.youtube.com/watch?v=SLD3EsDGvEI",
+          "https://www.youtube.com/watch?v=-cEEbLnvPGs",
+          "https://www.youtube.com/watch?v=yjsPE8p4qsE",
+          "https://www.youtube.com/watch?v=V2deRLnXetw"
         ]
       },
       {
@@ -26545,11 +26572,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=IJEuA7hDlHg",
           "https://www.youtube.com/watch?v=J09eYMZyofE",
           "https://www.youtube.com/watch?v=2_OvI_vjxRE",
           "https://www.youtube.com/watch?v=Msl8BsaUSwI",
-          "https://www.youtube.com/watch?v=zjozaTXGJzc"
+          "https://www.youtube.com/watch?v=zjozaTXGJzc",
+          "https://www.youtube.com/watch?v=Wiyqk9Kt8sk"
         ]
       },
       {
@@ -26765,7 +26792,7 @@
           "https://www.youtube.com/watch?v=ye2gmhJa0xc",
           "https://www.youtube.com/watch?v=F1XkBmAvmsA",
           "https://www.youtube.com/watch?v=NRaNGzXF7y4",
-          "https://www.youtube.com/watch?v=g9jbSZ2MssY",
+          "https://www.youtube.com/watch?v=EV3CyO-2xGU",
           "https://www.youtube.com/watch?v=Cpujg52kBU0"
         ]
       },
@@ -26945,406 +26972,172 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=nBJ-Awj9ZhM",
           "https://www.youtube.com/watch?v=e-VBPS-XFmY",
+          "https://www.youtube.com/watch?v=B75L3a8OnGo",
           "https://www.youtube.com/watch?v=1CqgCm8Nu0g",
-          "https://www.youtube.com/watch?v=AMbc7T7bs_g",
-          "https://www.youtube.com/watch?v=B75L3a8OnGo"
+          "https://www.youtube.com/watch?v=AMbc7T7bs_g"
         ]
       },
       {
         "ranking": 11,
-        "name": "Jose Aldo",
-        "nickname": "Junior",
-        "country": "Brazil",
-        "age": 38,
-        "height": 170,
-        "wins": 32,
-        "winKo": 17,
-        "winSub": 1,
-        "winDec": 14,
+        "name": "Aiemann Zahabi",
+        "nickname": "",
+        "country": "Canada",
+        "age": 37,
+        "height": 172,
+        "wins": 13,
+        "winKo": 6,
+        "winSub": 2,
+        "winDec": 5,
         "winOth": 0,
-        "losses": 9,
-        "lossesKo": 4,
-        "lossesSub": 1,
-        "lossesDec": 4,
+        "losses": 2,
+        "lossesKo": 1,
+        "lossesSub": 0,
+        "lossesDec": 1,
         "lossesOth": 0,
         "noContest": 0,
         "fightHistory": [
           {
-            "result": "loss",
-            "opponent": "Mario Bautista",
-            "eventName": "UFC 307 - Pereira vs. Rountree",
-            "date": "05-10-2024",
-            "method": "Decision (Split)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
             "result": "win",
-            "opponent": "Jonathan Martinez",
-            "eventName": "UFC 301 - Pantoja vs. Erceg",
-            "date": "04-05-2024",
+            "opponent": "Jose Aldo",
+            "eventName": "UFC 315 - Muhammad vs. Della Maddalena",
+            "date": "10-05-2025",
             "method": "Decision (Unanimous)",
             "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "loss",
-            "opponent": "Merab Dvalishvili",
-            "eventName": "UFC 278 - Usman vs. Edwards 2",
-            "date": "20-08-2022",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Rob Font",
-            "eventName": "UFC on ESPN 31 - Font vs. Aldo",
-            "date": "04-12-2021",
-            "method": "Decision (Unanimous)",
-            "round": 5,
             "time": "5:00"
           },
           {
             "result": "win",
             "opponent": "Pedro Munhoz",
-            "eventName": "UFC 265 - Lewis vs. Gane",
-            "date": "07-08-2021",
+            "eventName": "UFC Fight Night 246 - Moreno vs. Albazi",
+            "date": "02-11-2024",
             "method": "Decision (Unanimous)",
             "round": 3,
             "time": "5:00"
           },
           {
             "result": "win",
-            "opponent": "Marlon Vera",
-            "eventName": "UFC Fight Night 183 - Thompson vs. Neal",
-            "date": "19-12-2020",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "loss",
-            "opponent": "Petr Yan",
-            "eventName": "UFC 251 - Usman vs. Masvidal",
-            "date": "11-07-2020",
-            "method": "TKO (Punches)",
-            "round": 5,
-            "time": "3:24"
-          },
-          {
-            "result": "loss",
-            "opponent": "Marlon Moraes",
-            "eventName": "UFC 245 - Usman vs. Covington",
-            "date": "14-12-2019",
-            "method": "Decision (Split)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "loss",
-            "opponent": "Alexander Volkanovski",
-            "eventName": "UFC 237 - Namajunas vs. Andrade",
-            "date": "11-05-2019",
+            "opponent": "Javid Basharat",
+            "eventName": "UFC Fight Night 238 - Rozenstruik vs. Gaziev",
+            "date": "02-03-2024",
             "method": "Decision (Unanimous)",
             "round": 3,
             "time": "5:00"
           },
           {
             "result": "win",
-            "opponent": "Renato Carneiro",
-            "eventName": "UFC Fight Night 144 - Assuncao vs. Moraes 2",
-            "date": "02-02-2019",
-            "method": "TKO (Punches)",
-            "round": 2,
-            "time": "0:44"
-          },
-          {
-            "result": "win",
-            "opponent": "Jeremy Stephens",
-            "eventName": "UFC on Fox 30 - Alvarez vs. Poirier 2",
-            "date": "28-07-2018",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "4:19"
-          },
-          {
-            "result": "loss",
-            "opponent": "Max Holloway",
-            "eventName": "UFC 218 - Holloway vs. Aldo 2",
-            "date": "02-12-2017",
-            "method": "TKO (Punches)",
-            "round": 3,
-            "time": "4:51"
-          },
-          {
-            "result": "loss",
-            "opponent": "Max Holloway",
-            "eventName": "UFC 212 - Aldo vs. Holloway",
-            "date": "03-06-2017",
-            "method": "TKO (Punches)",
-            "round": 3,
-            "time": "4:13"
-          },
-          {
-            "result": "win",
-            "opponent": "Frankie Edgar",
-            "eventName": "UFC 200 - Tate vs. Nunes",
-            "date": "09-07-2016",
-            "method": "Decision (Unanimous)",
-            "round": 5,
-            "time": "5:00"
-          },
-          {
-            "result": "loss",
-            "opponent": "Conor McGregor",
-            "eventName": "UFC 194 - Aldo vs. McGregor",
-            "date": "12-12-2015",
-            "method": "KO (Punch)",
-            "round": 1,
-            "time": "0:13"
-          },
-          {
-            "result": "win",
-            "opponent": "Chad Mendes",
-            "eventName": "UFC 179 - Aldo vs. Mendes 2",
-            "date": "25-10-2014",
-            "method": "Decision (Unanimous)",
-            "round": 5,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Ricardo Lamas",
-            "eventName": "UFC 169 - Barao vs. Faber 2",
-            "date": "01-02-2014",
-            "method": "Decision (Unanimous)",
-            "round": 5,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Chan Sung Jung",
-            "eventName": "UFC 163 - Aldo vs. Korean Zombie",
-            "date": "03-08-2013",
-            "method": "TKO (Punches)",
-            "round": 4,
-            "time": "2:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Frankie Edgar",
-            "eventName": "UFC 156 - Aldo vs. Edgar",
-            "date": "02-02-2013",
-            "method": "Decision (Unanimous)",
-            "round": 5,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Chad Mendes",
-            "eventName": "UFC 142 - Aldo vs. Mendes",
-            "date": "14-01-2012",
-            "method": "KO (Knee)",
-            "round": 1,
-            "time": "4:59"
-          },
-          {
-            "result": "win",
-            "opponent": "Kenny Florian",
-            "eventName": "UFC 136 - Edgar vs. Maynard 3",
-            "date": "08-10-2011",
-            "method": "Decision (Unanimous)",
-            "round": 5,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Mark Hominick",
-            "eventName": "UFC 129 - St. Pierre vs. Shields",
-            "date": "30-04-2011",
-            "method": "Decision (Unanimous)",
-            "round": 5,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Manny Gamburyan",
-            "eventName": "WEC 51 - Aldo vs. Gamburyan",
-            "date": "30-09-2010",
+            "opponent": "Qileng Aori",
+            "eventName": "UFC 289 - Nunes vs. Aldana",
+            "date": "10-06-2023",
             "method": "KO (Punches)",
-            "round": 2,
-            "time": "1:32"
-          },
-          {
-            "result": "win",
-            "opponent": "Urijah Faber",
-            "eventName": "WEC 48 - Aldo vs. Faber",
-            "date": "24-04-2010",
-            "method": "Decision (Unanimous)",
-            "round": 5,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Mike Thomas Brown",
-            "eventName": "WEC 44 - Brown vs. Aldo",
-            "date": "18-11-2009",
-            "method": "TKO (Punches)",
-            "round": 2,
-            "time": "1:20"
-          },
-          {
-            "result": "win",
-            "opponent": "Cub Swanson",
-            "eventName": "WEC 41 - Brown vs. Faber 2",
-            "date": "07-06-2009",
-            "method": "TKO (Flying Knee and Punches)",
             "round": 1,
-            "time": "0:08"
+            "time": "1:04"
           },
           {
             "result": "win",
-            "opponent": "Chris Mickle",
-            "eventName": "WEC 39 - Brown vs. Garcia",
-            "date": "01-03-2009",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "1:39"
-          },
-          {
-            "result": "win",
-            "opponent": "Rolando Perez",
-            "eventName": "WEC 38 - Varner vs. Cerrone",
-            "date": "25-01-2009",
-            "method": "KO (Knee and Punches)",
-            "round": 1,
-            "time": "4:15"
-          },
-          {
-            "result": "win",
-            "opponent": "Jonathan Brookins",
-            "eventName": "WEC 36 - Faber vs. Brown",
-            "date": "05-11-2008",
-            "method": "TKO (Punches)",
-            "round": 3,
-            "time": "0:45"
-          },
-          {
-            "result": "win",
-            "opponent": "Alexandre Franca Nogueira",
-            "eventName": "WEC 34 - Sacramento",
-            "date": "01-06-2008",
-            "method": "TKO (Punches)",
-            "round": 2,
-            "time": "3:22"
-          },
-          {
-            "result": "win",
-            "opponent": "Shoji Maruyama",
-            "eventName": "Pancrase - 2007 Neo-Blood Tournament Finals",
-            "date": "27-07-2007",
+            "opponent": "Ricky Turcios",
+            "eventName": "UFC on ESPN 39 - Dos Anjos vs. Fiziev",
+            "date": "09-07-2022",
             "method": "Decision (Unanimous)",
             "round": 3,
             "time": "5:00"
           },
           {
             "result": "win",
-            "opponent": "Fabio Mello",
-            "eventName": "TFC 3 - Top Fighting Championships 3",
-            "date": "02-05-2007",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
+            "opponent": "Drako Rodriguez",
+            "eventName": "UFC Fight Night 185 - Blaydes vs. Lewis",
+            "date": "20-02-2021",
+            "method": "KO (Punches)",
+            "round": 1,
+            "time": "3:05"
           },
           {
-            "result": "win",
-            "opponent": "Thiago Meller",
-            "eventName": "GFC 1 - Gold Fighters Championship",
-            "date": "20-05-2006",
-            "method": "Decision (Majority)",
+            "result": "loss",
+            "opponent": "Vince Morales",
+            "eventName": "UFC Fight Night 151 - Iaquinta vs. Cowboy",
+            "date": "04-05-2019",
+            "method": "Decision (Unanimous)",
             "round": 3,
             "time": "5:00"
           },
           {
             "result": "loss",
-            "opponent": "Luciano Azevedo",
-            "eventName": "Jungle Fight 5 - Amazonas",
-            "date": "26-11-2005",
-            "method": "Submission (Rear-Naked Choke)",
-            "round": 2,
-            "time": "3:37"
+            "opponent": "Ricardo Ramos",
+            "eventName": "UFC 217 - Bisping vs. St. Pierre",
+            "date": "04-11-2017",
+            "method": "KO (Spinning Back Elbow)",
+            "round": 3,
+            "time": "1:58"
           },
           {
             "result": "win",
-            "opponent": "Micky Young",
-            "eventName": "FX3 - Battle of Britain",
-            "date": "15-10-2005",
-            "method": "TKO (Punches)",
-            "round": 1,
-            "time": "1:05"
-          },
-          {
-            "result": "win",
-            "opponent": "Phil Harris",
-            "eventName": "UK-1 - Fight Night",
-            "date": "17-09-2005",
-            "method": "TKO (Doctor Stoppage)",
-            "round": 1,
-            "time": "0:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Anderson Silverio",
-            "eventName": "Meca 12 - Meca World Vale Tudo 12",
-            "date": "09-07-2005",
-            "method": "TKO (Submission to Soccer Kicks)",
-            "round": 1,
-            "time": "8:33"
-          },
-          {
-            "result": "win",
-            "opponent": "Aritano Silva Barbosa",
-            "eventName": "RMMAC - Rio MMA Challenge 1",
-            "date": "12-05-2005",
-            "method": "KO (Soccer Kicks)",
-            "round": 1,
-            "time": "0:20"
-          },
-          {
-            "result": "win",
-            "opponent": "Luiz de Paula",
-            "eventName": "Shooto Americas - Shooto Brazil 7",
-            "date": "19-03-2005",
-            "method": "Submission (Arm-Triangle Choke)",
-            "round": 1,
-            "time": "1:54"
-          },
-          {
-            "result": "win",
-            "opponent": "Hudson Rocha",
-            "eventName": "Shooto Brazil - Never Shake",
-            "date": "23-10-2004",
-            "method": "TKO (Doctor Stoppage)",
-            "round": 1,
+            "opponent": "Reginaldo Vieira",
+            "eventName": "UFC Fight Night 105 - Lewis vs. Browne",
+            "date": "19-02-2017",
+            "method": "Decision (Unanimous)",
+            "round": 3,
             "time": "5:00"
           },
           {
             "result": "win",
-            "opponent": "Mario Bigola",
-            "eventName": "EFC 1 - Eco Fight Championship 1",
-            "date": "10-08-2004",
-            "method": "KO (Head Kick)",
+            "opponent": "Kyle Oliveira",
+            "eventName": "Prestige FC 2 - Queen City Coronation",
+            "date": "12-03-2016",
+            "method": "TKO (Knee Injury)",
+            "round": 1,
+            "time": "2:17"
+          },
+          {
+            "result": "win",
+            "opponent": "Jeremy Dichiara",
+            "eventName": "Hybrid Combat - Hybrid Pro Series 4",
+            "date": "17-10-2015",
+            "method": "TKO (Punches)",
             "round": 1,
             "time": "0:18"
+          },
+          {
+            "result": "win",
+            "opponent": "Scott Farhat",
+            "eventName": "RMMA - Rivals MMA 1",
+            "date": "13-03-2015",
+            "method": "KO (Punch)",
+            "round": 1,
+            "time": "2:36"
+          },
+          {
+            "result": "win",
+            "opponent": "Wesley Bowman",
+            "eventName": "Hybrid Combat - Hybrid Pro Series 2",
+            "date": "15-11-2014",
+            "method": "Submission (Ankle Lock)",
+            "round": 1,
+            "time": "4:40"
+          },
+          {
+            "result": "win",
+            "opponent": "Phillip Deschambeault",
+            "eventName": "MMAFN - MMA Fight Night 1",
+            "date": "05-03-2014",
+            "method": "Submission (Rear-Naked Choke)",
+            "round": 1,
+            "time": "2:33"
+          },
+          {
+            "result": "win",
+            "opponent": "Kyle Vivian",
+            "eventName": "Slamm 1 - Garcia vs. Lamarche",
+            "date": "30-11-2012",
+            "method": "TKO (Submission to Punches)",
+            "round": 1,
+            "time": "1:28"
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=C9yBpqfhJqI",
-          "https://www.youtube.com/watch?v=K63PJBKuA4U",
-          "https://www.youtube.com/watch?v=btCBlJhNPqw",
-          "https://www.youtube.com/watch?v=VK-IX5oSLic",
-          "https://www.youtube.com/watch?v=AP6TynArDJI"
+          "https://www.youtube.com/watch?v=JYEBRRHVXhs",
+          "https://www.youtube.com/watch?v=DCUBdStUAbw",
+          "https://www.youtube.com/watch?v=r7a1F0hTiMA",
+          "https://www.youtube.com/watch?v=rRcOApcVJi0",
+          "https://www.youtube.com/watch?v=-IdOtMGzzLw"
         ]
       },
       {
@@ -27811,165 +27604,264 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=sWKA26vGZsI",
-          "https://www.youtube.com/watch?v=RWZR4BJHh74",
+          "https://www.youtube.com/watch?v=ZGh3onFgWtg",
           "https://www.youtube.com/watch?v=A8EpzGEmLnI",
-          "https://www.youtube.com/watch?v=S7VLhZUWeDY",
-          "https://www.youtube.com/watch?v=Pzi8UFEWRxI"
+          "https://www.youtube.com/watch?v=sWKA26vGZsI",
+          "https://www.youtube.com/watch?v=-nfl1SLNOVQ",
+          "https://www.youtube.com/watch?v=6Ckui0aTRTc"
         ]
       },
       {
         "ranking": 15,
-        "name": "Aiemann Zahabi",
-        "nickname": "",
-        "country": "Canada",
-        "age": 37,
-        "height": 172,
-        "wins": 12,
-        "winKo": 6,
+        "name": "Vinicius Oliveira",
+        "nickname": "LokDog",
+        "country": "Brazil",
+        "age": 29,
+        "height": 175,
+        "wins": 22,
+        "winKo": 16,
         "winSub": 2,
         "winDec": 4,
         "winOth": 0,
-        "losses": 2,
-        "lossesKo": 1,
+        "losses": 3,
+        "lossesKo": 3,
         "lossesSub": 0,
-        "lossesDec": 1,
+        "lossesDec": 0,
         "lossesOth": 0,
         "noContest": 0,
         "fightHistory": [
           {
             "result": "win",
-            "opponent": "Pedro Munhoz",
-            "eventName": "UFC Fight Night 246 - Moreno vs. Albazi",
-            "date": "02-11-2024",
+            "opponent": "Said Nurmagomedov",
+            "eventName": "UFC Fight Night 250 - Adesanya vs. Imavov",
+            "date": "01-02-2025",
             "method": "Decision (Unanimous)",
             "round": 3,
             "time": "5:00"
           },
           {
             "result": "win",
-            "opponent": "Javid Basharat",
+            "opponent": "Ricky Simon",
+            "eventName": "UFC 303 - Pereira vs. Prochazka 2",
+            "date": "29-06-2024",
+            "method": "Decision (Unanimous)",
+            "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Bernardo Sopai",
             "eventName": "UFC Fight Night 238 - Rozenstruik vs. Gaziev",
             "date": "02-03-2024",
-            "method": "Decision (Unanimous)",
+            "method": "KO (Flying Knee)",
             "round": 3,
-            "time": "5:00"
+            "time": "4:41"
           },
           {
             "result": "win",
-            "opponent": "Qileng Aori",
-            "eventName": "UFC 289 - Nunes vs. Aldana",
-            "date": "10-06-2023",
-            "method": "KO (Punches)",
+            "opponent": "Victor Madrigal",
+            "eventName": "Dana White\u0027s Contender Series - Contender Series 2023: Week 8",
+            "date": "26-09-2023",
+            "method": "KO (Punch)",
             "round": 1,
-            "time": "1:04"
+            "time": "3:02"
           },
           {
             "result": "win",
-            "opponent": "Ricky Turcios",
-            "eventName": "UFC on ESPN 39 - Dos Anjos vs. Fiziev",
-            "date": "09-07-2022",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Drako Rodriguez",
-            "eventName": "UFC Fight Night 185 - Blaydes vs. Lewis",
-            "date": "20-02-2021",
-            "method": "KO (Punches)",
+            "opponent": "Hikaru Yoshino",
+            "eventName": "UAE Warriors 39 - Machaev vs. Olzhabay",
+            "date": "18-03-2023",
+            "method": "TKO (Punches)",
             "round": 1,
-            "time": "3:05"
+            "time": "4:02"
           },
           {
             "result": "loss",
-            "opponent": "Vince Morales",
-            "eventName": "UFC Fight Night 151 - Iaquinta vs. Cowboy",
-            "date": "04-05-2019",
+            "opponent": "Ali Taleb",
+            "eventName": "UAE Warriors - UAE Warriors 30",
+            "date": "02-07-2022",
+            "method": "KO (Punches)",
+            "round": 3,
+            "time": "2:30"
+          },
+          {
+            "result": "win",
+            "opponent": "Sylvester Chipfumbu",
+            "eventName": "UAE Warriors - UAE Warriors 24",
+            "date": "29-10-2021",
+            "method": "Submission (Rear-Naked Choke)",
+            "round": 1,
+            "time": "3:43"
+          },
+          {
+            "result": "win",
+            "opponent": "Xavier Alaoui",
+            "eventName": "UAE Warriors - UAE Warriors 18",
+            "date": "20-03-2021",
+            "method": "TKO (Head Kick and Punches)",
+            "round": 2,
+            "time": "3:42"
+          },
+          {
+            "result": "win",
+            "opponent": "Sultan Zholdoshbek",
+            "eventName": "UAE Warriors - UAE Warriors 15",
+            "date": "15-01-2021",
             "method": "Decision (Unanimous)",
             "round": 3,
             "time": "5:00"
           },
           {
-            "result": "loss",
-            "opponent": "Ricardo Ramos",
-            "eventName": "UFC 217 - Bisping vs. St. Pierre",
-            "date": "04-11-2017",
-            "method": "KO (Spinning Back Elbow)",
+            "result": "win",
+            "opponent": "Furkatbek Yokubov",
+            "eventName": "UAE Warriors - UAE Warriors 14",
+            "date": "27-11-2020",
+            "method": "TKO",
+            "round": 1,
+            "time": "2:11"
+          },
+          {
+            "result": "win",
+            "opponent": "Caiona Batista",
+            "eventName": "Future FC 10 - Furia vs. Godzilla",
+            "date": "06-12-2019",
+            "method": "Decision (Unanimous)",
             "round": 3,
+            "time": "5:00"
+          },
+          {
+            "result": "win",
+            "opponent": "Leo Alves",
+            "eventName": "Future FC 6  - Cado Vs Giacomo",
+            "date": "28-06-2019",
+            "method": "TKO (Punches)",
+            "round": 2,
+            "time": "2:01"
+          },
+          {
+            "result": "loss",
+            "opponent": "Adriano Alberto Silva Ramos",
+            "eventName": "Future FC 1 - Da Costa vs Barbosa",
+            "date": "25-01-2019",
+            "method": "KO (Punch)",
+            "round": 1,
+            "time": "1:36"
+          },
+          {
+            "result": "win",
+            "opponent": "Rubem Barca de Souza",
+            "eventName": "NCE 32 - New Corpore Extreme 32",
+            "date": "08-12-2018",
+            "method": "TKO (Punches)",
+            "round": 2,
+            "time": "2:30"
+          },
+          {
+            "result": "loss",
+            "opponent": "Cristian Quinonez",
+            "eventName": "Combate Americas - Mexico vs. The World",
+            "date": "18-05-2018",
+            "method": "TKO (Doctor Stoppage)",
+            "round": 2,
+            "time": "0:44"
+          },
+          {
+            "result": "win",
+            "opponent": "Leonilson Azevedo",
+            "eventName": "Circuito World Combat - CWC 4: Samurai Edition",
+            "date": "16-12-2017",
+            "method": "TKO (Punches)",
+            "round": 1,
             "time": "1:58"
           },
           {
             "result": "win",
-            "opponent": "Reginaldo Vieira",
-            "eventName": "UFC Fight Night 105 - Lewis vs. Browne",
-            "date": "19-02-2017",
-            "method": "Decision (Unanimous)",
-            "round": 3,
-            "time": "5:00"
-          },
-          {
-            "result": "win",
-            "opponent": "Kyle Oliveira",
-            "eventName": "Prestige FC 2 - Queen City Coronation",
-            "date": "12-03-2016",
-            "method": "TKO (Knee Injury)",
-            "round": 1,
-            "time": "2:17"
-          },
-          {
-            "result": "win",
-            "opponent": "Jeremy Dichiara",
-            "eventName": "Hybrid Combat - Hybrid Pro Series 4",
-            "date": "17-10-2015",
+            "opponent": "Luiz Fernando Correa",
+            "eventName": "TAURA MMA - 1",
+            "date": "16-09-2017",
             "method": "TKO (Punches)",
             "round": 1,
-            "time": "0:18"
+            "time": "2:42"
           },
           {
             "result": "win",
-            "opponent": "Scott Farhat",
-            "eventName": "RMMA - Rivals MMA 1",
-            "date": "13-03-2015",
+            "opponent": "Amauri Carpes",
+            "eventName": "MFN Brazil - Major Fight Night",
+            "date": "05-08-2017",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "N/A"
+          },
+          {
+            "result": "win",
+            "opponent": "Junior Cesar",
+            "eventName": "TAURA MMA - All Champions Fight Tournament",
+            "date": "24-06-2017",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "1:57"
+          },
+          {
+            "result": "win",
+            "opponent": "Tiago dos Santos Ebertz",
+            "eventName": "Jorge Velho Team - JVT Championship 12",
+            "date": "20-05-2017",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "2:39"
+          },
+          {
+            "result": "win",
+            "opponent": "Guilherme Paes Ferreira Santos",
+            "eventName": "Copa do Brasil - Professional The Best Fighter",
+            "date": "18-02-2017",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "1:14"
+          },
+          {
+            "result": "win",
+            "opponent": "Ulisses Cesar Neto Barcellos",
+            "eventName": "BFQ MMA - Beach Fight Quintao",
+            "date": "14-01-2017",
+            "method": "TKO (Punches)",
+            "round": 1,
+            "time": "2:50"
+          },
+          {
+            "result": "win",
+            "opponent": "Michael Antonio Teixeira",
+            "eventName": "Warriors Fighters - 2nd Edition",
+            "date": "12-11-2016",
+            "method": "TKO",
+            "round": 1,
+            "time": "1:19"
+          },
+          {
+            "result": "win",
+            "opponent": "Aleczander Castilhos",
+            "eventName": "X-Fest 9 - X-Fest MMA 9",
+            "date": "11-06-2016",
+            "method": "Submission (Guillotine Choke)",
+            "round": 1,
+            "time": "4:22"
+          },
+          {
+            "result": "win",
+            "opponent": "Michael Antonio Teixeira",
+            "eventName": "BF - Brothers Fighting 2",
+            "date": "19-12-2015",
             "method": "KO (Punch)",
             "round": 1,
-            "time": "2:36"
-          },
-          {
-            "result": "win",
-            "opponent": "Wesley Bowman",
-            "eventName": "Hybrid Combat - Hybrid Pro Series 2",
-            "date": "15-11-2014",
-            "method": "Submission (Ankle Lock)",
-            "round": 1,
-            "time": "4:40"
-          },
-          {
-            "result": "win",
-            "opponent": "Phillip Deschambeault",
-            "eventName": "MMAFN - MMA Fight Night 1",
-            "date": "05-03-2014",
-            "method": "Submission (Rear-Naked Choke)",
-            "round": 1,
-            "time": "2:33"
-          },
-          {
-            "result": "win",
-            "opponent": "Kyle Vivian",
-            "eventName": "Slamm 1 - Garcia vs. Lamarche",
-            "date": "30-11-2012",
-            "method": "TKO (Submission to Punches)",
-            "round": 1,
-            "time": "1:28"
+            "time": "2:00"
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=DCUBdStUAbw",
-          "https://www.youtube.com/watch?v=JYEBRRHVXhs",
-          "https://www.youtube.com/watch?v=xU1d-OQAtkc",
-          "https://www.youtube.com/watch?v=kyYO1EEPu_w",
-          "https://www.youtube.com/watch?v=r8H6IYAMOl0"
+          "https://www.youtube.com/watch?v=iI5wiSFT1e4",
+          "https://www.youtube.com/watch?v=hKuuETqGfDI",
+          "https://www.youtube.com/watch?v=MDp0Odr4t0o",
+          "https://www.youtube.com/watch?v=azJ4cuQy90E",
+          "https://www.youtube.com/watch?v=zSZXsT2ZrjY"
         ]
       }
     ]
@@ -28304,8 +28196,8 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=-cEEbLnvPGs",
           "https://www.youtube.com/watch?v=6pFzL6g13Ro",
+          "https://www.youtube.com/watch?v=-cEEbLnvPGs",
           "https://www.youtube.com/watch?v=7sj-snC5qWk",
           "https://www.youtube.com/watch?v=jcQd9h2Mikg",
           "https://www.youtube.com/watch?v=wBW8IvDkFpI"
@@ -28552,7 +28444,7 @@
           "https://www.youtube.com/watch?v=OwZp8Dya-zo",
           "https://www.youtube.com/watch?v=8YYAxSoXYTM",
           "https://www.youtube.com/watch?v=qzOnXlYe5sM",
-          "https://www.youtube.com/watch?v=G15lKGirHpQ"
+          "https://www.youtube.com/watch?v=-2dLEpSBlbM"
         ]
       },
       {
@@ -28875,9 +28767,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=KA9cN0zOPXI",
           "https://www.youtube.com/watch?v=Ar_gcUxPvmY",
-          "https://www.youtube.com/watch?v=mzJBc5wcxtc",
           "https://www.youtube.com/watch?v=7sj-snC5qWk",
-          "https://www.youtube.com/watch?v=-417f7m1_KE"
+          "https://www.youtube.com/watch?v=-417f7m1_KE",
+          "https://www.youtube.com/watch?v=mzJBc5wcxtc"
         ]
       },
       {
@@ -29075,8 +28967,8 @@
           "https://www.youtube.com/watch?v=S3CzIN5JClU",
           "https://www.youtube.com/watch?v=Lpg7t0LvhQU",
           "https://www.youtube.com/watch?v=-417f7m1_KE",
-          "https://www.youtube.com/watch?v=W1wQ_TIyMzs",
-          "https://www.youtube.com/watch?v=XvaycQ7Ywg4"
+          "https://www.youtube.com/watch?v=xcDfu4LGIpQ",
+          "https://www.youtube.com/watch?v=i63lQUwPVz8"
         ]
       },
       {
@@ -29433,11 +29325,11 @@
           }
         ],
         "youtubeVideos": [
-          "https://www.youtube.com/watch?v=canfhBH_t2A",
           "https://www.youtube.com/watch?v=KA9cN0zOPXI",
+          "https://www.youtube.com/watch?v=canfhBH_t2A",
           "https://www.youtube.com/watch?v=JJgfclTsbE0",
-          "https://www.youtube.com/watch?v=8YYAxSoXYTM",
-          "https://www.youtube.com/watch?v=yEfJm2eh4ig"
+          "https://www.youtube.com/watch?v=yEfJm2eh4ig",
+          "https://www.youtube.com/watch?v=NbMBPanC708"
         ]
       },
       {
@@ -29616,8 +29508,8 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=OwZp8Dya-zo",
           "https://www.youtube.com/watch?v=i8mBB08U-io",
-          "https://www.youtube.com/watch?v=MQp9ms5j6ks",
           "https://www.youtube.com/watch?v=QoKWcoQporo",
+          "https://www.youtube.com/watch?v=MQp9ms5j6ks",
           "https://www.youtube.com/watch?v=BKx1Mko5WG8"
         ]
       },
@@ -30230,9 +30122,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=i8mBB08U-io",
           "https://www.youtube.com/watch?v=QwKGGbnvoHY",
-          "https://www.youtube.com/watch?v=hngJdf_2bmk",
           "https://www.youtube.com/watch?v=SZoSaHPdTyA",
-          "https://www.youtube.com/watch?v=aeDqdf6VRz4"
+          "https://www.youtube.com/watch?v=hngJdf_2bmk",
+          "https://www.youtube.com/watch?v=wwGMQCsdY4Q"
         ]
       },
       {
@@ -30474,9 +30366,9 @@
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=j0NV8ishEnw",
           "https://www.youtube.com/watch?v=r8ZOEqCkdhY",
-          "https://www.youtube.com/watch?v=8X2Kdl3CSfE",
           "https://www.youtube.com/watch?v=4IBjfDfG3nU",
-          "https://www.youtube.com/watch?v=f7nVHFEsPBQ"
+          "https://www.youtube.com/watch?v=8X2Kdl3CSfE",
+          "https://www.youtube.com/watch?v=J3M2TbHGKs0"
         ]
       },
       {
@@ -31171,8 +31063,8 @@
           "https://www.youtube.com/watch?v=JlSMifFpRcY",
           "https://www.youtube.com/watch?v=TPGE9QWIVkY",
           "https://www.youtube.com/watch?v=HCxCaGjv4Vk",
-          "https://www.youtube.com/watch?v=IJEuA7hDlHg",
-          "https://www.youtube.com/watch?v=UjuyaeCO160"
+          "https://www.youtube.com/watch?v=UjuyaeCO160",
+          "https://www.youtube.com/watch?v=QwlQt4ADdt8"
         ]
       },
       {
@@ -31404,10 +31296,10 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=03zfGdEZCQQ",
+          "https://www.youtube.com/watch?v=hCnwLcvWL1k",
           "https://www.youtube.com/watch?v=qCP8SkiMmDk",
-          "https://www.youtube.com/watch?v=vw3LNEAx7AY",
-          "https://www.youtube.com/watch?v=EUKi2pmD6B4",
-          "https://www.youtube.com/watch?v=hoNLEoLVyCM"
+          "https://www.youtube.com/watch?v=xS55_W5iatg",
+          "https://www.youtube.com/watch?v=lJ4wu7Ia4Fk"
         ]
       },
       {
@@ -31630,9 +31522,9 @@
         ],
         "youtubeVideos": [
           "https://www.youtube.com/watch?v=L4PGzaTob48",
+          "https://www.youtube.com/watch?v=53wzwzkDYPw",
           "https://www.youtube.com/watch?v=8gDU9FAcmto",
           "https://www.youtube.com/watch?v=d3U3NLvC9Us",
-          "https://www.youtube.com/watch?v=53wzwzkDYPw",
           "https://www.youtube.com/watch?v=XM4RBRfVo7I"
         ]
       },

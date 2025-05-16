@@ -5,20 +5,22 @@ using Quartz.Impl;
 using Quartz.Spi;
 using UfcStatsAPI.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Text.Json;
+using UfcStatsAPI.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-
+// Configure json serialization
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
     options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonContext.Default);
+    options.SerializerOptions.WriteIndented = true;
 });
 
+// Add http client
 builder.Services.AddHttpClient();
 
+// Add quartz job for updating stats every day
 builder.Services.AddQuartz(q =>
 {
 	var jobKey = new JobKey("UpdateStats");
@@ -30,27 +32,42 @@ builder.Services.AddQuartz(q =>
     .WithIdentity("TriggerAfterRankingUpdate")
     .WithCronSchedule("0 0 0 ? * * *", x => x.InTimeZone(TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time"))));
 });
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+builder.Services.AddScoped<MyJobService>();
 
+// Add logger
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.AddFile("Logs/app-{Date}.log");
 
-builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
-builder.Services.AddScoped<MyJobService>();
+// Add services
 builder.Services.AddScoped<IScrapperService, ScrapperService>();
 builder.Services.AddScoped<IYoutubeService, YoutubeService>();
 builder.Services.AddScoped<IGoogleService, GoogleService>();
-
 builder.Services.AddHttpClient<IScrapperService, ScrapperService>();
 
+// Build the app
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
-
+// Redirect http to https
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+var api = app.MapGroup("/");
 
-app.MapControllers();
+app.MapGet("", async (ILogger<Program> logger) =>
+{
+    logger.LogInformation("UFC Stats requiested");
+
+    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "ufcfighterdata.json");
+    var json = JsonSerializer.Deserialize<List<WeightClassModel>>(await File.ReadAllTextAsync(filePath));
+    return Results.Ok(json);
+});
+
+app.MapGet("pulse", (ILogger<Program> logger) =>
+{
+    logger.LogInformation("Pulse requiested");
+    return Results.Ok("PULSE");
+});
+
 
 app.Run();
