@@ -55,7 +55,7 @@ app.UseHttpsRedirection();
 var api = app.MapGroup("/");
 
 // GET /
-app.MapGet("", async (ILogger<Program> logger) =>
+app.MapGet("/", async (ILogger<Program> logger) =>
 {
     logger.LogInformation("UFC Stats requiested");
 
@@ -65,7 +65,7 @@ app.MapGet("", async (ILogger<Program> logger) =>
 });
 
 // GET /pulse
-app.MapGet("pulse", (ILogger<Program> logger) =>
+app.MapGet("/pulse", (ILogger<Program> logger) =>
 {
     logger.LogInformation("Pulse requiested");
     return Results.Ok("PULSE");
