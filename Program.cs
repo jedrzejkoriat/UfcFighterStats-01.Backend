@@ -51,11 +51,13 @@ var app = builder.Build();
 
 // Redirect http to https
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.MapFallbackToFile("index.html");    
 
 var api = app.MapGroup("/");
 
 // GET /
-app.MapGet("", async (ILogger<Program> logger) =>
+app.MapGet("/api", async (ILogger<Program> logger) =>
 {
     logger.LogInformation("UFC Stats requiested");
 
@@ -65,13 +67,14 @@ app.MapGet("", async (ILogger<Program> logger) =>
 });
 
 // GET /pulse
-app.MapGet("pulse", (ILogger<Program> logger) =>
+app.MapGet("/api/pulse", (ILogger<Program> logger) =>
 {
     logger.LogInformation("Pulse requiested");
     return Results.Ok("PULSE");
 });
 
-/*app.MapGet("scrap", async (IScrapperService scrapperService, ILogger<Program> logger) =>
+// Helper method to check if scrapping works immediately
+/*app.MapGet("/api/scrap", async (IScrapperService scrapperService, ILogger<Program> logger) =>
 {
     logger.LogInformation("Scrap requiested");
     await scrapperService.GetRankedFighterStatsAsync();

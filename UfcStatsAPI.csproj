@@ -15,4 +15,9 @@
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Archive\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

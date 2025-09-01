@@ -1,6 +1,0 @@
-@UfcStatsAPI_HostAddress = http://localhost:5228
-
-GET {{UfcStatsAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
