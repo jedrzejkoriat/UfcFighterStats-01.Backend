@@ -7,6 +7,9 @@
 appsettings.json
 appsettings.Development.json
 
+# build
+/wwwroot
+
 # User-specific files
 *.rsuser
 *.suo

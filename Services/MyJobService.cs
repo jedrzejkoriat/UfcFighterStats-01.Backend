@@ -20,7 +20,14 @@ namespace UfcStatsAPI.Services
 
 			string json = await scrapperService.GetRankedFighterStatsAsync();
 			string filePath = "ufcfighterdata.json";
-			File.WriteAllText(filePath, json);
+
+			if (File.Exists(filePath))
+            {
+                string backupFileName = $"Archive/ufcfighterdata_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+                File.Move(filePath, backupFileName);
+            }
+
+            File.WriteAllText(filePath, json);
 
             logger.LogInformation("=========== END UFC STATS UPDATE ===========");
         }
