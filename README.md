@@ -1,6 +1,6 @@
 # UfcFighterStats-01.Backend
 
-**UfcFighterStats** is a web scraper that collects and updates daily statistics of the top 15 UFC Fighters in each weight class.
+**UfcFighterStats-01.Backend** is a web scraper that collects and updates daily statistics of the top 15 UFC Fighters in each weight class.
 
 ---
 
