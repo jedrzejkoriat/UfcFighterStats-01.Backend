@@ -4,6 +4,6 @@ namespace UfcStatsAPI.Contracts
 {
 	public interface IScrapperService
 	{
-		Task<string> GetRankedFighterStatsAsync();
-	}
+		Task<string> ScrapUFCRankedFighterAsync();
+    }
 }

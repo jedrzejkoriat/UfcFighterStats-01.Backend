@@ -16,10 +16,10 @@ namespace UfcStatsAPI.Services
 
 		public async Task Execute(IJobExecutionContext context)
 		{
-			logger.LogInformation("=========== START UFC STATS UPDATE ===========");
+			logger.LogInformation("====================== START UFC STATS UPDATE ======================");
 
-			string json = await scrapperService.GetRankedFighterStatsAsync();
-			string filePath = "ufcfighterdata.json";
+			string json = await scrapperService.ScrapUFCRankedFighterAsync();
+            string filePath = "ufcfighterdata.json";
 
 			if (File.Exists(filePath))
             {
@@ -29,7 +29,7 @@ namespace UfcStatsAPI.Services
 
             File.WriteAllText(filePath, json);
 
-            logger.LogInformation("=========== END UFC STATS UPDATE ===========");
+            logger.LogInformation("====================== END UFC STATS UPDATE ======================");
         }
 	}
 }
