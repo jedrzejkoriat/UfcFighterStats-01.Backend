@@ -37,7 +37,7 @@ app.MapGet("/api/pulse", (ILogger<Program> logger) =>
 });
 
 // Helper method to check if scrapping works immediately
-app.MapGet("/api/scrap", async (IScrapperService scrapperService, ILogger<Program> logger) =>
+/*app.MapGet("/api/scrap", async (IScrapperService scrapperService, ILogger<Program> logger) =>
 {
     logger.LogInformation("Scrap requiested");
     string json = await scrapperService.ScrapUFCRankedFighterAsync();
@@ -45,6 +45,6 @@ app.MapGet("/api/scrap", async (IScrapperService scrapperService, ILogger<Progra
     File.WriteAllText(filePath, json);
 
     return Results.Ok(json);
-});
+});*/
 
 app.Run();
