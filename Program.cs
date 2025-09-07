@@ -56,16 +56,8 @@ app.MapFallbackToFile("index.html");
 
 var api = app.MapGroup("/");
 
-// GET /
-<<<<<<< HEAD
-<<<<<<< HEAD
-app.MapGet("/", async (ILogger<Program> logger) =>
-=======
+// GET: /api
 app.MapGet("/api", async (ILogger<Program> logger) =>
->>>>>>> abe4c0e (feat: add folder and logic for archiving the stats)
-=======
-app.MapGet("/api", async (ILogger<Program> logger) =>
->>>>>>> abe4c0e9b3a49b82df9f02ffe31e309aa9b21bea
 {
     logger.LogInformation("UFC Stats requiested");
 
@@ -74,27 +66,22 @@ app.MapGet("/api", async (ILogger<Program> logger) =>
     return Results.Ok(json);
 });
 
-// GET /pulse
-<<<<<<< HEAD
-<<<<<<< HEAD
-app.MapGet("/pulse", (ILogger<Program> logger) =>
-=======
+// GET: /api/pulse
 app.MapGet("/api/pulse", (ILogger<Program> logger) =>
->>>>>>> abe4c0e (feat: add folder and logic for archiving the stats)
-=======
-app.MapGet("/api/pulse", (ILogger<Program> logger) =>
->>>>>>> abe4c0e9b3a49b82df9f02ffe31e309aa9b21bea
 {
     logger.LogInformation("Pulse requiested");
     return Results.Ok("PULSE");
 });
 
 // Helper method to check if scrapping works immediately
-/*app.MapGet("/api/scrap", async (IScrapperService scrapperService, ILogger<Program> logger) =>
+app.MapGet("/api/scrap", async (IScrapperService scrapperService, ILogger<Program> logger) =>
 {
     logger.LogInformation("Scrap requiested");
-    await scrapperService.GetRankedFighterStatsAsync();
-    return Results.Ok("Scrap done");
-});*/
+    string json = await scrapperService.GetRankedFighterStatsAsync();
+    string filePath = "ufcfighterdata.json";
+    File.WriteAllText(filePath, json);
+
+    return Results.Ok(json);
+});
 
 app.Run();

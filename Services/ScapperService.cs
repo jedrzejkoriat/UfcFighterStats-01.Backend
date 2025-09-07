@@ -5,19 +5,23 @@ using HtmlAgilityPack;
 using UfcStatsAPI.Contracts;
 using UfcStatsAPI.Model;
 using System.Text.Json;
+using System.Net.Http;
+using Microsoft.Playwright;
 
 namespace UfcStatsAPI.Services
 {
     public class ScrapperService : IScrapperService
     {
-        private readonly HttpClient httpClient;
+        private readonly HttpClient wikipediaClient;
+        private readonly HttpClient sherdogClient;
         private readonly ILogger<ScrapperService> logger;
         private readonly IYoutubeService youtubeService;
         private readonly IGoogleService googleService;
 
-        public ScrapperService(HttpClient httpClient, ILogger<ScrapperService> logger, IYoutubeService youtubeService, IGoogleService googleService)
+        public ScrapperService(HttpClient wikipediaClient, HttpClient sherdogClient, ILogger<ScrapperService> logger, IYoutubeService youtubeService, IGoogleService googleService)
         {
-            this.httpClient = httpClient;
+            this.wikipediaClient = wikipediaClient;
+            this.sherdogClient = sherdogClient;
             this.logger = logger;
             this.youtubeService = youtubeService;
             this.googleService = googleService;
@@ -51,8 +55,9 @@ namespace UfcStatsAPI.Services
                 // Splitting html table to lines for easier looping
                 string[] tableSplitToLines = wikipediaWeightClassTables[i].OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
-                // List of tasks - max 16 fighters at once
-                SemaphoreSlim semaphore = new SemaphoreSlim(16);
+                // List of tasks - max 20 fighters at once
+                int maxFightersAtOnce = 40;
+                SemaphoreSlim semaphore = new SemaphoreSlim(maxFightersAtOnce);
                 List<Task> tasks = new List<Task>();
 
                 // Looping through lines of html table
@@ -95,13 +100,25 @@ namespace UfcStatsAPI.Services
                                     {
                                         // Scrap fighter from sherdog page and add fighter to weightclass
                                         var fighter = await ScrapStatsFromSherdogAsync(sherdogLink, ranking, firstHalf);
-                                        weightClassModel.Fighters.Add(fighter);
-                                        this.logger.LogInformation($"Fighter scrapped: {fighter.Ranking}.{fighter.Name} '{fighter.Nickname}'");
+
+                                        if (fighter != null)
+                                        {
+                                            weightClassModel.Fighters.Add(fighter);
+                                            this.logger.LogInformation($"Fighter scrapped: {fighter.Ranking}.{fighter.Name} '{fighter.Nickname}'");
+                                        }
+                                        else
+                                        {
+                                            this.logger.LogError($"Fighter not scrapped: {sherdogLink}");
+                                        }
                                     }));
                                 }
                                 catch (Exception ex)
                                 {
                                     this.logger.LogError("Error scrapping fighter data: " + sherdogLink);
+                                }
+                                finally
+                                {
+                                    semaphore.Release();
                                 }
                             }
                             else
@@ -109,9 +126,9 @@ namespace UfcStatsAPI.Services
                                 this.logger.LogWarning("Fighter sherdog link was not found: " + tableSplitToLines[j + 2]);
                             }
                         }
-                        finally
+                        catch (Exception ex)
                         {
-                            semaphore.Release();
+                            this.logger.LogError("Error getting sherdog link for fighter: " + tableSplitToLines[j + 2]);
                         }
                     }
                 }
@@ -178,8 +195,14 @@ namespace UfcStatsAPI.Services
         // Getting weight class tables from Wikipedia (from male Heavyweight to male Flyweight)
         private async Task<List<HtmlNode>> GetWeightClassTablesFromWikipediaAsync()
         {
-            // Downloading content of the Wikipedia UFC_Rankings page
-            var response = await httpClient.GetStringAsync("https://en.wikipedia.org/wiki/UFC_rankings");
+            // User-Agent z Google Chrome
+            this.wikipediaClient.DefaultRequestHeaders.UserAgent.ParseAdd(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+                "AppleWebKit/537.36 (KHTML, like Gecko) " +
+                "Chrome/116.0.0.0 Safari/537.36"
+            );
+
+            var response = await wikipediaClient.GetStringAsync("https://en.wikipedia.org/wiki/UFC_rankings");
 
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(response);
@@ -202,7 +225,7 @@ namespace UfcStatsAPI.Services
         private async Task<string?> ScrapSherdogLinkFromWikipediaAsync(string url)
         {
             // Downloading fighter wikipedia page content
-            var response = await this.httpClient.GetStringAsync("https://en.wikipedia.org" + url);
+            var response = await this.wikipediaClient.GetStringAsync("https://en.wikipedia.org" + url);
 
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(response);
@@ -239,20 +262,69 @@ namespace UfcStatsAPI.Services
             return null;
         }
 
+        public async Task<string> GetSherdogHtmlAsync(string url)
+        {
+            int attempt = 0;
+            int maxRetries = 10;
+
+            while (attempt < maxRetries)
+            {
+                attempt++;
+
+                try
+                {
+                    using var playwright = await Playwright.CreateAsync();
+                    var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+                    {
+                        Headless = false
+                    });
+
+                    var page = await browser.NewPageAsync(new BrowserNewPageOptions
+                    {
+                        ViewportSize = new ViewportSize { Width = 1280, Height = 800 },
+                        UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+                    });
+
+                    await page.GotoAsync(url, new PageGotoOptions { WaitUntil = WaitUntilState.DOMContentLoaded, Timeout = 5000 });
+
+                    await page.WaitForSelectorAsync("div.bio-holder", new PageWaitForSelectorOptions { Timeout = 5000 });
+
+                    var content = await page.ContentAsync();
+                    await browser.CloseAsync();
+
+                    return content;
+                }
+                catch (TimeoutException ex)
+                {
+                    await Task.Delay(2000);
+                }
+            }
+
+            return null;
+        }
+
         // Scraper for fighter statistics and fight history from Sherdog page
         private async Task<FighterModel> ScrapStatsFromSherdogAsync(string url, string ranking, bool firstHalf)
         {
             // Downloading fighter sherdog page content
-            var response = await httpClient.GetStringAsync("https://www.sherdog.com/fighter/" + url);
+
+            /*            var response = await sherdogClient.GetAsync("https://www.sherdog.com/fighter/" + url);
+                        string content = await response.Content.ReadAsStringAsync();*/
+
+            var content = await GetSherdogHtmlAsync("https://www.sherdog.com/fighter/" + url);
+
+            if (content == null)
+                return null;
 
             var htmlDoc = new HtmlDocument();
-            htmlDoc.LoadHtml(response);
+            htmlDoc.LoadHtml(content);
 
             FighterModel fighter = new FighterModel();
 
             fighter.Ranking = Convert.ToInt32(ranking);
 
             // Age, Height
+            
             var bioHtml = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='bio-holder']").OuterHtml.Split(new char[] { '\n' }, StringSplitOptions.None);
 
             for (int i = 0; i < bioHtml.Length; i++)
